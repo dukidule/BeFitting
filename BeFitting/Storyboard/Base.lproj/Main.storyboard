@@ -15,50 +15,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="118" translatesAutoresizingMaskIntoConstraints="NO" id="CS2-ZE-K2Y">
-                                <rect key="frame" x="20" y="148" width="374" height="684"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="zJQ-3l-17N">
+                                <rect key="frame" x="82" y="90" width="250" height="606"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to.." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vfs-2q-i8k">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K9f-UV-5Jw">
-                                        <rect key="frame" x="0.0" y="154" width="374" height="277"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="square.and.arrow.up.fill" catalog="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K9f-UV-5Jw">
+                                        <rect key="frame" x="0.0" y="85" width="250" height="521"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="5XG-JF-QfY"/>
+                                            <constraint firstAttribute="width" constant="250" id="iem-e4-M5j"/>
+                                        </constraints>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="uNR-bV-EV7">
-                                        <rect key="frame" x="0.0" y="549" width="374" height="135"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JRd-Z8-8PD">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="91"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal" title="Register"/>
-                                                <connections>
-                                                    <action selector="toRegisterScreenButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vaQ-Xg-t42"/>
-                                                    <segue destination="JXI-Ln-6qg" kind="show" identifier="goToRegister" id="FIE-Qv-yMs"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hsp-Yq-mvC">
-                                                <rect key="frame" x="0.0" y="93" width="374" height="42"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal" title="Login"/>
-                                                <connections>
-                                                    <action selector="toLoginScreenButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fa1-sf-tOD"/>
-                                                    <segue destination="RYJ-kX-AXh" kind="show" identifier="goToLogin" id="RRb-pC-UXJ"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="K9f-UV-5Jw" firstAttribute="leading" secondItem="zJQ-3l-17N" secondAttribute="leading" id="G6R-fV-Pzn"/>
+                                    <constraint firstItem="Vfs-2q-i8k" firstAttribute="top" secondItem="zJQ-3l-17N" secondAttribute="top" id="Z5O-Uu-gFX"/>
+                                    <constraint firstAttribute="trailing" secondItem="K9f-UV-5Jw" secondAttribute="trailing" id="z21-gs-8Yp"/>
+                                    <constraint firstAttribute="bottom" secondItem="K9f-UV-5Jw" secondAttribute="bottom" id="zBm-nh-jpl"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="uNR-bV-EV7">
+                                <rect key="frame" x="162" y="746" width="90" height="86"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JRd-Z8-8PD">
+                                        <rect key="frame" x="0.0" y="0.0" width="90" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Register"/>
+                                        <connections>
+                                            <action selector="toRegisterScreenButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vaQ-Xg-t42"/>
+                                            <segue destination="JXI-Ln-6qg" kind="show" identifier="goToRegister" id="FIE-Qv-yMs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hsp-Yq-mvC">
+                                        <rect key="frame" x="0.0" y="44" width="90" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Login"/>
+                                        <connections>
+                                            <action selector="toLoginScreenButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fa1-sf-tOD"/>
+                                            <segue destination="RYJ-kX-AXh" kind="show" identifier="goToLogin" id="RRb-pC-UXJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="89" id="Ldd-82-6pM"/>
+                                    <constraint firstAttribute="height" constant="86" id="N81-O6-c9I"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CS2-ZE-K2Y" secondAttribute="trailing" constant="20" id="Akt-0M-Lvd"/>
-                            <constraint firstItem="CS2-ZE-K2Y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ET2-75-QUG"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CS2-ZE-K2Y" secondAttribute="bottom" constant="30" id="d2j-NI-NF3"/>
-                            <constraint firstItem="CS2-ZE-K2Y" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="nQI-oG-dv7"/>
+                            <constraint firstItem="zJQ-3l-17N" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="2" id="HQy-WQ-H4E"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uNR-bV-EV7" secondAttribute="bottom" constant="30" id="L9Q-hs-qrG"/>
+                            <constraint firstItem="JRd-Z8-8PD" firstAttribute="top" secondItem="zJQ-3l-17N" secondAttribute="bottom" constant="50" id="X4e-8r-wim"/>
+                            <constraint firstItem="uNR-bV-EV7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fPn-f4-quU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="uNR-bV-EV7" secondAttribute="trailing" constant="162" id="vUZ-hS-lzc"/>
+                            <constraint firstItem="uNR-bV-EV7" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="163" id="xW2-ZF-b5V"/>
+                            <constraint firstItem="zJQ-3l-17N" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="yHf-jk-87d"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -338,4 +355,7 @@
             <point key="canvasLocation" x="-46.376811594202906" y="97.767857142857139"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="square.and.arrow.up.fill" catalog="system" width="56" height="64"/>
+    </resources>
 </document>
