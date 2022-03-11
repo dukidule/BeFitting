@@ -11,4 +11,7 @@ struct K {
     static let appName = "BeFitting"
     static let toRegisterController = "goToRegister"
     static let toLoginViewController = "goToLogin"
+    static let foodCell = "foodCell"
+    static let registerToMenu = "registerToMenu"
+    static let loginToMenu = "loginToMenu"
 }

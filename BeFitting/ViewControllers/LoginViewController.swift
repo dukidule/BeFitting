@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var motivationalQuoteLabel: UILabel!
@@ -14,9 +15,17 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginEmailTextField: UITextField!
     @IBOutlet weak var loginPasswordLabel: UILabel!
     @IBOutlet weak var loginPasswordTextField: UITextField!
-    @IBAction func loginGetUserEmail(_ sender: UITextField) {
-    }
-    @IBAction func loginGetUserPassword(_ sender: UITextField) {
+    @IBOutlet weak var loginButton: UIButton!
+    @IBAction func login(_ sender: UIButton) {
+        if let email = loginEmailTextField.text, let password = loginPasswordTextField.text {
+            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+                if let e = error {
+                    print (e)
+                } else {
+                    self.performSegue(withIdentifier: K.loginToMenu, sender: self)
+                }
+            }
+        }
     }
     
     

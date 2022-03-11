@@ -19,7 +19,6 @@ class WelcomeViewController: UIViewController {
     }
     @IBAction func toLoginScreenButton(_ sender: UIButton) {
         
-        
     }
     
     
