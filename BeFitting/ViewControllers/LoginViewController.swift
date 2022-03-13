@@ -20,7 +20,8 @@ class LoginViewController: UIViewController {
         if let email = loginEmailTextField.text, let password = loginPasswordTextField.text {
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
                 if let e = error {
-                    print (e)
+                    print(e)
+                    
                 } else {
                     self.performSegue(withIdentifier: K.loginToMenu, sender: self)
                 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FoodLogs {
+struct FoodLog {
     let name: String
     let calories: Int
     let protein: Int
