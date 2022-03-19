@@ -14,4 +14,6 @@ struct K {
     static let foodCell = "foodCell"
     static let registerToMenu = "registerToMenu"
     static let loginToMenu = "loginToMenu"
+    static let cellID = "foodLogCell"
+    static let cellNibName = "FoodLogCell"
 }
