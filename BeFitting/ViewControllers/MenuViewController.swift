@@ -34,16 +34,30 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
+//BreakfastTableView
         breakfastTableView.delegate = self
         breakfastTableView.dataSource = self
+        breakfastTableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellID)
+        
+//LunchTableView
+        lunchTableView.delegate = self
+        lunchTableView.dataSource = self
+        lunchTableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellID)
+        
+//DinnerTableView
+        
+        dinnerTableView.dataSource = self
+        dinnerTableView.delegate = self
+        dinnerTableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellID)
+//SnacksTableView
+        snacksTableView.dataSource = self
+        snacksTableView.delegate = self
+        snacksTableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellID)
+//CircleButton
         menuButton.layer.cornerRadius = menuButton.frame.height * 0.5
         menuButton.layer.masksToBounds = true
-        
-        breakfastTableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellID)
-//        lunchTableView.dataSource = self
-//        dinnerTableView.dataSource = self
-//        snacksTableView.dataSource = self
-        
         
     }
     
