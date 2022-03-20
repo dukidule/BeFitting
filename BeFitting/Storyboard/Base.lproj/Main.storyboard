@@ -284,7 +284,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="eTF-11-Ugq" userLabel="MenuDateLogo">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="161"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="193"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="JzZ-Xc-0a1" userLabel="MenuLogo">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="131"/>
@@ -308,9 +308,16 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" minimumValue="-100" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="gsS-jU-J3I">
+                                                        <rect key="frame" x="320" y="161" width="94" height="32"/>
+                                                        <connections>
+                                                            <action selector="changingDate:" destination="jWi-DM-7Ub" eventType="valueChanged" id="yaP-iL-aRp"/>
+                                                        </connections>
+                                                    </stepper>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="Q2v-Ni-gdM" firstAttribute="top" secondItem="2R5-gA-eo5" secondAttribute="bottom" id="LUP-eV-VQg"/>
+                                                    <constraint firstItem="gsS-jU-J3I" firstAttribute="top" secondItem="Q2v-Ni-gdM" secondAttribute="bottom" id="QNs-0I-lBP"/>
                                                     <constraint firstItem="JzZ-Xc-0a1" firstAttribute="top" secondItem="eTF-11-Ugq" secondAttribute="top" id="nHP-iu-rA8"/>
                                                 </constraints>
                                             </stackView>
@@ -323,6 +330,7 @@
                                             <constraint firstItem="Doe-N4-jSw" firstAttribute="top" secondItem="Q2v-Ni-gdM" secondAttribute="bottom" constant="5" id="Xbu-2F-P79"/>
                                             <constraint firstAttribute="bottom" secondItem="Doe-N4-jSw" secondAttribute="bottom" id="a6q-GX-uk6"/>
                                             <constraint firstItem="Doe-N4-jSw" firstAttribute="leading" secondItem="hz9-zo-0mo" secondAttribute="leading" id="jOp-TJ-5OR"/>
+                                            <constraint firstItem="Doe-N4-jSw" firstAttribute="top" secondItem="gsS-jU-J3I" secondAttribute="bottom" constant="-27" id="jpF-mz-CGg"/>
                                             <constraint firstAttribute="trailing" secondItem="Doe-N4-jSw" secondAttribute="trailing" id="ozg-uq-evn"/>
                                             <constraint firstItem="JzZ-Xc-0a1" firstAttribute="leading" secondItem="hz9-zo-0mo" secondAttribute="leading" id="qSM-Uy-Qvq"/>
                                         </constraints>
@@ -348,6 +356,33 @@
                                 </constraints>
                                 <state key="normal" title="Menu"/>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igd-yG-9VS">
+                                <rect key="frame" x="87" y="389" width="240" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Save food entries?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mh-85-m1u">
+                                        <rect key="frame" x="14" y="14" width="210" height="61"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQY-0z-8xn">
+                                        <rect key="frame" x="44" y="83" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Yes"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daA-9h-F1E">
+                                        <rect key="frame" x="170" y="83" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="No"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="jWk-Dg-HnF"/>
+                                    <constraint firstAttribute="height" constant="128" id="wEV-Oq-1XC"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -357,6 +392,8 @@
                             <constraint firstItem="p9G-QB-1pS" firstAttribute="top" secondItem="oni-eV-LBo" secondAttribute="top" constant="10" id="PJk-Dr-6tg"/>
                             <constraint firstItem="oni-eV-LBo" firstAttribute="bottom" secondItem="UiF-Qz-3eN" secondAttribute="bottom" id="UK3-MG-Kjm"/>
                             <constraint firstItem="p9G-QB-1pS" firstAttribute="leading" secondItem="oni-eV-LBo" secondAttribute="leading" constant="10" id="Xag-Tp-IB9"/>
+                            <constraint firstItem="igd-yG-9VS" firstAttribute="centerY" secondItem="oni-eV-LBo" secondAttribute="centerY" id="fY0-cC-bXn"/>
+                            <constraint firstItem="igd-yG-9VS" firstAttribute="centerX" secondItem="oni-eV-LBo" secondAttribute="centerX" id="hqB-Q2-sx0"/>
                             <constraint firstItem="UiF-Qz-3eN" firstAttribute="leading" secondItem="oni-eV-LBo" secondAttribute="leading" id="ofj-Xd-g6t"/>
                             <constraint firstItem="UiF-Qz-3eN" firstAttribute="top" secondItem="p9G-QB-1pS" secondAttribute="bottom" id="wGN-JP-wcz"/>
                         </constraints>
@@ -366,7 +403,12 @@
                     <connections>
                         <outlet property="breakfastLabel" destination="hKn-bV-nG9" id="hRj-s4-P19"/>
                         <outlet property="breakfastTableView" destination="fco-MN-slK" id="tKZ-Hj-Cqt"/>
+                        <outlet property="confirmationPopUp" destination="igd-yG-9VS" id="xyg-5b-IxO"/>
+                        <outlet property="confirmationPopUpNo" destination="daA-9h-F1E" id="pzK-Hn-KOx"/>
+                        <outlet property="confirmationPopUpText" destination="0mh-85-m1u" id="pcK-If-Wdc"/>
+                        <outlet property="confirmationPopUpYes" destination="rQY-0z-8xn" id="RDh-ns-ZTs"/>
                         <outlet property="dateLabel" destination="Q2v-Ni-gdM" id="5es-Rp-Qma"/>
+                        <outlet property="dateStepper" destination="gsS-jU-J3I" id="GbK-0d-qBD"/>
                         <outlet property="dinnerLabel" destination="YNz-4x-fA1" id="sOK-rd-Zb5"/>
                         <outlet property="dinnerTableView" destination="UmC-2B-EvT" id="dY1-eT-hPt"/>
                         <outlet property="logoImageView" destination="2R5-gA-eo5" id="NIj-f1-Erh"/>
