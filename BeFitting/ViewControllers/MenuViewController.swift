@@ -119,7 +119,7 @@ extension MenuViewController: UITableViewDataSource {
 
 extension MenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        self.performSegue(withIdentifier: "toFoodViewController", sender: indexPath)
     }
     
 }
