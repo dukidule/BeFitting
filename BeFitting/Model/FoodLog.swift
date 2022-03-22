@@ -11,6 +11,7 @@ import Foundation
 struct FoodLog {
     let name: String
 //    let measurement: String
+//    let quantity: Int
     let calories: Int
     let protein: Int
     let carbs: Int

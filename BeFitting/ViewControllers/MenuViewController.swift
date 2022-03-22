@@ -112,6 +112,12 @@ extension MenuViewController: UITableViewDataSource {
         cell.textLabel?.text = breakfastFoodLogs[indexPath.row].name
         return cell
     }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 40
+//        
+//    }
+    
 }
 
 
@@ -121,7 +127,7 @@ extension MenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "toFoodViewController", sender: indexPath)
     }
-    
+    //NA IVICI DA PRESTANE DA JEDE GOVNA
 }
 //MARK: - Date Selection
 
