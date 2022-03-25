@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class FoodViewController: UIViewController {
-   //ContentView
+    //ContentView
     @IBOutlet weak var contentView: UIView!
     //Labels
     
@@ -19,6 +20,7 @@ class FoodViewController: UIViewController {
     @IBOutlet weak var proteinLabel: UILabel!
     @IBOutlet weak var carbsLabel: UILabel!
     @IBOutlet weak var fatsLabel: UILabel!
+    
     //TextFields
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var quantityTextField: UITextField!
@@ -26,23 +28,37 @@ class FoodViewController: UIViewController {
     @IBOutlet weak var proteinTextField: UITextField!
     @IBOutlet weak var carbsTextField: UITextField!
     @IBOutlet weak var fatsTextField: UITextField!
+    
     //Buttons
     @IBOutlet weak var quantitySelectionButton: UIButton!
-    @IBAction func displayTableView(_ sender: UIButton) {
-        print(quantitySelectionButton.frame.size.width)
-        print(quantitySelectionButton.frame.size.height)
-        print(nameTextField.frame.size.height
-        )
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    
+    //Button Actions
+    @IBAction func saveButtonClicked(_ sender: UIButton) {
+        food.name = nameTextField.text ?? ""
+        food.calories = caloriesTextField.text ?? ""
+        food.protein = proteinTextField.text ?? ""
+        food.carbs = carbsTextField.text ?? ""
+        food.fats = fatsTextField.text ?? ""
     }
+    @IBAction func cancelButtonClicked(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+        print(food)
+    }
+    @IBAction func displayTableView(_ sender: UIButton) {
+        
+    }
+    var food = FoodLog(name: "", calories: "", protein: "", carbs: "", fats: "")
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        quantitySelectionButton.frame.size.width = 10
-        quantitySelectionButton.frame.size.height = 10
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        quantitySelectionButton.frame.size.width = 10
-        quantitySelectionButton.frame.size.height = 10
+        
         
     }
     
@@ -50,6 +66,13 @@ class FoodViewController: UIViewController {
         super.viewWillAppear(true)
         
     }
-    var food: FoodLog?
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "\(K.foodToMenu)" {
+//            let secondVC: MenuViewController = segue.destination as! MenuViewController
+//            secondVC.delegate = self
+//        }
+//    }
+    
     
 }
