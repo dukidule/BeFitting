@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import IQKeyboardManagerSwift
 
 
 
@@ -53,7 +52,6 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
     }
     

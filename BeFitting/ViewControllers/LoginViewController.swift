@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import IQKeyboardManagerSwift
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var motivationalQuoteLabel: UILabel!
@@ -33,6 +32,5 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
     }
 }

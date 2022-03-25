@@ -9,23 +9,11 @@
 import Foundation
 
 struct FoodLog {
-    var name: String
+    let name: String
 //    let measurement: String
-//    let quantity: String
-    var calories: String
-    var protein: String
-    var carbs: String
-    var fats: String
-
-    
-    init(name: String, calories: String, protein: String, carbs: String, fats: String) {
-        self.name = name
-        self.calories = calories
-        self.protein = protein
-        self.carbs = carbs
-        self.fats = fats
-        
-    }
+//    let quantity: Int
+    let calories: Int
+    let protein: Int
+    let carbs: Int
+    let fats: Int
 }
-
-
