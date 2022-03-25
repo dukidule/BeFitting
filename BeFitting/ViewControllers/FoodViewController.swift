@@ -41,6 +41,8 @@ class FoodViewController: UIViewController {
         food.protein = proteinTextField.text ?? ""
         food.carbs = carbsTextField.text ?? ""
         food.fats = fatsTextField.text ?? ""
+        performSegue(withIdentifier: ("\(K.foodToMenu)"), sender: self)
+        print(food)
     }
     @IBAction func cancelButtonClicked(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -67,12 +69,14 @@ class FoodViewController: UIViewController {
         
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "\(K.foodToMenu)" {
-//            let secondVC: MenuViewController = segue.destination as! MenuViewController
-//            secondVC.delegate = self
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "\(K.foodToMenu)" {
+                let destinationVc = segue.destination as! MenuViewController
+            if destinationVc.cellIDForTable == "breakfastFoodLogID" {
+                destinationVc.breakfastFoodLogs.append(food)
+            }
+            }
+        }
+    }
     
-    
-}
+
