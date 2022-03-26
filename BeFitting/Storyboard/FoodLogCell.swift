@@ -16,7 +16,6 @@ class FoodLogCell: UITableViewCell {
     @IBOutlet weak var carbsTextField: UITextField!
     @IBOutlet weak var calTextField: UITextField!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

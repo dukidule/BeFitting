@@ -490,7 +490,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="asdwasd" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9U6-8Z-xiG">
                                                 <rect key="frame" x="0.0" y="62" width="177" height="49"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="asdwasd" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nlE-gJ-MVI">
                                                 <rect key="frame" x="0.0" y="124" width="177" height="49"/>
@@ -515,8 +515,13 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyu-c4-DXa">
-                                        <rect key="frame" x="271.5" y="79.5" width="30" height="30"/>
+                                        <rect key="frame" x="281.5" y="84.5" width="20" height="20"/>
                                         <color key="backgroundColor" red="0.1625202298" green="0.38978874679999997" blue="0.40809205170000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="Fr1-ex-K1I"/>
+                                            <constraint firstAttribute="height" constant="20" id="Ve9-dg-vr4"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="35" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="g">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
@@ -524,13 +529,39 @@
                                             <action selector="displayTableView:" destination="cX5-DD-2sE" eventType="touchUpInside" id="mar-bm-V9m"/>
                                         </connections>
                                     </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="myw-RP-gwZ">
+                                        <rect key="frame" x="203" y="375" width="104" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hQ-Xd-GSn">
+                                                <rect key="frame" x="0.0" y="0.0" width="48" height="30"/>
+                                                <state key="normal" title="Save">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="saveButtonClicked:" destination="cX5-DD-2sE" eventType="touchUpInside" id="h8z-ud-4qS"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zn6-hT-2qC">
+                                                <rect key="frame" x="56" y="0.0" width="48" height="30"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelButtonClicked:" destination="cX5-DD-2sE" eventType="touchUpInside" id="Kg8-vI-p7q"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="DjE-nw-jRH" secondAttribute="bottom" constant="45" id="Jez-ec-WOW"/>
                                     <constraint firstItem="DjE-nw-jRH" firstAttribute="leading" secondItem="7p5-k2-51D" secondAttribute="trailing" constant="10" id="LNc-mT-YTg"/>
+                                    <constraint firstAttribute="trailing" secondItem="myw-RP-gwZ" secondAttribute="trailing" constant="8" id="RNi-fu-eSt"/>
                                     <constraint firstAttribute="trailing" secondItem="cyu-c4-DXa" secondAttribute="trailing" constant="13.5" id="YIi-B5-lzf"/>
                                     <constraint firstItem="7p5-k2-51D" firstAttribute="top" secondItem="DlI-ad-d71" secondAttribute="top" constant="8" id="aAU-iX-88G"/>
+                                    <constraint firstItem="myw-RP-gwZ" firstAttribute="top" secondItem="DjE-nw-jRH" secondAttribute="bottom" constant="8" id="drx-FO-JgH"/>
+                                    <constraint firstAttribute="bottom" secondItem="myw-RP-gwZ" secondAttribute="bottom" constant="7" id="eSS-8W-ClE"/>
                                     <constraint firstItem="DjE-nw-jRH" firstAttribute="top" secondItem="DlI-ad-d71" secondAttribute="top" constant="8" id="fPI-nz-yWg"/>
                                     <constraint firstItem="cyu-c4-DXa" firstAttribute="centerY" secondItem="9U6-8Z-xiG" secondAttribute="centerY" id="gPx-At-ee4"/>
                                     <constraint firstAttribute="trailing" secondItem="DjE-nw-jRH" secondAttribute="trailing" constant="55" id="ids-lj-Yd0"/>
@@ -539,7 +570,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="0.24657534246575341" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="tVZ-eE-4x5" firstAttribute="trailing" secondItem="DlI-ad-d71" secondAttribute="trailing" constant="200" id="JkV-Rn-wt4"/>
                             <constraint firstItem="tVZ-eE-4x5" firstAttribute="bottom" secondItem="DlI-ad-d71" secondAttribute="bottom" constant="206" id="Ta5-FI-vm0"/>
@@ -584,6 +615,7 @@
                     <connections>
                         <outlet property="caloriesLabel" destination="GSI-iq-TXI" id="sbv-mH-5sk"/>
                         <outlet property="caloriesTextField" destination="nlE-gJ-MVI" id="z7S-e3-hbi"/>
+                        <outlet property="cancelButton" destination="Zn6-hT-2qC" id="OED-jb-8vk"/>
                         <outlet property="carbsLabel" destination="1rd-fm-Jr5" id="Tx9-xi-VVW"/>
                         <outlet property="carbsTextField" destination="9EE-kz-FWO" id="wGg-yH-f2t"/>
                         <outlet property="contentView" destination="DlI-ad-d71" id="GgH-5S-ath"/>
@@ -596,6 +628,8 @@
                         <outlet property="quantityLabel" destination="45s-DG-paS" id="f7y-NI-nQX"/>
                         <outlet property="quantitySelectionButton" destination="cyu-c4-DXa" id="cix-pk-waw"/>
                         <outlet property="quantityTextField" destination="9U6-8Z-xiG" id="MjS-KJ-yuZ"/>
+                        <outlet property="saveButton" destination="7hQ-Xd-GSn" id="bcO-mZ-WEz"/>
+                        <segue destination="jWi-DM-7Ub" kind="presentation" identifier="foodToMenu" id="lCf-py-WNl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Py8-wJ-bk9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -883,6 +917,6 @@
         <image name="square.and.arrow.up.fill" catalog="system" width="56" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ean-va-SuW"/>
+        <segue reference="lCf-py-WNl"/>
     </inferredMetricsTieBreakers>
 </document>
