@@ -47,7 +47,7 @@ class MenuViewController: UIViewController {
     //FoodLog arrays
     var breakfastFoodLogs: [FoodLog] = [
         FoodLog(name: "", calories: "", protein: "", carbs: "", fats: ""),
-        FoodLog(name: "Pljeskavica", calories: "512", protein: "26", carbs: "35", fats: "67")
+        FoodLog(name: "Asd", calories: "124", protein: "25", carbs: "63", fats: "")
     ]
     var lunchFoodLogs: [FoodLog] = [FoodLog(name: "", calories: "", protein: "", carbs: "", fats: "")]
     var dinnerFoodLogs: [FoodLog] = [FoodLog(name: "", calories: "", protein: "", carbs: "", fats: "")]
@@ -55,13 +55,15 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //Date
+        
         dateSelection = NSDate()
         dateLabel.text = dateSelection.formatted
         
-        
-        
+        breakfastTableView.reloadData()
+        lunchTableView.reloadData()
+        snacksTableView.reloadData()
+        print(breakfastFoodLogs)
         //BreakfastTableView
         breakfastTableView.delegate = self
         breakfastTableView.dataSource = self
@@ -95,7 +97,7 @@ extension MenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if tableView == breakfastTableView {
-            return 1
+            return breakfastFoodLogs.count
         }
         else if tableView == lunchTableView {
             return 1
@@ -181,3 +183,5 @@ extension NSDate {
         return identifier
     }
 }
+
+
