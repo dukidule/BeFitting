@@ -9,6 +9,9 @@
 import UIKit
 import IQKeyboardManagerSwift
 
+protocol PassingFood {
+    func passFood(food: FoodLog, id: String)
+}
 class FoodViewController: UIViewController {
     //ContentView
     @IBOutlet weak var contentView: UIView!
@@ -41,8 +44,10 @@ class FoodViewController: UIViewController {
         food.protein = proteinTextField.text ?? ""
         food.carbs = carbsTextField.text ?? ""
         food.fats = fatsTextField.text ?? ""
-        performSegue(withIdentifier: ("\(K.foodToMenu)"), sender: self)
+        passingFoodDelegate.passFood(food: food, id: tableId)
+        self.dismiss(animated: true, completion: nil)
         print(food)
+        print("eat dicc" + tableId)
     }
     @IBAction func cancelButtonClicked(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -51,11 +56,15 @@ class FoodViewController: UIViewController {
     @IBAction func displayTableView(_ sender: UIButton) {
         
     }
+    
+    var passingFoodDelegate: PassingFood!
+    var tableId = ""
     var food = FoodLog(name: "", calories: "", protein: "", carbs: "", fats: "")
    
     override func viewDidLoad() {
         super.viewDidLoad()
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        print(tableId)
         
     }
     override func viewDidLayoutSubviews() {
@@ -73,7 +82,7 @@ class FoodViewController: UIViewController {
         if segue.identifier == "\(K.foodToMenu)" {
                 let destinationVc = segue.destination as! MenuViewController
             if destinationVc.cellIDForTable == "breakfastFoodLogID" {
-                destinationVc.breakfastFoodLogs.append(food)
+                destinationVc.breakfastFoodLogs.insert(food, at: 0)
             }
             }
         }

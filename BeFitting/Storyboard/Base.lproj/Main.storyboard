@@ -430,7 +430,7 @@
         <!--Food View Controller-->
         <scene sceneID="Rw0-6m-LrD">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="cX5-DD-2sE" customClass="FoodViewController" customModule="BeFitting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="foodViewController" modalPresentationStyle="overCurrentContext" id="cX5-DD-2sE" customClass="FoodViewController" customModule="BeFitting" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JI6-tV-7AU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

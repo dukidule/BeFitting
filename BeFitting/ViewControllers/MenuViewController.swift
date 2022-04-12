@@ -10,6 +10,14 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
+    static var controllerId: Int = 0
+    
+    static func generateInstanceId() -> Int {
+        let old = controllerId
+        controllerId += 1
+        return old
+    }
+    
     @IBOutlet weak var logoImageView: UIImageView!
     //LabelOutlets
     
@@ -42,12 +50,10 @@ class MenuViewController: UIViewController {
         dateLabel.text = dateSelection.formatted
     }
     var dateSelection: NSDate!
-    var cellIDForTable: String?
-    
+    fileprivate(set) var cellIDForTable = "I love cheesepufs \(generateInstanceId())"
     //FoodLog arrays
     var breakfastFoodLogs: [FoodLog] = [
         FoodLog(name: "", calories: "", protein: "", carbs: "", fats: ""),
-        FoodLog(name: "Asd", calories: "124", protein: "25", carbs: "63", fats: "")
     ]
     var lunchFoodLogs: [FoodLog] = [FoodLog(name: "", calories: "", protein: "", carbs: "", fats: "")]
     var dinnerFoodLogs: [FoodLog] = [FoodLog(name: "", calories: "", protein: "", carbs: "", fats: "")]
@@ -56,7 +62,9 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //Date
-        
+        print("bla" + "\(breakfastFoodLogs.count)")
+        print("Alex" + " " + "\(breakfastFoodLogs)")
+        print("Test" + "\(cellIDForTable)")
         dateSelection = NSDate()
         dateLabel.text = dateSelection.formatted
         
@@ -88,8 +96,21 @@ class MenuViewController: UIViewController {
         menuButton.layer.masksToBounds = true
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        print("Test" + "\(cellIDForTable)")
+        
+        
+    }
+    func isBreakfastTable() {
+        cellIDForTable = "breakfastFoodLogID"
+    }
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("69 + \(breakfastFoodLogs)")
+        print("Test" + "\(cellIDForTable)")
+    }
 }
 //MARK: - Table View Code
 
@@ -117,20 +138,22 @@ extension MenuViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellID, for: indexPath) as! FoodLogCell
         
         if tableView == breakfastTableView {
-            cell.textLabel?.text = breakfastFoodLogs[indexPath.row].name
-            cellIDForTable = "breakfastFoodLogID"
+            cell.nameTextField.text = breakfastFoodLogs[indexPath.row].name
+            cell.calTextField.text = breakfastFoodLogs[indexPath.row].calories
+            cell.carbsTextField.text = breakfastFoodLogs[indexPath.row].carbs
+            
         }
         else if tableView == lunchTableView {
             cell.textLabel?.text = lunchFoodLogs[indexPath.row].name
-            cellIDForTable = "lunchFoodLogID"
+            
         }
         else if tableView == dinnerTableView {
             cell.textLabel?.text = dinnerFoodLogs[indexPath.row].name
-            cellIDForTable = "dinnerFoodLogID"
+            
         }
         else if tableView == snacksTableView {
             cell.textLabel?.text = snacksFoodLogs[indexPath.row].name
-            cellIDForTable = "snacksFoodLogID"
+            
         }
         
         return cell
@@ -147,12 +170,17 @@ extension MenuViewController: UITableViewDataSource {
 //MARK: - Table View Delegate
 
 extension MenuViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == breakfastTableView {
-            self.performSegue(withIdentifier: "toFoodViewController", sender: indexPath)
-            cellIDForTable = "breakfastTableView"
+            cellIDForTable = "breakfastFoodTableID"
+            let selectionVc = storyboard?.instantiateViewController(withIdentifier: "foodViewController") as! FoodViewController
+            selectionVc.passingFoodDelegate = self
+            selectionVc.tableId = cellIDForTable
+            present(selectionVc, animated: true, completion: nil)
         }
         else if tableView == lunchTableView {
+            print("Alex's mom is a very nice lady!")
             self.performSegue(withIdentifier: "toFoodViewController", sender: indexPath)
             cellIDForTable = "lunchTableView"
         } else if tableView == dinnerTableView {
@@ -181,6 +209,17 @@ extension NSDate {
         let code = locale.languageCode!
         let identifier = locale.localizedString(forIdentifier: code)!
         return identifier
+    }
+}
+
+//MARK: - Getting Food from FoodVC
+
+extension MenuViewController: PassingFood {
+    func passFood(food: FoodLog, id: String) {
+        if id == "breakfastFoodTableID" {
+            breakfastFoodLogs.append(food)
+            breakfastTableView.reloadData()
+        }
     }
 }
 
