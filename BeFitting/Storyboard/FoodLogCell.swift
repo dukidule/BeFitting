@@ -10,11 +10,13 @@ import UIKit
 
 class FoodLogCell: UITableViewCell {
 
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var proteinTextField: UITextField!
-    @IBOutlet weak var fatsTextField: UITextField!
-    @IBOutlet weak var carbsTextField: UITextField!
-    @IBOutlet weak var calTextField: UITextField!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var measurementLabel: UILabel!
+    @IBOutlet var quantityLabel: UILabel!
+    @IBOutlet var caloriesLabel: UILabel!
+    @IBOutlet var proteinLabel: UILabel!
+    @IBOutlet var carbsLabel: UILabel!
+    @IBOutlet var fatsLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

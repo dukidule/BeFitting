@@ -53,18 +53,21 @@ class MenuViewController: UIViewController {
     fileprivate(set) var cellIDForTable = "I love cheesepufs \(generateInstanceId())"
     //FoodLog arrays
     var breakfastFoodLogs: [FoodLog] = [
-        FoodLog(name: "", calories: "", protein: "", carbs: "", fats: ""),
+        FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: ""),
     ]
-    var lunchFoodLogs: [FoodLog] = [FoodLog(name: "", calories: "", protein: "", carbs: "", fats: "")]
-    var dinnerFoodLogs: [FoodLog] = [FoodLog(name: "", calories: "", protein: "", carbs: "", fats: "")]
-    var snacksFoodLogs: [FoodLog] = [FoodLog(name: "", calories: "", protein: "", carbs: "", fats: "")]
+    var lunchFoodLogs: [FoodLog] = [FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "")]
+    var dinnerFoodLogs: [FoodLog] = [FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "")]
+    var snacksFoodLogs: [FoodLog] = [FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "")]
+    
+    
+    var defaultFood = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "")
+    var currentIndex: Int?
+    var foodLogsArrayCount: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //Date
-        print("bla" + "\(breakfastFoodLogs.count)")
-        print("Alex" + " " + "\(breakfastFoodLogs)")
-        print("Test" + "\(cellIDForTable)")
+        
         dateSelection = NSDate()
         dateLabel.text = dateSelection.formatted
         
@@ -98,6 +101,7 @@ class MenuViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
         print("Test" + "\(cellIDForTable)")
         
         
@@ -107,10 +111,21 @@ class MenuViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        print("bla" + "\(breakfastFoodLogs.count)")
+        print("Alex" + " " + "\(breakfastFoodLogs)")
+        print("Test" + "\(cellIDForTable)")
         super.viewDidAppear(animated)
-        print("69 + \(breakfastFoodLogs)")
+        print("69 + \(lunchFoodLogs)")
         print("Test" + "\(cellIDForTable)")
     }
+    
+    //    func elementShift(array: Array<Any>) -> Int {
+    //        let array = breakfastFoodLogs
+    //        for index in breakfastFoodLogs.indices {
+    //            let currentIndex = index + 1
+    //            index == currentIndex
+    //        }
+    //    }
 }
 //MARK: - Table View Code
 
@@ -121,13 +136,13 @@ extension MenuViewController: UITableViewDataSource {
             return breakfastFoodLogs.count
         }
         else if tableView == lunchTableView {
-            return 1
+            return lunchFoodLogs.count
         }
         else if tableView == dinnerTableView {
-            return 1
+            return dinnerFoodLogs.count
         }
         else if tableView == snacksTableView {
-            return 1
+            return snacksFoodLogs.count
         } else {
             return 0
             
@@ -138,24 +153,46 @@ extension MenuViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellID, for: indexPath) as! FoodLogCell
         
         if tableView == breakfastTableView {
-            cell.nameTextField.text = breakfastFoodLogs[indexPath.row].name
-            cell.calTextField.text = breakfastFoodLogs[indexPath.row].calories
-            cell.carbsTextField.text = breakfastFoodLogs[indexPath.row].carbs
+            cell.nameLabel.text = breakfastFoodLogs[indexPath.row].name
+            cell.measurementLabel.text = breakfastFoodLogs[indexPath.row].measurement
+            cell.quantityLabel.text = breakfastFoodLogs[indexPath.row].quantity
+            cell.caloriesLabel.text = breakfastFoodLogs[indexPath.row].calories
+            cell.proteinLabel.text = breakfastFoodLogs[indexPath.row].protein
+            cell.carbsLabel.text = breakfastFoodLogs[indexPath.row].carbs
+            cell.fatsLabel.text = breakfastFoodLogs[indexPath.row].fats
             
         }
-        else if tableView == lunchTableView {
-            cell.textLabel?.text = lunchFoodLogs[indexPath.row].name
+        if tableView == lunchTableView {
+            cell.nameLabel.text = lunchFoodLogs[indexPath.row].name
+            cell.measurementLabel.text = lunchFoodLogs[indexPath.row].measurement
+            cell.quantityLabel.text = lunchFoodLogs[indexPath.row].quantity
+            cell.caloriesLabel.text = lunchFoodLogs[indexPath.row].calories
+            cell.proteinLabel.text = lunchFoodLogs[indexPath.row].protein
+            cell.carbsLabel.text = lunchFoodLogs[indexPath.row].carbs
+            cell.fatsLabel.text = lunchFoodLogs[indexPath.row].fats
             
         }
-        else if tableView == dinnerTableView {
-            cell.textLabel?.text = dinnerFoodLogs[indexPath.row].name
+        if tableView == dinnerTableView {
+            cell.nameLabel.text = dinnerFoodLogs[indexPath.row].name
+            cell.measurementLabel.text = dinnerFoodLogs[indexPath.row].measurement
+            cell.quantityLabel.text = dinnerFoodLogs[indexPath.row].quantity
+            cell.caloriesLabel.text = dinnerFoodLogs[indexPath.row].calories
+            cell.proteinLabel.text = dinnerFoodLogs[indexPath.row].protein
+            cell.carbsLabel.text = dinnerFoodLogs[indexPath.row].carbs
+            cell.fatsLabel.text = dinnerFoodLogs[indexPath.row].fats
             
         }
-        else if tableView == snacksTableView {
-            cell.textLabel?.text = snacksFoodLogs[indexPath.row].name
+        if tableView == snacksTableView {
+            cell.nameLabel.text = snacksFoodLogs[indexPath.row].name
+            cell.measurementLabel.text = snacksFoodLogs[indexPath.row].measurement
+            cell.quantityLabel.text = snacksFoodLogs[indexPath.row].quantity
+            cell.caloriesLabel.text = snacksFoodLogs[indexPath.row].calories
+            cell.proteinLabel.text = snacksFoodLogs[indexPath.row].protein
+            cell.carbsLabel.text = snacksFoodLogs[indexPath.row].carbs
+            cell.fatsLabel.text = snacksFoodLogs[indexPath.row].fats
             
         }
-        
+        print(indexPath)
         return cell
     }
     
@@ -173,22 +210,91 @@ extension MenuViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == breakfastTableView {
-            cellIDForTable = "breakfastFoodTableID"
+            if indexPath.row == 0 {
+                cellIDForTable = "breakfastTable"
+                currentIndex = indexPath.row
+                foodLogsArrayCount = breakfastFoodLogs.count
+                let selectionVc = storyboard?.instantiateViewController(withIdentifier: "foodViewController") as! FoodViewController
+                selectionVc.passingFoodDelegate = self
+                selectionVc.tableId = cellIDForTable
+                present(selectionVc, animated: true, completion: nil)
+                print(indexPath)
+            } else {
+                if indexPath.row > 0 {
+                    cellIDForTable = "breakfastTable"
+                    currentIndex = indexPath.row
+                    foodLogsArrayCount = breakfastFoodLogs.count
+                    let selectionVc = storyboard?.instantiateViewController(withIdentifier: "foodViewController") as! FoodViewController
+                    selectionVc.passingFoodDelegate = self
+                    selectionVc.tableId = cellIDForTable
+                    
+                    present(selectionVc, animated: true, completion: nil)
+                    
+                    print("hihi \(breakfastFoodLogs)")
+                    print(indexPath.row)
+                    //                    breakfastFoodLogs.remove(at: indexPath.row)
+                }
+            }
+        }
+        else if tableView == lunchTableView {
+            if indexPath.row == 0 {
+                cellIDForTable = "lunchTable"
+                currentIndex = indexPath.row
+                let selectionVc = storyboard?.instantiateViewController(withIdentifier: "foodViewController") as! FoodViewController
+                selectionVc.passingFoodDelegate = self
+                selectionVc.tableId = cellIDForTable
+                present(selectionVc, animated: true, completion: nil)
+                print(indexPath)
+            } else {
+                if indexPath.row > 0 {
+                    cellIDForTable = "lunchTable"
+                    currentIndex = indexPath.row
+                    let selectionVc = storyboard?.instantiateViewController(withIdentifier: "foodViewController") as! FoodViewController
+                    selectionVc.passingFoodDelegate = self
+                    selectionVc.tableId = cellIDForTable
+                    
+                    present(selectionVc, animated: true, completion: nil)
+                    print("hihi \(breakfastFoodLogs)")
+                    print(indexPath.row)
+                    //                    breakfastFoodLogs.remove(at: indexPath.row)
+                }
+            }
+        } else if tableView == dinnerTableView {
+            if indexPath.row == 0 {
+            cellIDForTable = "dinnerTable"
+                currentIndex = indexPath.row
             let selectionVc = storyboard?.instantiateViewController(withIdentifier: "foodViewController") as! FoodViewController
             selectionVc.passingFoodDelegate = self
             selectionVc.tableId = cellIDForTable
             present(selectionVc, animated: true, completion: nil)
-        }
-        else if tableView == lunchTableView {
-            print("Alex's mom is a very nice lady!")
-            self.performSegue(withIdentifier: "toFoodViewController", sender: indexPath)
-            cellIDForTable = "lunchTableView"
-        } else if tableView == dinnerTableView {
-            self.performSegue(withIdentifier: "toFoodViewController", sender: indexPath)
-            cellIDForTable = "dinnerTableView"
+            } else if indexPath.row > 0 {
+                cellIDForTable = "dinnerTable"
+                currentIndex = indexPath.row
+                let selectionVc = storyboard?.instantiateViewController(withIdentifier: "foodViewController") as! FoodViewController
+                selectionVc.passingFoodDelegate = self
+                selectionVc.tableId = cellIDForTable
+                
+                present(selectionVc, animated: true, completion: nil)
+                
+            }
         } else if tableView == snacksTableView {
-            self.performSegue(withIdentifier: "toFoodViewController", sender: indexPath)
-            cellIDForTable = "snacksTableView"
+            if indexPath.row == 0 {
+            cellIDForTable = "snacksTable"
+                currentIndex = indexPath.row
+            let selectionVc = storyboard?.instantiateViewController(withIdentifier: "foodViewController") as! FoodViewController
+            selectionVc.passingFoodDelegate = self
+            selectionVc.tableId = cellIDForTable
+            present(selectionVc, animated: true, completion: nil)
+            } else if indexPath.row > 0 {
+                cellIDForTable = "snacksTable"
+                currentIndex = indexPath.row
+                let selectionVc = storyboard?.instantiateViewController(withIdentifier: "foodViewController") as! FoodViewController
+                selectionVc.passingFoodDelegate = self
+                selectionVc.tableId = cellIDForTable
+                
+                present(selectionVc, animated: true, completion: nil)
+                
+            }
         }
     }
 }
@@ -216,11 +322,59 @@ extension NSDate {
 
 extension MenuViewController: PassingFood {
     func passFood(food: FoodLog, id: String) {
-        if id == "breakfastFoodTableID" {
-            breakfastFoodLogs.append(food)
+        if id == "breakfastTable" {
+            breakfastFoodLogs.insert(food, at: 0)
             breakfastTableView.reloadData()
+        } else if id == "lunchTable" {
+            lunchFoodLogs.insert(food, at: 0)
+            lunchTableView.reloadData()
+        } else if id == "dinnerTable" {
+            dinnerFoodLogs.insert(food, at: 0)
+            dinnerTableView.reloadData()
+        } else if id == "snacksTable" {
+            snacksFoodLogs.insert(food, at: 0)
+            snacksTableView.reloadData()
         }
     }
+    
+    func removeFood(id: String) {
+        if currentIndex != nil {
+            if id == "breakfastTable" && breakfastFoodLogs.count > 1 {
+                breakfastFoodLogs.remove(at: currentIndex!)
+                breakfastTableView.reloadData()
+             
+            } else if id == "breakfastTable" && breakfastFoodLogs.count == 1 {
+                breakfastFoodLogs.remove(at: currentIndex!)
+                breakfastFoodLogs.append(defaultFood)
+                breakfastTableView.reloadData()
+                
+            } else if id == "lunchTable" && lunchFoodLogs.count > 1 {
+                lunchFoodLogs.remove(at: currentIndex!)
+                lunchTableView.reloadData()
+            } else if id == "lunchTable" && lunchFoodLogs.count == 1 {
+                lunchFoodLogs.remove(at: currentIndex!)
+                lunchFoodLogs.append(defaultFood)
+                lunchTableView.reloadData()
+                
+            } else if id == "dinnerTable" && dinnerFoodLogs.count > 1 {
+                dinnerFoodLogs.remove(at: currentIndex!)
+                dinnerTableView.reloadData()
+            } else if id == "dinnerTable" && dinnerFoodLogs.count == 1 {
+                dinnerFoodLogs.remove(at: currentIndex!)
+                dinnerFoodLogs.append(defaultFood)
+                dinnerTableView.reloadData()
+                
+            } else if id == "snacksTable" && snacksFoodLogs.count > 1 {
+                snacksFoodLogs.remove(at: currentIndex!)
+                snacksTableView.reloadData()
+            } else if id == "snacksTable" && snacksFoodLogs.count == 1 {
+                snacksFoodLogs.remove(at: currentIndex!)
+                snacksFoodLogs.append(defaultFood)
+                snacksTableView.reloadData()
+            }
+        }
+    }
+    
 }
 
 

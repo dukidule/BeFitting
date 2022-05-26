@@ -11,6 +11,7 @@ import IQKeyboardManagerSwift
 
 protocol PassingFood {
     func passFood(food: FoodLog, id: String)
+    func removeFood(id: String)
 }
 class FoodViewController: UIViewController {
     //ContentView
@@ -40,7 +41,9 @@ class FoodViewController: UIViewController {
     //Button Actions
     @IBAction func saveButtonClicked(_ sender: UIButton) {
         food.name = nameTextField.text ?? ""
-        food.calories = caloriesTextField.text ?? ""
+        food.quantity = quantityTextField.text ?? ""
+        food.measurement = "g"
+        food.calories = (caloriesTextField.text ?? "") + "cal"
         food.protein = proteinTextField.text ?? ""
         food.carbs = carbsTextField.text ?? ""
         food.fats = fatsTextField.text ?? ""
@@ -50,16 +53,19 @@ class FoodViewController: UIViewController {
         print("eat dicc" + tableId)
     }
     @IBAction func cancelButtonClicked(_ sender: UIButton) {
+        passingFoodDelegate.removeFood(id: tableId)
+        
+        
         self.dismiss(animated: true, completion: nil)
         print(food)
     }
-    @IBAction func displayTableView(_ sender: UIButton) {
-        
+    
+    @IBAction func showMeasurementChoices(_ sender: UIButton) {	
     }
     
     var passingFoodDelegate: PassingFood!
     var tableId = ""
-    var food = FoodLog(name: "", calories: "", protein: "", carbs: "", fats: "")
+    var food = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "")
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,14 +84,14 @@ class FoodViewController: UIViewController {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "\(K.foodToMenu)" {
-                let destinationVc = segue.destination as! MenuViewController
-            if destinationVc.cellIDForTable == "breakfastFoodLogID" {
-                destinationVc.breakfastFoodLogs.insert(food, at: 0)
-            }
-            }
-        }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "\(K.foodToMenu)" {
+//                let destinationVc = segue.destination as! MenuViewController
+//            if destinationVc.cellIDForTable == "breakfastFoodLogID" {
+//                destinationVc.breakfastFoodLogs.insert(food, at: 0)
+//            }
+//            }
+//        }
     }
     
 
