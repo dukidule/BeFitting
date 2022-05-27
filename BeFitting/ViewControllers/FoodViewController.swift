@@ -17,6 +17,7 @@ class FoodViewController: UIViewController {
     //ContentView
     @IBOutlet weak var contentView: UIView!
     //Labels
+    @IBOutlet weak var measurementSelectionView: UIView!
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
@@ -37,6 +38,8 @@ class FoodViewController: UIViewController {
     @IBOutlet weak var quantitySelectionButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var removeButton: UIButton!
+    
     
     //Button Actions
     @IBAction func saveButtonClicked(_ sender: UIButton) {
@@ -53,14 +56,19 @@ class FoodViewController: UIViewController {
         print("eat dicc" + tableId)
     }
     @IBAction func cancelButtonClicked(_ sender: UIButton) {
-        passingFoodDelegate.removeFood(id: tableId)
+        
         
         
         self.dismiss(animated: true, completion: nil)
         print(food)
     }
     
-    @IBAction func showMeasurementChoices(_ sender: UIButton) {	
+    @IBAction func removeButtonClicked(_ sender: UIButton) {
+        passingFoodDelegate.removeFood(id: tableId)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func showMeasurementChoices(_ sender: UIButton) {
     }
     
     var passingFoodDelegate: PassingFood!
@@ -70,6 +78,13 @@ class FoodViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        nameTextField.text = food.name
+        quantityTextField.text = food.quantity
+        caloriesTextField.text = food.calories.replacingOccurrences(of: "cal", with: "")
+        proteinTextField.text = food.protein
+        carbsTextField.text = food.carbs
+        fatsTextField.text = food.fats
+        
         print(tableId)
         
     }

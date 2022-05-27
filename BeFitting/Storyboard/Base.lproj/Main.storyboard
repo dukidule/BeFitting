@@ -482,32 +482,32 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="DjE-nw-jRH" userLabel="TextFieldsStack">
                                         <rect key="frame" x="83" y="8" width="177" height="359"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="wasd" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nHY-ds-rdU">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nHY-ds-rdU">
                                                 <rect key="frame" x="0.0" y="0.0" width="177" height="49"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="asd" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9U6-8Z-xiG">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9U6-8Z-xiG">
                                                 <rect key="frame" x="0.0" y="62" width="177" height="49"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="dsa" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nlE-gJ-MVI">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Calories" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nlE-gJ-MVI">
                                                 <rect key="frame" x="0.0" y="124" width="177" height="49"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="asdw" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eiE-m7-9x2">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Protein" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eiE-m7-9x2">
                                                 <rect key="frame" x="0.0" y="186" width="177" height="49"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="asdw" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9EE-kz-FWO">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Carbs:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9EE-kz-FWO">
                                                 <rect key="frame" x="0.0" y="248" width="177" height="49"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="wasd" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mP0-v2-mtN">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Fats:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mP0-v2-mtN">
                                                 <rect key="frame" x="0.0" y="310" width="177" height="49"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -530,10 +530,10 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="myw-RP-gwZ">
-                                        <rect key="frame" x="203" y="375" width="104" height="30"/>
+                                        <rect key="frame" x="126" y="375" width="181" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hQ-Xd-GSn">
-                                                <rect key="frame" x="0.0" y="0.0" width="48" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="55" height="30"/>
                                                 <state key="normal" title="Save">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
@@ -541,8 +541,17 @@
                                                     <action selector="saveButtonClicked:" destination="cX5-DD-2sE" eventType="touchUpInside" id="h8z-ud-4qS"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6E-iS-S6n" userLabel="Remove Button">
+                                                <rect key="frame" x="63" y="0.0" width="55" height="30"/>
+                                                <state key="normal" title="Remove">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="removeButtonClicked:" destination="cX5-DD-2sE" eventType="touchUpInside" id="YeP-Fm-dah"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zn6-hT-2qC">
-                                                <rect key="frame" x="56" y="0.0" width="48" height="30"/>
+                                                <rect key="frame" x="126" y="0.0" width="55" height="30"/>
                                                 <state key="normal" title="Cancel">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
@@ -552,9 +561,15 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G1K-D4-SGg" userLabel="measurementSelectionView">
+                                        <rect key="frame" x="214" y="104" width="88" height="98"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstItem="G1K-D4-SGg" firstAttribute="leading" secondItem="DlI-ad-d71" secondAttribute="leading" constant="214" id="9vi-pD-9Qb"/>
+                                    <constraint firstAttribute="bottom" secondItem="G1K-D4-SGg" secondAttribute="bottom" constant="210" id="HsM-hu-PRK"/>
                                     <constraint firstAttribute="bottom" secondItem="DjE-nw-jRH" secondAttribute="bottom" constant="45" id="Jez-ec-WOW"/>
                                     <constraint firstItem="DjE-nw-jRH" firstAttribute="leading" secondItem="7p5-k2-51D" secondAttribute="trailing" constant="10" id="LNc-mT-YTg"/>
                                     <constraint firstAttribute="trailing" secondItem="myw-RP-gwZ" secondAttribute="trailing" constant="8" id="RNi-fu-eSt"/>
@@ -564,8 +579,10 @@
                                     <constraint firstAttribute="bottom" secondItem="myw-RP-gwZ" secondAttribute="bottom" constant="7" id="eSS-8W-ClE"/>
                                     <constraint firstItem="DjE-nw-jRH" firstAttribute="top" secondItem="DlI-ad-d71" secondAttribute="top" constant="8" id="fPI-nz-yWg"/>
                                     <constraint firstItem="cyu-c4-DXa" firstAttribute="centerY" secondItem="9U6-8Z-xiG" secondAttribute="centerY" id="gPx-At-ee4"/>
+                                    <constraint firstAttribute="trailing" secondItem="G1K-D4-SGg" secondAttribute="trailing" constant="13" id="hEt-oC-Gca"/>
                                     <constraint firstAttribute="trailing" secondItem="DjE-nw-jRH" secondAttribute="trailing" constant="55" id="ids-lj-Yd0"/>
                                     <constraint firstItem="7p5-k2-51D" firstAttribute="leading" secondItem="DlI-ad-d71" secondAttribute="leading" constant="8" id="qhj-aj-7RB"/>
+                                    <constraint firstItem="G1K-D4-SGg" firstAttribute="top" secondItem="DlI-ad-d71" secondAttribute="top" constant="104" id="wbi-6I-ibj"/>
                                     <constraint firstAttribute="bottom" secondItem="7p5-k2-51D" secondAttribute="bottom" constant="45" id="xQ0-lz-Phd"/>
                                 </constraints>
                             </view>
@@ -621,6 +638,7 @@
                         <outlet property="contentView" destination="DlI-ad-d71" id="GgH-5S-ath"/>
                         <outlet property="fatsLabel" destination="gJm-bl-PPy" id="lzj-TJ-26k"/>
                         <outlet property="fatsTextField" destination="mP0-v2-mtN" id="hxL-4m-9DL"/>
+                        <outlet property="measurementSelectionView" destination="G1K-D4-SGg" id="wou-0S-jzp"/>
                         <outlet property="nameLabel" destination="Zma-nK-KKj" id="sCa-1E-pxk"/>
                         <outlet property="nameTextField" destination="nHY-ds-rdU" id="Oiz-fs-vcS"/>
                         <outlet property="proteinLabel" destination="Acm-tN-2Hj" id="KsA-RI-DI8"/>
@@ -628,6 +646,7 @@
                         <outlet property="quantityLabel" destination="45s-DG-paS" id="f7y-NI-nQX"/>
                         <outlet property="quantitySelectionButton" destination="cyu-c4-DXa" id="cix-pk-waw"/>
                         <outlet property="quantityTextField" destination="9U6-8Z-xiG" id="MjS-KJ-yuZ"/>
+                        <outlet property="removeButton" destination="m6E-iS-S6n" id="bBW-kp-gkZ"/>
                         <outlet property="saveButton" destination="7hQ-Xd-GSn" id="bcO-mZ-WEz"/>
                         <segue destination="jWi-DM-7Ub" kind="presentation" identifier="foodToMenu" id="lCf-py-WNl"/>
                     </connections>
