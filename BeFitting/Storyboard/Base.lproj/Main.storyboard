@@ -561,28 +561,50 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G1K-D4-SGg" userLabel="measurementSelectionView">
-                                        <rect key="frame" x="214" y="104" width="88" height="98"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b4f-3R-Az4" userLabel="measurementSelectionView">
+                                        <rect key="frame" x="222" y="112" width="79" height="154"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OBP-wx-RAg">
+                                                <rect key="frame" x="0.0" y="0.0" width="79" height="154"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reusableCell" id="92Y-cF-4SC">
+                                                        <rect key="frame" x="0.0" y="28" width="79" height="43.5"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="92Y-cF-4SC" id="ZzM-vl-1e7">
+                                                            <rect key="frame" x="0.0" y="0.0" width="79" height="43.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </tableViewCellContentView>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                            </tableView>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="OBP-wx-RAg" firstAttribute="top" secondItem="b4f-3R-Az4" secondAttribute="top" id="F6K-xY-uN9"/>
+                                            <constraint firstItem="OBP-wx-RAg" firstAttribute="leading" secondItem="b4f-3R-Az4" secondAttribute="leading" id="bA8-aC-N40"/>
+                                            <constraint firstAttribute="bottom" secondItem="OBP-wx-RAg" secondAttribute="bottom" id="pg9-XZ-QvR"/>
+                                            <constraint firstAttribute="trailing" secondItem="OBP-wx-RAg" secondAttribute="trailing" id="snJ-0l-vRY"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="G1K-D4-SGg" firstAttribute="leading" secondItem="DlI-ad-d71" secondAttribute="leading" constant="214" id="9vi-pD-9Qb"/>
-                                    <constraint firstAttribute="bottom" secondItem="G1K-D4-SGg" secondAttribute="bottom" constant="210" id="HsM-hu-PRK"/>
+                                    <constraint firstAttribute="trailing" secondItem="b4f-3R-Az4" secondAttribute="trailing" constant="14" id="2O5-Z6-dQ2"/>
+                                    <constraint firstItem="b4f-3R-Az4" firstAttribute="leading" secondItem="DlI-ad-d71" secondAttribute="leading" constant="222" id="4Xc-49-v5w"/>
                                     <constraint firstAttribute="bottom" secondItem="DjE-nw-jRH" secondAttribute="bottom" constant="45" id="Jez-ec-WOW"/>
                                     <constraint firstItem="DjE-nw-jRH" firstAttribute="leading" secondItem="7p5-k2-51D" secondAttribute="trailing" constant="10" id="LNc-mT-YTg"/>
+                                    <constraint firstItem="b4f-3R-Az4" firstAttribute="top" secondItem="cyu-c4-DXa" secondAttribute="bottom" constant="7.5" id="QWx-OR-3A2"/>
                                     <constraint firstAttribute="trailing" secondItem="myw-RP-gwZ" secondAttribute="trailing" constant="8" id="RNi-fu-eSt"/>
+                                    <constraint firstAttribute="bottom" secondItem="b4f-3R-Az4" secondAttribute="bottom" constant="146" id="XJ6-Kf-ZxP"/>
                                     <constraint firstAttribute="trailing" secondItem="cyu-c4-DXa" secondAttribute="trailing" constant="13.5" id="YIi-B5-lzf"/>
                                     <constraint firstItem="7p5-k2-51D" firstAttribute="top" secondItem="DlI-ad-d71" secondAttribute="top" constant="8" id="aAU-iX-88G"/>
                                     <constraint firstItem="myw-RP-gwZ" firstAttribute="top" secondItem="DjE-nw-jRH" secondAttribute="bottom" constant="8" id="drx-FO-JgH"/>
                                     <constraint firstAttribute="bottom" secondItem="myw-RP-gwZ" secondAttribute="bottom" constant="7" id="eSS-8W-ClE"/>
                                     <constraint firstItem="DjE-nw-jRH" firstAttribute="top" secondItem="DlI-ad-d71" secondAttribute="top" constant="8" id="fPI-nz-yWg"/>
                                     <constraint firstItem="cyu-c4-DXa" firstAttribute="centerY" secondItem="9U6-8Z-xiG" secondAttribute="centerY" id="gPx-At-ee4"/>
-                                    <constraint firstAttribute="trailing" secondItem="G1K-D4-SGg" secondAttribute="trailing" constant="13" id="hEt-oC-Gca"/>
                                     <constraint firstAttribute="trailing" secondItem="DjE-nw-jRH" secondAttribute="trailing" constant="55" id="ids-lj-Yd0"/>
                                     <constraint firstItem="7p5-k2-51D" firstAttribute="leading" secondItem="DlI-ad-d71" secondAttribute="leading" constant="8" id="qhj-aj-7RB"/>
-                                    <constraint firstItem="G1K-D4-SGg" firstAttribute="top" secondItem="DlI-ad-d71" secondAttribute="top" constant="104" id="wbi-6I-ibj"/>
                                     <constraint firstAttribute="bottom" secondItem="7p5-k2-51D" secondAttribute="bottom" constant="45" id="xQ0-lz-Phd"/>
                                 </constraints>
                             </view>
@@ -638,7 +660,8 @@
                         <outlet property="contentView" destination="DlI-ad-d71" id="GgH-5S-ath"/>
                         <outlet property="fatsLabel" destination="gJm-bl-PPy" id="lzj-TJ-26k"/>
                         <outlet property="fatsTextField" destination="mP0-v2-mtN" id="hxL-4m-9DL"/>
-                        <outlet property="measurementSelectionView" destination="G1K-D4-SGg" id="wou-0S-jzp"/>
+                        <outlet property="measurementSelectionView" destination="b4f-3R-Az4" id="y4J-EX-1st"/>
+                        <outlet property="measurementsTableView" destination="OBP-wx-RAg" id="gIL-c8-xQR"/>
                         <outlet property="nameLabel" destination="Zma-nK-KKj" id="sCa-1E-pxk"/>
                         <outlet property="nameTextField" destination="nHY-ds-rdU" id="Oiz-fs-vcS"/>
                         <outlet property="proteinLabel" destination="Acm-tN-2Hj" id="KsA-RI-DI8"/>
