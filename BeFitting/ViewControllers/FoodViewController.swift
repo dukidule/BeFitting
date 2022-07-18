@@ -8,12 +8,15 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import Firebase
 
 protocol PassingFood {
     func passFood(food: FoodLog, id: String)
     func removeFood(id: String)
 }
 class FoodViewController: UIViewController {
+    
+    let db = Firestore.firestore()
     //ContentView
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var measurementSelectionView: UIView!
@@ -49,19 +52,41 @@ class FoodViewController: UIViewController {
     @IBOutlet weak var measurementsTableView: UITableView!
     
     
+    var measurements: [String] = [("g"), ("Oz")]
+    var passingFoodDelegate: PassingFood!
+    var tableId = ""
+    var food = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "")
+    
     //Button Actions
     @IBAction func saveButtonClicked(_ sender: UIButton) {
         if food.measurement == "" {
             food.measurement = "g"
         }
         if missingParameters() ==  true {
-        
         food.name = nameTextField.text ?? ""
         food.quantity = quantityTextField.text ?? ""
         food.calories = (caloriesTextField.text ?? "") + "cal"
         food.protein = proteinTextField.text ?? ""
         food.carbs = carbsTextField.text ?? ""
         food.fats = fatsTextField.text ?? ""
+            if (Auth.auth().currentUser?.email) != nil {
+                db.collection(K.Fstore.foodCollectionName).addDocument(data: [
+                    K.Fstore.foodNameField : food.name,
+                    K.Fstore.measurementField : food.measurement,
+                    K.Fstore.quantity : food.quantity,
+                    K.Fstore.calories : food.calories,
+                    K.Fstore.protein : food.protein,
+                    K.Fstore.carbs : food.carbs,
+                    K.Fstore.fats : food.fats
+                    ])
+                    { (error) in
+                    if let e = error {
+                        print("Issue saving data to firestore, \(e)")
+                    } else {
+                        print("Successfully saved data!")
+                    }
+                }
+            }
         passingFoodDelegate.passFood(food: food, id: tableId)
         self.dismiss(animated: true, completion: nil)
         } else {
@@ -95,10 +120,7 @@ class FoodViewController: UIViewController {
     @IBAction func showMeasurementChoices(_ sender: UIButton) {
         measurementSelectionView.isHidden = false
     }
-    var measurements: [String] = [("g"), ("Oz")]
-    var passingFoodDelegate: PassingFood!
-    var tableId = ""
-    var food = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "")
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
