@@ -52,6 +52,7 @@ class FoodViewController: UIViewController {
     @IBOutlet weak var measurementsTableView: UITableView!
     
     
+    
     var measurements: [String] = [("g"), ("Oz")]
     var passingFoodDelegate: PassingFood!
     var tableId = ""
@@ -63,12 +64,12 @@ class FoodViewController: UIViewController {
             food.measurement = "g"
         }
         if missingParameters() ==  true {
-        food.name = nameTextField.text ?? ""
-        food.quantity = quantityTextField.text ?? ""
-        food.calories = (caloriesTextField.text ?? "") + "cal"
-        food.protein = proteinTextField.text ?? ""
-        food.carbs = carbsTextField.text ?? ""
-        food.fats = fatsTextField.text ?? ""
+            food.name = nameTextField.text ?? ""
+            food.quantity = quantityTextField.text ?? ""
+            food.calories = (caloriesTextField.text ?? "") + "cal"
+            food.protein = proteinTextField.text ?? ""
+            food.carbs = carbsTextField.text ?? ""
+            food.fats = fatsTextField.text ?? ""
             if (Auth.auth().currentUser?.email) != nil {
                 db.collection(K.Fstore.foodCollectionName).addDocument(data: [
                     K.Fstore.foodNameField : food.name,
@@ -77,9 +78,10 @@ class FoodViewController: UIViewController {
                     K.Fstore.calories : food.calories,
                     K.Fstore.protein : food.protein,
                     K.Fstore.carbs : food.carbs,
-                    K.Fstore.fats : food.fats
+                    K.Fstore.fats : food.fats,
+                    K.Fstore.identifier: Auth.auth().currentUser?.email! as Any
                     ])
-                    { (error) in
+                { (error) in
                     if let e = error {
                         print("Issue saving data to firestore, \(e)")
                     } else {
@@ -87,8 +89,8 @@ class FoodViewController: UIViewController {
                     }
                 }
             }
-        passingFoodDelegate.passFood(food: food, id: tableId)
-        self.dismiss(animated: true, completion: nil)
+            passingFoodDelegate.passFood(food: food, id: tableId)
+            self.dismiss(animated: true, completion: nil)
         } else {
             contentView.alpha = 0.5
             contentView.isUserInteractionEnabled = false
@@ -105,9 +107,6 @@ class FoodViewController: UIViewController {
     
     
     @IBAction func cancelButtonClicked(_ sender: UIButton) {
-        
-        
-        
         self.dismiss(animated: true, completion: nil)
         print(food)
     }
@@ -121,7 +120,7 @@ class FoodViewController: UIViewController {
         measurementSelectionView.isHidden = false
     }
     
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -136,7 +135,7 @@ class FoodViewController: UIViewController {
         fatsTextField.text = food.fats
         measurementSelectionView.isHidden = true
         quantitySelectionButton.setTitle("g", for: .normal)
-                
+        
         print(tableId)
         
     }
@@ -148,17 +147,18 @@ class FoodViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        measurementsTableView.reloadData()
         
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "\(K.foodToMenu)" {
-//                let destinationVc = segue.destination as! MenuViewController
-//            if destinationVc.cellIDForTable == "breakfastFoodLogID" {
-//                destinationVc.breakfastFoodLogs.insert(food, at: 0)
-//            }
-//            }
-//        }
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        if segue.identifier == "\(K.foodToMenu)" {
+    //                let destinationVc = segue.destination as! MenuViewController
+    //            if destinationVc.cellIDForTable == "breakfastFoodLogID" {
+    //                destinationVc.breakfastFoodLogs.insert(food, at: 0)
+    //            }
+    //            }
+    //        }
     
     func nameMissing() -> Bool {
         if nameTextField.text == "" {
@@ -225,30 +225,8 @@ class FoodViewController: UIViewController {
         }
         
     }
-    
-//    func missingParameters() -> Bool {
-//        var a = 0
-//        if nameTextField.text == "" {
-//            print("addFoodPLs")
-//            return false
-//            //1
-//        }
-//        else if quantityTextField.text == "" {
-//            print("addQuantityPls")
-//            return false
-//            //2
-//        }
-//        else if caloriesTextField.text == "" {
-//            print ("addCalsPLs")
-//            return false
-//            //3
-//        } else {
-//            return true
-//        }
-//
-//    }
 }
-  
+
 
 //MARK: - Table View Code
 
@@ -261,6 +239,7 @@ extension FoodViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reusableCell", for: indexPath)
         
         cell.textLabel?.text = measurements[indexPath.row]
+        
         return cell
     }
 }

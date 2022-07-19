@@ -17,9 +17,11 @@ struct K {
     static let cellID = "foodLogCell"
     static let cellNibName = "FoodLogCell"
     static let foodToMenu = "foodToMenu"
+    static let reusableCell = "reusableCell"
     
     //FirebaseFirestore
     struct Fstore {
+    static let identifier = "identifier"
     static let foodCollectionName = "foods"
     static let foodNameField = "foodName"
     static let measurementField = "measurement"
