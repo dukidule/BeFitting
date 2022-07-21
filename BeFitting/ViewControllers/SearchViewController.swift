@@ -11,11 +11,12 @@ import IQKeyboardManagerSwift
 import Firebase
 
 class SearchViewController: UIViewController {
-   // UIViews
+    // UIViews
     @IBOutlet weak var findFoodView: UIView!
-    @IBOutlet weak var searchImageView: UIImageView!
+    //Search Bar
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     //TextFields&Labels
-    @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var historyLabel: UILabel!
     //UITableView
     @IBOutlet weak var historyTableView: UITableView!
@@ -23,7 +24,6 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var allButton: UIButton!
     @IBOutlet weak var myFoodsButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
-    //UIButtonActions
     @IBAction func allButtonPressed(_ sender: UIButton) {
         
         
@@ -34,19 +34,29 @@ class SearchViewController: UIViewController {
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
+    var foodsHistory: [FoodLog] = []
+    
     
     let db = Firestore.firestore()
     var usedFood: [String] = [""]
     var counting = 0
-    var names: [String] = ["Dusan", "Milos", "Marko"]
+    var foodsFromBase: [FoodLog] = [FoodLog(name: "sarma", calories: "123", measurement: "g", quantity: "123", protein: "23", carbs: "97", fats: "58", counter: 0)]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        countFoods()
+        
+        
+        searchBar.delegate = self
         historyTableView.delegate = self
         historyTableView.dataSource = self
+        historyTableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellID)
+        
+        countFoods()
         print("Bre \(counting)")
+        
+        
+        
         
     }
     
@@ -54,6 +64,10 @@ class SearchViewController: UIViewController {
         super.viewWillAppear(true)
         historyTableView.reloadData()
         print("lenor\(counting)")
+    }
+    
+    func searchFoodInHistory(current: String, existing: String) {
+        
     }
     
     func countFoods() {
@@ -66,7 +80,6 @@ class SearchViewController: UIViewController {
                 for document in querySnapshot!.documents {
                     let bla = "\(document.documentID)"
                     documentArray.append(bla)
-//                    print(document.documentID)
                     print(documentArray.count)
                 }
             }
@@ -77,18 +90,29 @@ class SearchViewController: UIViewController {
         }
         
     }
+    
+    func getFoods() {
+    }
 }
+
+//MARK: UITableView
 
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return counting
+        return foodsHistory.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.reusableCell, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellID, for: indexPath) as! FoodLogCell
         
-        cell.textLabel?.text = names[indexPath.row]
+        cell.nameLabel.text = foodsHistory[indexPath.row].name
+        cell.caloriesLabel.text = foodsHistory[indexPath.row].calories + "cal"
+        cell.measurementLabel.text = foodsHistory[indexPath.row].measurement
+        cell.quantityLabel.text = foodsHistory[indexPath.row].quantity
+        
+        
+        
         return cell
     }
     
@@ -100,4 +124,23 @@ extension SearchViewController: UITableViewDelegate {
         print(indexPath.row)
     }
 }
+
+
+//MARK: UISearchBar
+
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty == false {
+            foodsHistory = foodsFromBase.filter { return $0.name.range(of: searchText, options: .caseInsensitive) != nil
+            }
+            historyTableView.reloadData()
+        }
+        
+    }
+}
+
 

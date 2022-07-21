@@ -53,14 +53,14 @@ class MenuViewController: UIViewController {
     fileprivate(set) var cellIDForTable = "I love cheesepufs \(generateInstanceId())"
     //FoodLog arrays
     var breakfastFoodLogs: [FoodLog] = [
-        FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: ""),
+        FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0),
     ]
-    var lunchFoodLogs: [FoodLog] = [FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "")]
-    var dinnerFoodLogs: [FoodLog] = [FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "")]
-    var snacksFoodLogs: [FoodLog] = [FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "")]
+    var lunchFoodLogs: [FoodLog] = [FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)]
+    var dinnerFoodLogs: [FoodLog] = [FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)]
+    var snacksFoodLogs: [FoodLog] = [FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)]
     
     
-    var defaultFood = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "")
+    var defaultFood = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)
     var currentIndex: Int?
     var foodLogsArrayCount: Int?
     

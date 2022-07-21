@@ -16,9 +16,10 @@ struct FoodLog {
     var protein: String
     var carbs: String
     var fats: String
+    var counter: Int
 
     
-    init(name: String, calories: String, measurement: String, quantity: String, protein: String, carbs: String, fats: String) {
+    init(name: String, calories: String, measurement: String, quantity: String, protein: String, carbs: String, fats: String, counter: Int) {
         self.name = name
         self.calories = calories
         self.measurement = measurement
@@ -26,6 +27,7 @@ struct FoodLog {
         self.protein = protein
         self.carbs = carbs
         self.fats = fats
+        self.counter = counter
     }
 }
 
