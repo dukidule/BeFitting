@@ -34,26 +34,22 @@ class SearchViewController: UIViewController {
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
-    var foodsHistory: [FoodLog] = []
-    
-    
+    var foodsHistory: [FoodLog] = [FoodLog(name: "sarma", calories: "123cal", measurement: "g", quantity: "123", protein: "23", carbs: "97", fats: "58", counter: 0)
+    ]
+    var searchedFoodsHistory: [FoodLog] = []
     let db = Firestore.firestore()
-    var usedFood: [String] = [""]
     var counting = 0
-    var foodsFromBase: [FoodLog] = [FoodLog(name: "sarma", calories: "123", measurement: "g", quantity: "123", protein: "23", carbs: "97", fats: "58", counter: 0)]
-    
+    var foodsFromBase: [FoodLog] = []
+//    var lettersCounter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         searchBar.delegate = self
         historyTableView.delegate = self
         historyTableView.dataSource = self
         historyTableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellID)
         
-        countFoods()
-        print("Bre \(counting)")
         
         
         
@@ -66,10 +62,6 @@ class SearchViewController: UIViewController {
         print("lenor\(counting)")
     }
     
-    func searchFoodInHistory(current: String, existing: String) {
-        
-    }
-    
     func countFoods() {
         var documentArray: [String] = []
         db.collection(K.Fstore.foodCollectionName).getDocuments() { (querySnapshot, err)  in
@@ -80,6 +72,7 @@ class SearchViewController: UIViewController {
                 for document in querySnapshot!.documents {
                     let bla = "\(document.documentID)"
                     documentArray.append(bla)
+                    
                     print(documentArray.count)
                 }
             }
@@ -92,25 +85,73 @@ class SearchViewController: UIViewController {
     }
     
     func getFoods() {
+        foodsHistory = []
+        db.collection(K.Fstore.foodCollectionName).addSnapshotListener { (querySnapshot, error) in
+            if let e = error {
+                print("We were unable to retrieve the documents from Firebase \(e)")
+            } else {
+                if let snapshotDocument = querySnapshot?.documents {
+                    for doc in snapshotDocument {
+                        let data = doc.data()
+                        if let nameFoods = data[K.Fstore.foodNameField] as? String,
+                            let measurementFoods = data[K.Fstore.measurementField] as? String,
+                            let quantityFoods = data[K.Fstore.quantity] as? String,
+                            let caloriesFoods = data[K.Fstore.calories] as? String,
+                            let proteinFoods = data[K.Fstore.protein] as? String, let carbsFoods = data[K.Fstore.carbs] as? String, let fatsFoods = data[K.Fstore.fats] as? String {
+                            let newFood = FoodLog(name: nameFoods, calories: caloriesFoods, measurement: measurementFoods, quantity: quantityFoods, protein: proteinFoods, carbs: carbsFoods, fats: fatsFoods, counter: 0)
+                            
+                            self.foodsHistory.append(newFood)
+                            
+                            DispatchQueue.main.async {
+                                self.historyTableView.reloadData()
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
     }
+        
+                
 }
 
 //MARK: UITableView
 
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return foodsHistory.count
+        if searchBar.searchTextField.isEditing == true {
+            counting = searchedFoodsHistory.count
+            return counting
+        } else if searchBar.searchTextField.text == "" {
+            counting = foodsHistory.count
+            return counting
+        }
+        else {
+            counting = foodsHistory.count
+        return counting
+        }
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellID, for: indexPath) as! FoodLogCell
         
+        if searchBar.searchTextField.isEditing == false {
         cell.nameLabel.text = foodsHistory[indexPath.row].name
-        cell.caloriesLabel.text = foodsHistory[indexPath.row].calories + "cal"
+        cell.caloriesLabel.text = foodsHistory[indexPath.row].calories
         cell.measurementLabel.text = foodsHistory[indexPath.row].measurement
         cell.quantityLabel.text = foodsHistory[indexPath.row].quantity
+            
+        }
         
+        else {
+            cell.nameLabel.text = searchedFoodsHistory[indexPath.row].name
+            cell.caloriesLabel.text = searchedFoodsHistory[indexPath.row].calories
+            cell.measurementLabel.text = searchedFoodsHistory[indexPath.row].measurement
+            cell.quantityLabel.text = searchedFoodsHistory[indexPath.row].quantity
+            
+        }
         
         
         return cell
@@ -134,12 +175,25 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty == false {
-            foodsHistory = foodsFromBase.filter { return $0.name.range(of: searchText, options: .caseInsensitive) != nil
-            }
+//        if searchText.isEmpty == false {
+            searchedFoodsHistory = []
+            let lettersCounter = searchText.count
+            searchedFoodsHistory = foodsHistory.filter({ return $0.name.prefix(lettersCounter).caseInsensitiveCompare(searchText) == .orderedSame
+            })
             historyTableView.reloadData()
-        }
         
+//        } else {
+//            searchedFoodsHistory = foodsHistory
+//            historyTableView.reloadData()
+//        }
+        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        getFoods()
+        countFoods()
+        historyTableView.reloadData()
+        print("alehandro \(foodsHistory)")
     }
 }
 
