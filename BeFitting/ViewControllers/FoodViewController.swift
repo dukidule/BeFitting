@@ -79,6 +79,7 @@ class FoodViewController: UIViewController {
                     K.Fstore.protein : food.protein,
                     K.Fstore.carbs : food.carbs,
                     K.Fstore.fats : food.fats,
+                    K.Fstore.counter : food.counter,
                     K.Fstore.identifier: Auth.auth().currentUser?.email! as Any
                     ])
                 { (error) in

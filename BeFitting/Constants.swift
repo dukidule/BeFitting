@@ -30,6 +30,7 @@ struct K {
     static let protein = "protein"
     static let carbs = "carbs"
     static let fats = "fats"
+    static let counter = "counter"
         
     
         
