@@ -25,35 +25,43 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var myFoodsButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBAction func allButtonPressed(_ sender: UIButton) {
+        getFoods()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(400)) {
+                   self.searchData()
+               }
         
         
     }
     @IBAction func myFoodsButtonPressed(_ sender: UIButton) {
-        myFoodsButton.isSelected = true
-        myFoodsButton.isHighlighted = true
-        if Auth.auth().currentUser?.email != nil {
-            let currentUser = Auth.auth().currentUser?.email
+        if let currentUser = Auth.auth().currentUser?.email {
+            myFoods = []
             db.collection(K.Fstore.foodCollectionName).getDocuments { (querySnapshot, error) in
                 if let e = error {
-                    print("Error retrieving food form data base \(e)")
+                    print("There was an issue retrieving data from Firebase. \(e)")
                 } else {
-                    if let snapshotDocument = querySnapshot?.documents {
-                        for doc in snapshotDocument {
-                        let data = doc.data()
-                            if currentUser == data[K.Fstore.identifier] as? String, let measurementFoods = data[K.Fstore.measurementField] as? String,
-                                let foodsName = data[K.Fstore.foodNameField] as? String,
-                            let quantityFoods = data[K.Fstore.quantity] as? String,
-                            let caloriesFoods = data[K.Fstore.calories] as? String,
-                            let proteinFoods = data[K.Fstore.protein] as? String, let carbsFoods = data[K.Fstore.carbs] as? String, let fatsFoods = data[K.Fstore.fats] as? String {
-                                let newFood = FoodLog(name: foodsName, calories: caloriesFoods, measurement: measurementFoods, quantity: quantityFoods, protein: proteinFoods, carbs: carbsFoods, fats: fatsFoods, counter: 0)
+                    for document in querySnapshot!.documents {
+                        let data = document.data()
+                        if currentUser == data[K.Fstore.identifier] as? String {
+                            if let nameFoods = data[K.Fstore.foodNameField] as? String,
+                                let measurementFoods = data[K.Fstore.measurementField] as? String,
+                                let quantityFoods = data[K.Fstore.quantity] as? String,
+                                let caloriesFoods = data[K.Fstore.calories] as? String,
+                                let proteinFoods = data[K.Fstore.protein] as? String, let carbsFoods = data[K.Fstore.carbs] as? String, let fatsFoods = data[K.Fstore.fats] as? String {
+                                let newFood = FoodLog(name: nameFoods, calories: caloriesFoods, measurement: measurementFoods, quantity: quantityFoods, protein: proteinFoods, carbs: carbsFoods, fats: fatsFoods, counter: 0)
                                 
                                 self.myFoods.append(newFood)
-                                
+                                self.historyTableView.reloadData()
                             }
                         }
                     }
                 }
             }
+        }
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(400)) {
+            self.foodsHistory = self.myFoods
+            self.searchData()
         }
     }
     
@@ -71,7 +79,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        getFoods()
+        //        getFoods()
         searchBar.delegate = self
         historyTableView.delegate = self
         historyTableView.dataSource = self
@@ -111,9 +119,6 @@ class SearchViewController: UIViewController {
         
     }
     
-    func refresh() {
-        self.reloadInputViews()
-    }
     
     func getFoods() {
         db.collection(K.Fstore.foodCollectionName).addSnapshotListener { (querySnapshot, error) in
@@ -177,7 +182,7 @@ extension SearchViewController: UITableViewDataSource {
             return counting
             
         }
-
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -224,7 +229,6 @@ extension SearchViewController: UISearchBarDelegate {
         myFoods = foodsHistory
         foodsHistory = []
         getFoods()
-        historyTableView.reloadData()
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200)) {
             self.searchData()
         }
@@ -232,18 +236,18 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        if searchText.isEmpty == false {
-//            searchedFoodsHistory = []
-//            let lettersCounter = searchText.count
-//            searchedFoodsHistory = foodsHistory.filter({ return $0.name.prefix(lettersCounter).caseInsensitiveCompare(searchText) == .orderedSame
-//            })
-//            historyTableView.reloadData()
-//
-//        } else {
-//
-//            searchedFoodsHistory = foodsHistory
-//            historyTableView.reloadData()
-//        }
+        //        if searchText.isEmpty == false {
+        //            searchedFoodsHistory = []
+        //            let lettersCounter = searchText.count
+        //            searchedFoodsHistory = foodsHistory.filter({ return $0.name.prefix(lettersCounter).caseInsensitiveCompare(searchText) == .orderedSame
+        //            })
+        //            historyTableView.reloadData()
+        //
+        //        } else {
+        //
+        //            searchedFoodsHistory = foodsHistory
+        //            historyTableView.reloadData()
+        //        }
         searchData()
         
         
