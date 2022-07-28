@@ -64,6 +64,8 @@ class MenuViewController: UIViewController {
     var currentIndex: Int?
     var foodLogsArrayCount: Int?
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Date
@@ -97,6 +99,11 @@ class MenuViewController: UIViewController {
         //CircleButton
         menuButton.layer.cornerRadius = menuButton.frame.height * 0.5
         menuButton.layer.masksToBounds = true
+        
+    }
+    @IBAction func menuButtonPressed(_ sender: UIButton) {
+        let selectionVc = storyboard?.instantiateViewController(identifier: K.toSearchVCId) as! SearchViewController
+        present(selectionVc, animated: true, completion: nil)
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -328,6 +335,7 @@ extension NSDate {
 //MARK: - Getting Food from FoodVC
 
 extension MenuViewController: PassingFood {
+   
     func passFood(food: FoodLog, id: String) {
         var currentFood: FoodLog
         if id == "breakfastTable" {

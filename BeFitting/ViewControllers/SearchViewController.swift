@@ -10,7 +10,20 @@ import UIKit
 import IQKeyboardManagerSwift
 import Firebase
 
-class SearchViewController: UIViewController {
+
+
+class SearchViewController: UIViewController, PassingFood  {
+    func passFood(food: FoodLog, id: String) {
+    }
+    
+    func removeFood(id: String) {
+    }
+    
+    
+   
+    
+    
+    
     // UIViews
     @IBOutlet weak var findFoodView: UIView!
     //Search Bar
@@ -69,12 +82,14 @@ class SearchViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    var passingFoodDelegate: PassingFood!
     
     var foodsHistory: [FoodLog] = [FoodLog(name: "Braon sladoled", calories: "243", measurement: "g", quantity: "243", protein: "123", carbs: "255", fats: "243", counter: 0)]
     var searchedFoodsHistory: [FoodLog] = []
     let db = Firestore.firestore()
     var counting = 0
     var myFoods: [FoodLog] = []
+    var selectedFood: FoodLog = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)
     //    var lettersCounter = 0
     
     override func viewDidLoad() {
@@ -193,6 +208,9 @@ extension SearchViewController: UITableViewDataSource {
             cell.caloriesLabel.text = foodsHistory[indexPath.row].calories
             cell.measurementLabel.text = foodsHistory[indexPath.row].measurement
             cell.quantityLabel.text = foodsHistory[indexPath.row].quantity
+            cell.proteinLabel.text = foodsHistory[indexPath.row].protein
+            cell.carbsLabel.text = foodsHistory[indexPath.row].carbs
+            cell.fatsLabel.text = foodsHistory[indexPath.row].fats
             
         }
             
@@ -201,6 +219,9 @@ extension SearchViewController: UITableViewDataSource {
             cell.caloriesLabel.text = searchedFoodsHistory[indexPath.row].calories
             cell.measurementLabel.text = searchedFoodsHistory[indexPath.row].measurement
             cell.quantityLabel.text = searchedFoodsHistory[indexPath.row].quantity
+            cell.proteinLabel.text = searchedFoodsHistory[indexPath.row].protein
+            cell.carbsLabel.text = searchedFoodsHistory[indexPath.row].carbs
+            cell.fatsLabel.text = searchedFoodsHistory[indexPath.row].fats
             
         }
         
@@ -213,7 +234,21 @@ extension SearchViewController: UITableViewDataSource {
 
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+       
+        selectedFood.name = searchedFoodsHistory[indexPath.row].name
+        selectedFood.calories = searchedFoodsHistory[indexPath.row].calories
+        selectedFood.measurement = searchedFoodsHistory[indexPath.row].measurement
+        selectedFood.quantity = searchedFoodsHistory[indexPath.row].quantity
+        selectedFood.protein = searchedFoodsHistory[indexPath.row].protein
+        selectedFood.carbs = searchedFoodsHistory[indexPath.row].carbs
+        selectedFood.fats = searchedFoodsHistory[indexPath.row].fats
+        selectedFood.counter = searchedFoodsHistory[indexPath.row].counter
+        
+        print(selectedFood)
+        let selectionVc = storyboard?.instantiateViewController(identifier: K.toAddedFoodId) as! AddedFoodViewController
+        present(selectionVc, animated: true, completion: nil)
+        
+        
     }
 }
 

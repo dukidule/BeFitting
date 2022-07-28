@@ -24,6 +24,7 @@
 		71F3B9E427E8D7CA00544E0F /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F3B9E327E8D7CA00544E0F /* FoodViewController.swift */; };
 		71FBAF8B27B2D76C007691C9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FBAF8A27B2D76C007691C9 /* Constants.swift */; };
 		71FE01DC2884FD6300DE4F4F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE01DB2884FD6300DE4F4F /* SearchViewController.swift */; };
+		71FE01DE2891FB8E00DE4F4F /* AddedFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE01DD2891FB8E00DE4F4F /* AddedFoodViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		71F3B9E327E8D7CA00544E0F /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
 		71FBAF8A27B2D76C007691C9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		71FE01DB2884FD6300DE4F4F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		71FE01DD2891FB8E00DE4F4F /* AddedFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedFoodViewController.swift; sourceTree = "<group>"; };
 		D01385B5483BF662D184D406 /* Pods-BeFitting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeFitting.release.xcconfig"; path = "Target Support Files/Pods-BeFitting/Pods-BeFitting.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 				71451A0F27B25475002CE911 /* MenuViewController.swift */,
 				71F3B9E327E8D7CA00544E0F /* FoodViewController.swift */,
 				71FE01DB2884FD6300DE4F4F /* SearchViewController.swift */,
+				71FE01DD2891FB8E00DE4F4F /* AddedFoodViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				714519F327B24E93002CE911 /* AppDelegate.swift in Sources */,
 				714519F527B24E93002CE911 /* SceneDelegate.swift in Sources */,
 				71FBAF8B27B2D76C007691C9 /* Constants.swift in Sources */,
+				71FE01DE2891FB8E00DE4F4F /* AddedFoodViewController.swift in Sources */,
 				71451A0E27B25450002CE911 /* LoginViewController.swift in Sources */,
 				71F3B9E427E8D7CA00544E0F /* FoodViewController.swift in Sources */,
 				7105D9FC27DBB30B0062497C /* FoodLogCell.swift in Sources */,

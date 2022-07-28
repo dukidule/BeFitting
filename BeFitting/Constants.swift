@@ -18,6 +18,8 @@ struct K {
     static let cellNibName = "FoodLogCell"
     static let foodToMenu = "foodToMenu"
     static let reusableCell = "reusableCell"
+    static let toAddedFoodId = "addedFoodViewController"
+    static let toSearchVCId = "toSearchViewController"
     
     //FirebaseFirestore
     struct Fstore {

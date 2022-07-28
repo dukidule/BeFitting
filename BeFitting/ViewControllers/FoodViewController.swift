@@ -152,15 +152,6 @@ class FoodViewController: UIViewController {
         
     }
     
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        if segue.identifier == "\(K.foodToMenu)" {
-    //                let destinationVc = segue.destination as! MenuViewController
-    //            if destinationVc.cellIDForTable == "breakfastFoodLogID" {
-    //                destinationVc.breakfastFoodLogs.insert(food, at: 0)
-    //            }
-    //            }
-    //        }
-    
     func nameMissing() -> Bool {
         if nameTextField.text == "" {
             return true
