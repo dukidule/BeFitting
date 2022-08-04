@@ -10,10 +10,7 @@ import UIKit
 import IQKeyboardManagerSwift
 import Firebase
 
-protocol PassingFood {
-    func passFood(food: FoodLog, id: String)
-    func removeFood(id: String)
-}
+
 class FoodViewController: UIViewController {
     
     let db = Firestore.firestore()
@@ -66,7 +63,7 @@ class FoodViewController: UIViewController {
         if missingParameters() ==  true {
             food.name = nameTextField.text ?? ""
             food.quantity = quantityTextField.text ?? ""
-            food.calories = (caloriesTextField.text ?? "") + "cal"
+            food.calories = caloriesTextField.text ?? ""
             food.protein = proteinTextField.text ?? ""
             food.carbs = carbsTextField.text ?? ""
             food.fats = fatsTextField.text ?? ""
@@ -90,7 +87,7 @@ class FoodViewController: UIViewController {
                     }
                 }
             }
-            passingFoodDelegate.passFood(food: food, id: tableId)
+//            passingFoodDelegate.passFood(food: food, id: tableId)
             self.dismiss(animated: true, completion: nil)
         } else {
             contentView.alpha = 0.5
@@ -113,7 +110,7 @@ class FoodViewController: UIViewController {
     }
     
     @IBAction func removeButtonClicked(_ sender: UIButton) {
-        passingFoodDelegate.removeFood(id: tableId)
+//        passingFoodDelegate.removeFood(id: tableId)
         self.dismiss(animated: true, completion: nil)
     }
     

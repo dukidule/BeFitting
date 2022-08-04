@@ -10,19 +10,12 @@ import UIKit
 import IQKeyboardManagerSwift
 import Firebase
 
+protocol PassingFood {
+    func passFood(food: FoodLog, id: String)
+    func removeFood(id: String)
+}
 
-
-class SearchViewController: UIViewController, PassingFood  {
-    func passFood(food: FoodLog, id: String) {
-    }
-    
-    func removeFood(id: String) {
-    }
-    
-    
-   
-    
-    
+class SearchViewController: UIViewController  {
     
     // UIViews
     @IBOutlet weak var findFoodView: UIView!
@@ -37,6 +30,14 @@ class SearchViewController: UIViewController, PassingFood  {
     @IBOutlet weak var allButton: UIButton!
     @IBOutlet weak var myFoodsButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var addFoodButton: UIButton!
+    
+    @IBAction func addFoodButtonTapped(_ sender: UIButton) {
+        food.calories = food.calories + "cal" 
+        let selectionVc = storyboard?.instantiateViewController(identifier: "foodViewController") as! FoodViewController
+        present(selectionVc, animated: true, completion: nil)
+    }
+    
     @IBAction func allButtonPressed(_ sender: UIButton) {
         getFoods()
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(400)) {
@@ -83,8 +84,13 @@ class SearchViewController: UIViewController, PassingFood  {
     }
     
     var passingFoodDelegate: PassingFood!
+    var tableId = ""
+    var food: FoodLog = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)
     
-    var foodsHistory: [FoodLog] = [FoodLog(name: "Braon sladoled", calories: "243", measurement: "g", quantity: "243", protein: "123", carbs: "255", fats: "243", counter: 0)]
+    
+    
+    
+    var foodsHistory: [FoodLog] = [FoodLog(name: "Braon sladoled", calories: "243", measurement: "g", quantity: "200", protein: "123", carbs: "255", fats: "243", counter: 0)]
     var searchedFoodsHistory: [FoodLog] = []
     let db = Firestore.firestore()
     var counting = 0
@@ -163,7 +169,6 @@ class SearchViewController: UIViewController, PassingFood  {
             
         }
     }
-    
     func searchData() {
         if let searchText = searchBar?.searchTextField.text {
             searchedFoodsHistory = []
@@ -172,7 +177,8 @@ class SearchViewController: UIViewController, PassingFood  {
             })
             historyTableView.reloadData()
             
-        } else {
+        }
+        else {
             
             searchedFoodsHistory = foodsHistory
             historyTableView.reloadData()
@@ -187,14 +193,18 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchBar.searchTextField.isEditing == true {
             counting = searchedFoodsHistory.count
+            print("Prvi Slucaj.")
             return counting
         }
         else if searchBar.searchTextField.isEditing == false {
             counting = foodsHistory.count
+            print("Drugi Slucaj.")
             return counting
         } else {
             counting = foodsHistory.count
+            print("Treci Slucaj.")
             return counting
+            
             
         }
         
@@ -205,7 +215,7 @@ extension SearchViewController: UITableViewDataSource {
         
         if searchBar.searchTextField.isEditing == false {
             cell.nameLabel.text = foodsHistory[indexPath.row].name
-            cell.caloriesLabel.text = foodsHistory[indexPath.row].calories
+            cell.caloriesLabel.text = foodsHistory[indexPath.row].calories + "cal"
             cell.measurementLabel.text = foodsHistory[indexPath.row].measurement
             cell.quantityLabel.text = foodsHistory[indexPath.row].quantity
             cell.proteinLabel.text = foodsHistory[indexPath.row].protein
@@ -216,7 +226,7 @@ extension SearchViewController: UITableViewDataSource {
             
         else {
             cell.nameLabel.text = searchedFoodsHistory[indexPath.row].name
-            cell.caloriesLabel.text = searchedFoodsHistory[indexPath.row].calories
+            cell.caloriesLabel.text = searchedFoodsHistory[indexPath.row].calories + "cal"
             cell.measurementLabel.text = searchedFoodsHistory[indexPath.row].measurement
             cell.quantityLabel.text = searchedFoodsHistory[indexPath.row].quantity
             cell.proteinLabel.text = searchedFoodsHistory[indexPath.row].protein
@@ -234,20 +244,43 @@ extension SearchViewController: UITableViewDataSource {
 
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+        if searchBar.searchTextField.isEditing == false && searchedFoodsHistory.count > 0 {
         selectedFood.name = searchedFoodsHistory[indexPath.row].name
-        selectedFood.calories = searchedFoodsHistory[indexPath.row].calories
+        selectedFood.calories = searchedFoodsHistory[indexPath.row].calories 
         selectedFood.measurement = searchedFoodsHistory[indexPath.row].measurement
         selectedFood.quantity = searchedFoodsHistory[indexPath.row].quantity
         selectedFood.protein = searchedFoodsHistory[indexPath.row].protein
         selectedFood.carbs = searchedFoodsHistory[indexPath.row].carbs
         selectedFood.fats = searchedFoodsHistory[indexPath.row].fats
         selectedFood.counter = searchedFoodsHistory[indexPath.row].counter
-        
-        print(selectedFood)
+
+
+        print("Dusan nije car \(selectedFood)")
         let selectionVc = storyboard?.instantiateViewController(identifier: K.toAddedFoodId) as! AddedFoodViewController
+        selectionVc.food = selectedFood
+        selectionVc.tableId = tableId
+        selectionVc.foodDelegate = passingFoodDelegate
         present(selectionVc, animated: true, completion: nil)
-        
+        }
+        else {
+            
+            selectedFood.name = foodsHistory[indexPath.row].name
+            selectedFood.calories = foodsHistory[indexPath.row].calories
+            selectedFood.measurement = foodsHistory[indexPath.row].measurement
+            selectedFood.quantity = foodsHistory[indexPath.row].quantity
+            selectedFood.protein = foodsHistory[indexPath.row].protein
+            selectedFood.carbs = foodsHistory[indexPath.row].carbs
+            selectedFood.fats = foodsHistory[indexPath.row].fats
+            selectedFood.counter = foodsHistory[indexPath.row].counter
+            
+            print("DusanJeCar \(selectedFood)")
+            let selectionVc = storyboard?.instantiateViewController(identifier: K.toAddedFoodId) as! AddedFoodViewController
+            selectionVc.food = selectedFood
+            selectionVc.tableId = tableId
+            selectionVc.foodDelegate = passingFoodDelegate
+            present(selectionVc, animated: true, completion: nil)
+            
+        }
         
     }
 }

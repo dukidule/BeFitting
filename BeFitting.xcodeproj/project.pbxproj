@@ -22,6 +22,7 @@
 		71451A1027B25475002CE911 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71451A0F27B25475002CE911 /* MenuViewController.swift */; };
 		718A7FCA27D225CF00D06D3C /* FoodLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718A7FC927D225CF00D06D3C /* FoodLog.swift */; };
 		71F3B9E427E8D7CA00544E0F /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F3B9E327E8D7CA00544E0F /* FoodViewController.swift */; };
+		71FA9968289BEE1700738687 /* FoodCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA9967289BEE1700738687 /* FoodCalculation.swift */; };
 		71FBAF8B27B2D76C007691C9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FBAF8A27B2D76C007691C9 /* Constants.swift */; };
 		71FE01DC2884FD6300DE4F4F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE01DB2884FD6300DE4F4F /* SearchViewController.swift */; };
 		71FE01DE2891FB8E00DE4F4F /* AddedFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE01DD2891FB8E00DE4F4F /* AddedFoodViewController.swift */; };
@@ -46,6 +47,7 @@
 		71451A0F27B25475002CE911 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		718A7FC927D225CF00D06D3C /* FoodLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLog.swift; sourceTree = "<group>"; };
 		71F3B9E327E8D7CA00544E0F /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
+		71FA9967289BEE1700738687 /* FoodCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCalculation.swift; sourceTree = "<group>"; };
 		71FBAF8A27B2D76C007691C9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		71FE01DB2884FD6300DE4F4F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		71FE01DD2891FB8E00DE4F4F /* AddedFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedFoodViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				718A7FC927D225CF00D06D3C /* FoodLog.swift */,
+				71FA9967289BEE1700738687 /* FoodCalculation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			files = (
 				714519F727B24E93002CE911 /* WelcomeViewController.swift in Sources */,
 				71451A1027B25475002CE911 /* MenuViewController.swift in Sources */,
+				71FA9968289BEE1700738687 /* FoodCalculation.swift in Sources */,
 				714519F327B24E93002CE911 /* AppDelegate.swift in Sources */,
 				714519F527B24E93002CE911 /* SceneDelegate.swift in Sources */,
 				71FBAF8B27B2D76C007691C9 /* Constants.swift in Sources */,

@@ -11,6 +11,8 @@ import IQKeyboardManagerSwift
 
 class AddedFoodViewController: UIViewController {
     
+    
+    
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var measurementsSelectionView: UIView!
     
@@ -36,9 +38,42 @@ class AddedFoodViewController: UIViewController {
     //UITabeView
     @IBOutlet weak var measurementsTableView: UITableView!
     //ButtonActions
+   
+    var tableId = ""
+    var foodDelegate: PassingFood!
+    var measurements: [String] = [("g"), ("Oz")]
+    var food: FoodLog = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)
+    var foodCalculator: FoodCalculation = FoodCalculation()
+    var otherFood: FoodLog = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)
+    @IBAction func textFieldDidChange(_ sender: UITextField) {
+        let userInput = (Int(quantityTextField.text ?? "Prop'o") ) ?? 0
+        otherFood = foodCalculator.calculatefood(food: food, measurement: food.measurement, quantity: userInput)
+        
+        caloriesTextField.text = otherFood.calories + "cal"
+        proteinTextField.text = otherFood.protein
+        fatsTextFIeld.text = otherFood.fats
+        carbsTextField.text = otherFood.carbs
+        
+        print("5555 \(otherFood), \(userInput)")
+    }
+    
+    
     @IBAction func addFoodButtonTapped(_ sender: UIButton) {
+       print("Ovde pucam \(food)")
+        print(tableId)
+        food = otherFood
+        
+//        foodCalculator?.calculatefood(food: food, measurement: food.measurement, quantity:)
+        food.quantity = quantityTextField.text ?? ""
+        print(food)
+        
+        foodDelegate.passFood(food: food, id: tableId)
+        performSegue(withIdentifier: "toMenuVc", sender: self)
+        
     }
     @IBAction func removeFoodButtonTapped(_ sender: UIButton) {
+        foodDelegate.removeFood(id: tableId)
+        performSegue(withIdentifier: "toMenuVc", sender: self)
     }
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -52,15 +87,21 @@ class AddedFoodViewController: UIViewController {
     }
     
     
-    var measurements: [String] = [("g"), ("Oz")]
-    var food: FoodLog = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         measurementsTableView.delegate = self
         measurementsTableView.dataSource = self
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         measurementsSelectionView.isHidden = true
+        if food.measurement == "" {
+                   food.measurement = "g"
+               }
+               nameTextField.text = food.name
+               
+               caloriesTextField.text = food.calories
+               proteinTextField.text = food.protein
+               carbsTextField.text = food.carbs
+               fatsTextFIeld.text = food.fats
         
         quantitySelectionButton.setTitle("g", for: .normal
         )

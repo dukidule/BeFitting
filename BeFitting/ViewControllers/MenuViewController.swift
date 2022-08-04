@@ -49,10 +49,14 @@ class MenuViewController: UIViewController {
         dateSelection = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!.date(byAdding: .day, value: Int(sender.value), to: NSDate() as Date, options: []) as NSDate?
         dateLabel.text = dateSelection.formatted
     }
+    
+    @IBAction func unwind(_ seg: UIStoryboardSegue) {
+        
+    }
     var dateSelection: NSDate!
     fileprivate(set) var cellIDForTable = "I love cheesepufs \(generateInstanceId())"
     //FoodLog arrays
-    var breakfastFoodLogs: [FoodLog] = [
+    fileprivate var breakfastFoodLogs: [FoodLog] = [
         FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0),
     ]
     var lunchFoodLogs: [FoodLog] = [FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)]
@@ -163,40 +167,40 @@ extension MenuViewController: UITableViewDataSource {
             cell.nameLabel.text = breakfastFoodLogs[indexPath.row].name
             cell.measurementLabel.text = breakfastFoodLogs[indexPath.row].measurement
             cell.quantityLabel.text = breakfastFoodLogs[indexPath.row].quantity
-            cell.caloriesLabel.text = breakfastFoodLogs[indexPath.row].calories
-            cell.proteinLabel.text = breakfastFoodLogs[indexPath.row].protein
-            cell.carbsLabel.text = breakfastFoodLogs[indexPath.row].carbs
-            cell.fatsLabel.text = breakfastFoodLogs[indexPath.row].fats
+            cell.caloriesLabel.text = breakfastFoodLogs[indexPath.row].calories + "cal"
+            cell.proteinLabel.text =  breakfastFoodLogs[indexPath.row].protein + "p"
+            cell.carbsLabel.text = breakfastFoodLogs[indexPath.row].carbs + "c"
+            cell.fatsLabel.text = breakfastFoodLogs[indexPath.row].fats + "f"
             
         }
         if tableView == lunchTableView {
             cell.nameLabel.text = lunchFoodLogs[indexPath.row].name
             cell.measurementLabel.text = lunchFoodLogs[indexPath.row].measurement
             cell.quantityLabel.text = lunchFoodLogs[indexPath.row].quantity
-            cell.caloriesLabel.text = lunchFoodLogs[indexPath.row].calories
-            cell.proteinLabel.text = lunchFoodLogs[indexPath.row].protein
-            cell.carbsLabel.text = lunchFoodLogs[indexPath.row].carbs
-            cell.fatsLabel.text = lunchFoodLogs[indexPath.row].fats
+            cell.caloriesLabel.text = lunchFoodLogs[indexPath.row].calories + "cal"
+            cell.proteinLabel.text = lunchFoodLogs[indexPath.row].protein + "p"
+            cell.carbsLabel.text = lunchFoodLogs[indexPath.row].carbs + "c"
+            cell.fatsLabel.text = lunchFoodLogs[indexPath.row].fats + "f"
             
         }
         if tableView == dinnerTableView {
             cell.nameLabel.text = dinnerFoodLogs[indexPath.row].name
             cell.measurementLabel.text = dinnerFoodLogs[indexPath.row].measurement
             cell.quantityLabel.text = dinnerFoodLogs[indexPath.row].quantity
-            cell.caloriesLabel.text = dinnerFoodLogs[indexPath.row].calories
-            cell.proteinLabel.text = dinnerFoodLogs[indexPath.row].protein
-            cell.carbsLabel.text = dinnerFoodLogs[indexPath.row].carbs
-            cell.fatsLabel.text = dinnerFoodLogs[indexPath.row].fats
+            cell.caloriesLabel.text = dinnerFoodLogs[indexPath.row].calories + "cal"
+            cell.proteinLabel.text = dinnerFoodLogs[indexPath.row].protein + "p"
+            cell.carbsLabel.text = dinnerFoodLogs[indexPath.row].carbs + "c"
+            cell.fatsLabel.text = dinnerFoodLogs[indexPath.row].fats + "f"
             
         }
         if tableView == snacksTableView {
             cell.nameLabel.text = snacksFoodLogs[indexPath.row].name
             cell.measurementLabel.text = snacksFoodLogs[indexPath.row].measurement
             cell.quantityLabel.text = snacksFoodLogs[indexPath.row].quantity
-            cell.caloriesLabel.text = snacksFoodLogs[indexPath.row].calories
-            cell.proteinLabel.text = snacksFoodLogs[indexPath.row].protein
-            cell.carbsLabel.text = snacksFoodLogs[indexPath.row].carbs
-            cell.fatsLabel.text = snacksFoodLogs[indexPath.row].fats
+            cell.caloriesLabel.text = snacksFoodLogs[indexPath.row].calories + "cal"
+            cell.proteinLabel.text = snacksFoodLogs[indexPath.row].protein + "p"
+            cell.carbsLabel.text = snacksFoodLogs[indexPath.row].carbs + "c"
+            cell.fatsLabel.text = snacksFoodLogs[indexPath.row].fats + "f"
             
         }
         print(indexPath)
@@ -220,18 +224,28 @@ extension MenuViewController: UITableViewDelegate {
             if indexPath.row == 0 {
                 cellIDForTable = "breakfastTable"
                 currentIndex = indexPath.row
-                let selectionVc = storyboard?.instantiateViewController(withIdentifier: "foodViewController") as! FoodViewController
+                if breakfastFoodLogs[indexPath.row].name == "" {
+                let selectionVc = storyboard?.instantiateViewController(withIdentifier: "toSearchViewController") as! SearchViewController
                 selectionVc.passingFoodDelegate = self
                 selectionVc.tableId = cellIDForTable
                 selectionVc.food = breakfastFoodLogs[currentIndex!]
                 present(selectionVc, animated: true, completion: nil)
                 print(indexPath)
+                }
+                else if breakfastFoodLogs[indexPath.row].name != "" {
+                    let selectionVc = storyboard?.instantiateViewController(withIdentifier: "addedFoodViewController") as! AddedFoodViewController
+                    selectionVc.foodDelegate = self
+                    selectionVc.tableId = cellIDForTable
+                    selectionVc.food = breakfastFoodLogs[currentIndex!]
+                    present(selectionVc, animated: true, completion: nil)
+                }
             } else {
                 if indexPath.row > 0 {
                     cellIDForTable = "breakfastTable"
                     currentIndex = indexPath.row
                     foodLogsArrayCount = breakfastFoodLogs.count
-                    let selectionVc = storyboard?.instantiateViewController(withIdentifier: "foodViewController") as! FoodViewController
+                    if breakfastFoodLogs[indexPath.row].name == "" {
+                    let selectionVc = storyboard?.instantiateViewController(withIdentifier: "toSearchViewController") as! SearchViewController
                     selectionVc.passingFoodDelegate = self
                     selectionVc.tableId = cellIDForTable
                     selectionVc.food = breakfastFoodLogs[currentIndex!]
@@ -240,6 +254,13 @@ extension MenuViewController: UITableViewDelegate {
                     
                     print("hihi \(breakfastFoodLogs)")
                     print(indexPath.row)
+                    } else if breakfastFoodLogs[indexPath.row].name != "" {
+                        let selectionVc = storyboard?.instantiateViewController(withIdentifier: "addedFoodViewController") as! AddedFoodViewController
+                        selectionVc.foodDelegate = self
+                        selectionVc.tableId = cellIDForTable
+                        selectionVc.food = breakfastFoodLogs[currentIndex!]
+                        present(selectionVc, animated: true, completion: nil)
+                    }
                     //                    breakfastFoodLogs.remove(at: indexPath.row)
                 }
             }
@@ -248,70 +269,143 @@ extension MenuViewController: UITableViewDelegate {
             if indexPath.row == 0 {
                 cellIDForTable = "lunchTable"
                 currentIndex = indexPath.row
-                let selectionVc = storyboard?.instantiateViewController(withIdentifier: "foodViewController") as! FoodViewController
+                if lunchFoodLogs[indexPath.row].name == "" {
+                let selectionVc = storyboard?.instantiateViewController(withIdentifier: "toSearchViewController") as! SearchViewController
                 selectionVc.passingFoodDelegate = self
                 selectionVc.tableId = cellIDForTable
                 selectionVc.food = lunchFoodLogs[currentIndex!]
                 present(selectionVc, animated: true, completion: nil)
                 print(indexPath)
+                }
+                else if lunchFoodLogs[indexPath.row].name != "" {
+                    let selectionVc = storyboard?.instantiateViewController(withIdentifier: "addedFoodViewController") as! AddedFoodViewController
+                    selectionVc.foodDelegate = self
+                    selectionVc.tableId = cellIDForTable
+                    selectionVc.food = lunchFoodLogs[currentIndex!]
+                    present(selectionVc, animated: true, completion: nil)
+                }
             } else {
                 if indexPath.row > 0 {
                     cellIDForTable = "lunchTable"
                     currentIndex = indexPath.row
-                    let selectionVc = storyboard?.instantiateViewController(withIdentifier: "foodViewController") as! FoodViewController
+                    foodLogsArrayCount = lunchFoodLogs.count
+                    if lunchFoodLogs[indexPath.row].name == "" {
+                    let selectionVc = storyboard?.instantiateViewController(withIdentifier: "toSearchViewController") as! SearchViewController
                     selectionVc.passingFoodDelegate = self
                     selectionVc.tableId = cellIDForTable
                     selectionVc.food = lunchFoodLogs[currentIndex!]
                     
                     present(selectionVc, animated: true, completion: nil)
-                    print("hihi \(breakfastFoodLogs)")
+                    
+                    print("hihi \(lunchFoodLogs)")
                     print(indexPath.row)
+                    } else if lunchFoodLogs[indexPath.row].name != "" {
+                        let selectionVc = storyboard?.instantiateViewController(withIdentifier: "addedFoodViewController") as! AddedFoodViewController
+                        selectionVc.foodDelegate = self
+                        selectionVc.tableId = cellIDForTable
+                        selectionVc.food = lunchFoodLogs[currentIndex!]
+                        present(selectionVc, animated: true, completion: nil)
+                    }
                     //                    breakfastFoodLogs.remove(at: indexPath.row)
                 }
             }
-        } else if tableView == dinnerTableView {
-            if indexPath.row == 0 {
+        }
+    
+    else if tableView == dinnerTableView {
+        if indexPath.row == 0 {
             cellIDForTable = "dinnerTable"
-                currentIndex = indexPath.row
-            let selectionVc = storyboard?.instantiateViewController(withIdentifier: "foodViewController") as! FoodViewController
+            currentIndex = indexPath.row
+            if dinnerFoodLogs[indexPath.row].name == "" {
+            let selectionVc = storyboard?.instantiateViewController(withIdentifier: "toSearchViewController") as! SearchViewController
             selectionVc.passingFoodDelegate = self
             selectionVc.tableId = cellIDForTable
-                selectionVc.food = dinnerFoodLogs[currentIndex!]
+            selectionVc.food = dinnerFoodLogs[currentIndex!]
             present(selectionVc, animated: true, completion: nil)
-            } else if indexPath.row > 0 {
+            print(indexPath)
+            }
+            else if dinnerFoodLogs[indexPath.row].name != "" {
+                let selectionVc = storyboard?.instantiateViewController(withIdentifier: "addedFoodViewController") as! AddedFoodViewController
+                selectionVc.foodDelegate = self
+                selectionVc.tableId = cellIDForTable
+                selectionVc.food = dinnerFoodLogs[currentIndex!]
+                present(selectionVc, animated: true, completion: nil)
+            }
+        } else {
+            if indexPath.row > 0 {
                 cellIDForTable = "dinnerTable"
                 currentIndex = indexPath.row
-                let selectionVc = storyboard?.instantiateViewController(withIdentifier: "foodViewController") as! FoodViewController
+                foodLogsArrayCount = dinnerFoodLogs.count
+                if dinnerFoodLogs[indexPath.row].name == "" {
+                let selectionVc = storyboard?.instantiateViewController(withIdentifier: "toSearchViewController") as! SearchViewController
                 selectionVc.passingFoodDelegate = self
                 selectionVc.tableId = cellIDForTable
                 selectionVc.food = dinnerFoodLogs[currentIndex!]
                 
                 present(selectionVc, animated: true, completion: nil)
                 
+                print("hihi \(dinnerFoodLogs)")
+                print(indexPath.row)
+                } else if dinnerFoodLogs[indexPath.row].name != "" {
+                    let selectionVc = storyboard?.instantiateViewController(withIdentifier: "addedFoodViewController") as! AddedFoodViewController
+                    selectionVc.foodDelegate = self
+                    selectionVc.tableId = cellIDForTable
+                    selectionVc.food = dinnerFoodLogs[currentIndex!]
+                    present(selectionVc, animated: true, completion: nil)
+                }
+                //                    breakfastFoodLogs.remove(at: indexPath.row)
             }
-        } else if tableView == snacksTableView {
+        }
+    }
+        
+        
+        else if tableView == snacksTableView {
             if indexPath.row == 0 {
-            cellIDForTable = "snacksTable"
-                currentIndex = indexPath.row
-            let selectionVc = storyboard?.instantiateViewController(withIdentifier: "foodViewController") as! FoodViewController
-            selectionVc.passingFoodDelegate = self
-            selectionVc.tableId = cellIDForTable
-                selectionVc.food = snacksFoodLogs[currentIndex!]
-            present(selectionVc, animated: true, completion: nil)
-            } else if indexPath.row > 0 {
                 cellIDForTable = "snacksTable"
                 currentIndex = indexPath.row
-                let selectionVc = storyboard?.instantiateViewController(withIdentifier: "foodViewController") as! FoodViewController
+                if snacksFoodLogs[indexPath.row].name == "" {
+                let selectionVc = storyboard?.instantiateViewController(withIdentifier: "toSearchViewController") as! SearchViewController
                 selectionVc.passingFoodDelegate = self
                 selectionVc.tableId = cellIDForTable
                 selectionVc.food = snacksFoodLogs[currentIndex!]
-                
                 present(selectionVc, animated: true, completion: nil)
-                
+                print(indexPath)
+                }
+                else if snacksFoodLogs[indexPath.row].name != "" {
+                    let selectionVc = storyboard?.instantiateViewController(withIdentifier: "addedFoodViewController") as! AddedFoodViewController
+                    selectionVc.foodDelegate = self
+                    selectionVc.tableId = cellIDForTable
+                    selectionVc.food = snacksFoodLogs[currentIndex!]
+                    present(selectionVc, animated: true, completion: nil)
+                }
+            } else {
+                if indexPath.row > 0 {
+                    cellIDForTable = "snacksTable"
+                    currentIndex = indexPath.row
+                    foodLogsArrayCount = snacksFoodLogs.count
+                    if snacksFoodLogs[indexPath.row].name == "" {
+                    let selectionVc = storyboard?.instantiateViewController(withIdentifier: "toSearchViewController") as! SearchViewController
+                    selectionVc.passingFoodDelegate = self
+                    selectionVc.tableId = cellIDForTable
+                    selectionVc.food = snacksFoodLogs[currentIndex!]
+                    
+                    present(selectionVc, animated: true, completion: nil)
+                    
+                    print("hihi \(snacksFoodLogs)")
+                    print(indexPath.row)
+                    } else if snacksFoodLogs[indexPath.row].name != "" {
+                        let selectionVc = storyboard?.instantiateViewController(withIdentifier: "addedFoodViewController") as! AddedFoodViewController
+                        selectionVc.foodDelegate = self
+                        selectionVc.tableId = cellIDForTable
+                        selectionVc.food = snacksFoodLogs[currentIndex!]
+                        present(selectionVc, animated: true, completion: nil)
+                    }
+                    //                    breakfastFoodLogs.remove(at: indexPath.row)
+                }
             }
         }
     }
 }
+
 //MARK: - Date Selection
 
 

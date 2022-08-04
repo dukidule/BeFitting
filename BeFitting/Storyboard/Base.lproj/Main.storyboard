@@ -958,6 +958,9 @@
                                         <state key="normal" title="Add Food">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addFoodButtonTapped:" destination="deF-Ht-2ei" eventType="touchUpInside" id="4l0-SE-Cxb"/>
+                                        </connections>
                                     </button>
                                     <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="dz4-JY-RmM">
                                         <rect key="frame" x="10" y="4" width="380" height="56"/>
@@ -1005,6 +1008,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="2kw-mZ-Dez"/>
                     <connections>
+                        <outlet property="addFoodButton" destination="bRy-ho-1Dm" id="Vda-Db-Ps3"/>
                         <outlet property="allButton" destination="req-Hd-HOp" id="Cr4-CI-rQe"/>
                         <outlet property="cancelButton" destination="ihT-hR-tPs" id="6BB-qh-b2u"/>
                         <outlet property="findFoodView" destination="Tmb-8a-qv1" id="G4W-Bb-pAt"/>
@@ -1021,7 +1025,7 @@
         <!--Added Food View Controller-->
         <scene sceneID="ohE-rp-Qz0">
             <objects>
-                <viewController storyboardIdentifier="addedFoodViewController" id="yfp-WW-pNi" customClass="AddedFoodViewController" customModule="BeFitting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addedFoodViewController" modalPresentationStyle="overFullScreen" id="yfp-WW-pNi" customClass="AddedFoodViewController" customModule="BeFitting" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PR9-BI-vKd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1082,6 +1086,9 @@
                                                 <rect key="frame" x="0.0" y="62" width="177" height="49"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <connections>
+                                                    <action selector="textFieldDidChange:" destination="yfp-WW-pNi" eventType="editingChanged" id="fiy-Sw-CY2"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Calories" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HLH-ov-15X">
                                                 <rect key="frame" x="0.0" y="124" width="177" height="49"/>
@@ -1265,9 +1272,11 @@
                         <outlet property="quantitySelectionButton" destination="dHK-t9-RFG" id="mHq-FA-k7r"/>
                         <outlet property="quantityTextField" destination="g94-jp-xGX" id="zmX-N6-SBf"/>
                         <outlet property="removeFoodButton" destination="VSD-5h-CN0" id="NUS-Ap-DEG"/>
+                        <segue destination="sYO-PP-fJH" kind="unwind" identifier="toMenuVc" unwindAction="unwind:" id="waP-Pf-xHF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dqv-aJ-EyF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="sYO-PP-fJH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2777" y="-623"/>
         </scene>
@@ -1400,6 +1409,7 @@
         <image name="square.and.arrow.up.fill" catalog="system" width="56" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="cjt-QQ-uS5"/>
         <segue reference="lCf-py-WNl"/>
     </inferredMetricsTieBreakers>
 </document>
