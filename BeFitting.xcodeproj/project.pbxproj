@@ -32,6 +32,7 @@
 		71FA9979289C11A900738687 /* SearchTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA9978289C11A900738687 /* SearchTableDelegate.swift */; };
 		71FA997D289C125F00738687 /* SearchVCBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA997C289C125F00738687 /* SearchVCBar.swift */; };
 		71FA997F289C130800738687 /* AddedFoodTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA997E289C130800738687 /* AddedFoodTable.swift */; };
+		71FA9982289C34E200738687 /* FirebaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA9981289C34E200738687 /* FirebaseData.swift */; };
 		71FBAF8B27B2D76C007691C9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FBAF8A27B2D76C007691C9 /* Constants.swift */; };
 		71FE01DC2884FD6300DE4F4F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE01DB2884FD6300DE4F4F /* SearchViewController.swift */; };
 		71FE01DE2891FB8E00DE4F4F /* AddedFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE01DD2891FB8E00DE4F4F /* AddedFoodViewController.swift */; };
@@ -66,6 +67,7 @@
 		71FA9978289C11A900738687 /* SearchTableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableDelegate.swift; sourceTree = "<group>"; };
 		71FA997C289C125F00738687 /* SearchVCBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVCBar.swift; sourceTree = "<group>"; };
 		71FA997E289C130800738687 /* AddedFoodTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedFoodTable.swift; sourceTree = "<group>"; };
+		71FA9981289C34E200738687 /* FirebaseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseData.swift; sourceTree = "<group>"; };
 		71FBAF8A27B2D76C007691C9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		71FE01DB2884FD6300DE4F4F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		71FE01DD2891FB8E00DE4F4F /* AddedFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedFoodViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		714519F127B24E93002CE911 /* BeFitting */ = {
 			isa = PBXGroup;
 			children = (
+				71FA9980289C33A100738687 /* Firebase */,
 				71FA996B289C0ECE00738687 /* TableViews */,
 				71451A0827B2522C002CE911 /* Model */,
 				71451A0627B24EA1002CE911 /* ViewControllers */,
@@ -167,6 +170,14 @@
 				71FA997E289C130800738687 /* AddedFoodTable.swift */,
 			);
 			path = TableViews;
+			sourceTree = "<group>";
+		};
+		71FA9980289C33A100738687 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				71FA9981289C34E200738687 /* FirebaseData.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		A9BD97D7F2C873C4630619CA /* Frameworks */ = {
@@ -309,6 +320,7 @@
 				71FA996F289C0F4A00738687 /* MenuTableDelegate.swift in Sources */,
 				714519F327B24E93002CE911 /* AppDelegate.swift in Sources */,
 				71FA996D289C0EF100738687 /* MenuTableDataSource.swift in Sources */,
+				71FA9982289C34E200738687 /* FirebaseData.swift in Sources */,
 				714519F527B24E93002CE911 /* SceneDelegate.swift in Sources */,
 				71FBAF8B27B2D76C007691C9 /* Constants.swift in Sources */,
 				71FA9977289C113A00738687 /* SearchTableDataSource.swift in Sources */,

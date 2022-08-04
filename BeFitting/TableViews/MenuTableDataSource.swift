@@ -32,6 +32,7 @@ extension MenuViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellID, for: indexPath) as! FoodLogCell
         
         if tableView == breakfastTableView {
+            if breakfastFoodLogs[indexPath.row].name != "" {
             cell.nameLabel.text = breakfastFoodLogs[indexPath.row].name
             cell.measurementLabel.text = breakfastFoodLogs[indexPath.row].measurement
             cell.quantityLabel.text = breakfastFoodLogs[indexPath.row].quantity
@@ -39,7 +40,16 @@ extension MenuViewController: UITableViewDataSource {
             cell.proteinLabel.text =  breakfastFoodLogs[indexPath.row].protein + "p"
             cell.carbsLabel.text = breakfastFoodLogs[indexPath.row].carbs + "c"
             cell.fatsLabel.text = breakfastFoodLogs[indexPath.row].fats + "f"
-            
+            }
+            else {
+                cell.nameLabel.text = breakfastFoodLogs[indexPath.row].name
+                cell.measurementLabel.text = breakfastFoodLogs[indexPath.row].measurement
+                cell.quantityLabel.text = breakfastFoodLogs[indexPath.row].quantity
+                cell.caloriesLabel.text = breakfastFoodLogs[indexPath.row].calories + "cal"
+                cell.proteinLabel.text =  breakfastFoodLogs[indexPath.row].protein
+                cell.carbsLabel.text = breakfastFoodLogs[indexPath.row].carbs
+                cell.fatsLabel.text = breakfastFoodLogs[indexPath.row].fats
+            }
         }
         if tableView == lunchTableView {
             cell.nameLabel.text = lunchFoodLogs[indexPath.row].name

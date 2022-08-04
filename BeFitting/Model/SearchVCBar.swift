@@ -9,8 +9,8 @@
 import UIKit
 
 extension SearchViewController: UISearchBarDelegate {
-    
-    
+
+
     func searchData() {
         if let searchText = searchBar?.searchTextField.text {
             searchedFoodsHistory = []
@@ -18,15 +18,15 @@ extension SearchViewController: UISearchBarDelegate {
             searchedFoodsHistory = foodsHistory.filter({ return $0.name.prefix(lettersCounter).caseInsensitiveCompare(searchText) == .orderedSame
             })
             historyTableView.reloadData()
-            
+
         }
         else {
-            
+
             searchedFoodsHistory = foodsHistory
             historyTableView.reloadData()
         }
     }
-    
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         myFoods = foodsHistory
         foodsHistory = []
@@ -34,9 +34,9 @@ extension SearchViewController: UISearchBarDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200)) {
             self.searchData()
         }
-        
+
     }
-    
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchData()
     }
