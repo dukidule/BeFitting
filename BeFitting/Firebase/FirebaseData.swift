@@ -6,5 +6,3 @@
 //  Copyright © 2022 Milos Pavlovic. All rights reserved.
 //
 
-import Firebase
-import UIKit

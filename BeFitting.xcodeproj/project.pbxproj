@@ -21,6 +21,7 @@
 		71451A0E27B25450002CE911 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71451A0D27B25450002CE911 /* LoginViewController.swift */; };
 		71451A1027B25475002CE911 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71451A0F27B25475002CE911 /* MenuViewController.swift */; };
 		718A7FCA27D225CF00D06D3C /* FoodLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718A7FC927D225CF00D06D3C /* FoodLog.swift */; };
+		71BFA6CA289C4A58008174F8 /* GetFirebaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BFA6C9289C4A58008174F8 /* GetFirebaseData.swift */; };
 		71F3B9E427E8D7CA00544E0F /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F3B9E327E8D7CA00544E0F /* FoodViewController.swift */; };
 		71FA9968289BEE1700738687 /* FoodCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA9967289BEE1700738687 /* FoodCalculation.swift */; };
 		71FA996D289C0EF100738687 /* MenuTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA996C289C0EF100738687 /* MenuTableDataSource.swift */; };
@@ -56,6 +57,7 @@
 		71451A0D27B25450002CE911 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		71451A0F27B25475002CE911 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		718A7FC927D225CF00D06D3C /* FoodLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLog.swift; sourceTree = "<group>"; };
+		71BFA6C9289C4A58008174F8 /* GetFirebaseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFirebaseData.swift; sourceTree = "<group>"; };
 		71F3B9E327E8D7CA00544E0F /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
 		71FA9967289BEE1700738687 /* FoodCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCalculation.swift; sourceTree = "<group>"; };
 		71FA996C289C0EF100738687 /* MenuTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableDataSource.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				71FA9981289C34E200738687 /* FirebaseData.swift */,
+				71BFA6C9289C4A58008174F8 /* GetFirebaseData.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				71FBAF8B27B2D76C007691C9 /* Constants.swift in Sources */,
 				71FA9977289C113A00738687 /* SearchTableDataSource.swift in Sources */,
 				71FE01DE2891FB8E00DE4F4F /* AddedFoodViewController.swift in Sources */,
+				71BFA6CA289C4A58008174F8 /* GetFirebaseData.swift in Sources */,
 				71FA997D289C125F00738687 /* SearchVCBar.swift in Sources */,
 				71FA9971289C0FA800738687 /* PassingFood.swift in Sources */,
 				71451A0E27B25450002CE911 /* LoginViewController.swift in Sources */,

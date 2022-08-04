@@ -30,11 +30,11 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         myFoods = foodsHistory
         foodsHistory = []
-        getFoods()
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200)) {
+        grabbingData.getFoods()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200)){
+            self.foodsHistory = self.grabbingData.foodsHistory
             self.searchData()
         }
-
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
