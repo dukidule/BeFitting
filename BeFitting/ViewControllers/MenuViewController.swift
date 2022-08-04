@@ -56,7 +56,7 @@ class MenuViewController: UIViewController {
     var dateSelection: NSDate!
     var cellIDForTable = "I love cheesepufs \(generateInstanceId())"
     //FoodLog arrays
-     var breakfastFoodLogs: [FoodLog] = [
+    var breakfastFoodLogs: [FoodLog] = [
         FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0),
     ]
     var lunchFoodLogs: [FoodLog] = [FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)]

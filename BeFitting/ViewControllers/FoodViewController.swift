@@ -49,11 +49,11 @@ class FoodViewController: UIViewController {
     @IBOutlet weak var measurementsTableView: UITableView!
     
     
-    
     var measurements: [String] = [("g"), ("Oz")]
     var passingFoodDelegate: PassingFood!
     var tableId = ""
     var food = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)
+    var storingFood = StoreData()
     
     //Button Actions
     @IBAction func saveButtonClicked(_ sender: UIButton) {
@@ -67,27 +67,7 @@ class FoodViewController: UIViewController {
             food.protein = proteinTextField.text ?? ""
             food.carbs = carbsTextField.text ?? ""
             food.fats = fatsTextField.text ?? ""
-            if (Auth.auth().currentUser?.email) != nil {
-                db.collection(K.Fstore.foodCollectionName).addDocument(data: [
-                    K.Fstore.foodNameField : food.name,
-                    K.Fstore.measurementField : food.measurement,
-                    K.Fstore.quantity : food.quantity,
-                    K.Fstore.calories : food.calories,
-                    K.Fstore.protein : food.protein,
-                    K.Fstore.carbs : food.carbs,
-                    K.Fstore.fats : food.fats,
-                    K.Fstore.counter : food.counter,
-                    K.Fstore.identifier: Auth.auth().currentUser?.email! as Any
-                    ])
-                { (error) in
-                    if let e = error {
-                        print("Issue saving data to firestore, \(e)")
-                    } else {
-                        print("Successfully saved data!")
-                    }
-                }
-            }
-//            passingFoodDelegate.passFood(food: food, id: tableId)
+            storingFood.storeFood(food: food)
             self.dismiss(animated: true, completion: nil)
         } else {
             contentView.alpha = 0.5
@@ -103,14 +83,13 @@ class FoodViewController: UIViewController {
         contentView.alpha = 1
     }
     
-    
     @IBAction func cancelButtonClicked(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
         print(food)
     }
     
     @IBAction func removeButtonClicked(_ sender: UIButton) {
-//        passingFoodDelegate.removeFood(id: tableId)
+        //        passingFoodDelegate.removeFood(id: tableId)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -137,16 +116,9 @@ class FoodViewController: UIViewController {
         print(tableId)
         
     }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         measurementsTableView.reloadData()
-        
     }
     
     func nameMissing() -> Bool {
@@ -212,7 +184,6 @@ class FoodViewController: UIViewController {
             print("You f'd up mate..")
             return false
         }
-        
     }
 }
 
