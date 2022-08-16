@@ -29,7 +29,6 @@ extension AddedFoodViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let measure = measurements[indexPath.row]
-//        food.measurement = measure
         measurementsSelectionView.isHidden = true
         if quantitySelectionButton.titleLabel?.text != measure {
            

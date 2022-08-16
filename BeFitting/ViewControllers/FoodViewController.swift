@@ -53,7 +53,7 @@ class FoodViewController: UIViewController {
     var passingFoodDelegate: PassingFood!
     var tableId = ""
     var food = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)
-    var storingFood = StoreData()
+    var storingFood = StoreFoodData()
     
     //Button Actions
     @IBAction func saveButtonClicked(_ sender: UIButton) {

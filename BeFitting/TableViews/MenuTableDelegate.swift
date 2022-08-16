@@ -21,7 +21,6 @@ extension MenuViewController: UITableViewDelegate {
                 selectionVc.tableId = cellIDForTable
                 selectionVc.food = breakfastFoodLogs[currentIndex!]
                 present(selectionVc, animated: true, completion: nil)
-                print(indexPath)
                 }
                 else if breakfastFoodLogs[indexPath.row].name != "" {
                     let selectionVc = storyboard?.instantiateViewController(withIdentifier: "addedFoodViewController") as! AddedFoodViewController
@@ -42,9 +41,6 @@ extension MenuViewController: UITableViewDelegate {
                     selectionVc.food = breakfastFoodLogs[currentIndex!]
                     
                     present(selectionVc, animated: true, completion: nil)
-                    
-                    print("hihi \(breakfastFoodLogs)")
-                    print(indexPath.row)
                     } else if breakfastFoodLogs[indexPath.row].name != "" {
                         let selectionVc = storyboard?.instantiateViewController(withIdentifier: "addedFoodViewController") as! AddedFoodViewController
                         selectionVc.foodDelegate = self
@@ -66,7 +62,6 @@ extension MenuViewController: UITableViewDelegate {
                 selectionVc.tableId = cellIDForTable
                 selectionVc.food = lunchFoodLogs[currentIndex!]
                 present(selectionVc, animated: true, completion: nil)
-                print(indexPath)
                 }
                 else if lunchFoodLogs[indexPath.row].name != "" {
                     let selectionVc = storyboard?.instantiateViewController(withIdentifier: "addedFoodViewController") as! AddedFoodViewController
@@ -87,9 +82,6 @@ extension MenuViewController: UITableViewDelegate {
                     selectionVc.food = lunchFoodLogs[currentIndex!]
                     
                     present(selectionVc, animated: true, completion: nil)
-                    
-                    print("hihi \(lunchFoodLogs)")
-                    print(indexPath.row)
                     } else if lunchFoodLogs[indexPath.row].name != "" {
                         let selectionVc = storyboard?.instantiateViewController(withIdentifier: "addedFoodViewController") as! AddedFoodViewController
                         selectionVc.foodDelegate = self
@@ -97,7 +89,6 @@ extension MenuViewController: UITableViewDelegate {
                         selectionVc.food = lunchFoodLogs[currentIndex!]
                         present(selectionVc, animated: true, completion: nil)
                     }
-                    //                    breakfastFoodLogs.remove(at: indexPath.row)
                 }
             }
         }
@@ -112,7 +103,7 @@ extension MenuViewController: UITableViewDelegate {
             selectionVc.tableId = cellIDForTable
             selectionVc.food = dinnerFoodLogs[currentIndex!]
             present(selectionVc, animated: true, completion: nil)
-            print(indexPath)
+            
             }
             else if dinnerFoodLogs[indexPath.row].name != "" {
                 let selectionVc = storyboard?.instantiateViewController(withIdentifier: "addedFoodViewController") as! AddedFoodViewController
@@ -134,8 +125,6 @@ extension MenuViewController: UITableViewDelegate {
                 
                 present(selectionVc, animated: true, completion: nil)
                 
-                print("hihi \(dinnerFoodLogs)")
-                print(indexPath.row)
                 } else if dinnerFoodLogs[indexPath.row].name != "" {
                     let selectionVc = storyboard?.instantiateViewController(withIdentifier: "addedFoodViewController") as! AddedFoodViewController
                     selectionVc.foodDelegate = self
@@ -143,7 +132,6 @@ extension MenuViewController: UITableViewDelegate {
                     selectionVc.food = dinnerFoodLogs[currentIndex!]
                     present(selectionVc, animated: true, completion: nil)
                 }
-                //                    breakfastFoodLogs.remove(at: indexPath.row)
             }
         }
     }
@@ -159,7 +147,6 @@ extension MenuViewController: UITableViewDelegate {
                 selectionVc.tableId = cellIDForTable
                 selectionVc.food = snacksFoodLogs[currentIndex!]
                 present(selectionVc, animated: true, completion: nil)
-                print(indexPath)
                 }
                 else if snacksFoodLogs[indexPath.row].name != "" {
                     let selectionVc = storyboard?.instantiateViewController(withIdentifier: "addedFoodViewController") as! AddedFoodViewController
@@ -180,9 +167,6 @@ extension MenuViewController: UITableViewDelegate {
                     selectionVc.food = snacksFoodLogs[currentIndex!]
                     
                     present(selectionVc, animated: true, completion: nil)
-                    
-                    print("hihi \(snacksFoodLogs)")
-                    print(indexPath.row)
                     } else if snacksFoodLogs[indexPath.row].name != "" {
                         let selectionVc = storyboard?.instantiateViewController(withIdentifier: "addedFoodViewController") as! AddedFoodViewController
                         selectionVc.foodDelegate = self
@@ -190,7 +174,7 @@ extension MenuViewController: UITableViewDelegate {
                         selectionVc.food = snacksFoodLogs[currentIndex!]
                         present(selectionVc, animated: true, completion: nil)
                     }
-                    //                    breakfastFoodLogs.remove(at: indexPath.row)
+
                 }
             }
         }

@@ -48,13 +48,38 @@ class MenuViewController: UIViewController {
     @IBAction func changingDate(_ sender: UIStepper) {
         dateSelection = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!.date(byAdding: .day, value: Int(sender.value), to: NSDate() as Date, options: []) as NSDate?
         dateLabel.text = dateSelection.formatted
+        
+        fetchUser.currentDate = dateLabel.text!
+        fetchUser.getUser(id: "breakfastTable")
+        fetchUser.getUser(id: "lunchTable")
+        fetchUser.getUser(id: "dinnerTable")
+        fetchUser.getUser(id: "snacksTable")
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)){
+            self.breakfastFoodLogs = self.fetchUser.breakfast
+            self.lunchFoodLogs = self.fetchUser.lunch
+            self.dinnerFoodLogs = self.fetchUser.dinner
+            self.snacksFoodLogs = self.fetchUser.snacks
+            
+            
+            self.breakfastFoodLogs.append(self.defaultFood)
+            self.lunchFoodLogs.append(self.defaultFood)
+            self.dinnerFoodLogs.append(self.defaultFood)
+            self.snacksFoodLogs.append(self.defaultFood)
+            
+            self.breakfastTableView.reloadData()
+            self.lunchTableView.reloadData()
+            self.dinnerTableView.reloadData()
+            self.snacksTableView.reloadData()
+                    
+        }
+        
     }
     
     @IBAction func unwind(_ seg: UIStoryboardSegue) {
         
     }
     var dateSelection: NSDate!
-    var cellIDForTable = "I love cheesepufs \(generateInstanceId())"
+    var cellIDForTable = "breakfastTable"
     //FoodLog arrays
     var breakfastFoodLogs: [FoodLog] = [
         FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0),
@@ -68,6 +93,8 @@ class MenuViewController: UIViewController {
     var currentIndex: Int?
     var foodLogsArrayCount: Int?
     
+    var storeUser = StoreUser()
+    var fetchUser = GetUser()
     
     
     override func viewDidLoad() {
@@ -106,8 +133,12 @@ class MenuViewController: UIViewController {
         
     }
     @IBAction func menuButtonPressed(_ sender: UIButton) {
-        let selectionVc = storyboard?.instantiateViewController(identifier: K.toSearchVCId) as! SearchViewController
-        present(selectionVc, animated: true, completion: nil)
+//        let selectionVc = storyboard?.instantiateViewController(identifier: K.toSearchVCId) as! SearchViewController
+//        present(selectionVc, animated: true, completion: nil)
+        
+//        storeUser.storeUser(food: defaultFood, id: cellIDForTable)
+        
+        
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -117,9 +148,9 @@ class MenuViewController: UIViewController {
         
         
     }
-    func isBreakfastTable() {
-        cellIDForTable = "breakfastFoodLogID"
-    }
+//    func isBreakfastTable() {
+//        cellIDForTable = "breakfastFoodLogID"
+//    }
     
     override func viewDidAppear(_ animated: Bool) {
         print("bla" + "\(breakfastFoodLogs.count)")

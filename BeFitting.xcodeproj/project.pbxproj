@@ -22,19 +22,21 @@
 		71451A1027B25475002CE911 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71451A0F27B25475002CE911 /* MenuViewController.swift */; };
 		718A7FCA27D225CF00D06D3C /* FoodLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718A7FC927D225CF00D06D3C /* FoodLog.swift */; };
 		71BFA6CA289C4A58008174F8 /* GetFirebaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BFA6C9289C4A58008174F8 /* GetFirebaseData.swift */; };
-		71BFA6CC289C540E008174F8 /* StoreFirebaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BFA6CB289C540E008174F8 /* StoreFirebaseData.swift */; };
+		71BFA6CE289C577D008174F8 /* StoreFoodData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BFA6CD289C577D008174F8 /* StoreFoodData.swift */; };
 		71F3B9E427E8D7CA00544E0F /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F3B9E327E8D7CA00544E0F /* FoodViewController.swift */; };
 		71FA9968289BEE1700738687 /* FoodCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA9967289BEE1700738687 /* FoodCalculation.swift */; };
 		71FA996D289C0EF100738687 /* MenuTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA996C289C0EF100738687 /* MenuTableDataSource.swift */; };
 		71FA996F289C0F4A00738687 /* MenuTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA996E289C0F4A00738687 /* MenuTableDelegate.swift */; };
 		71FA9971289C0FA800738687 /* PassingFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA9970289C0FA800738687 /* PassingFood.swift */; };
-		71FA9973289C103600738687 /* FoodTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA9972289C103600738687 /* FoodTableDataSource.swift */; };
 		71FA9975289C108E00738687 /* FoodTableAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA9974289C108E00738687 /* FoodTableAll.swift */; };
 		71FA9977289C113A00738687 /* SearchTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA9976289C113A00738687 /* SearchTableDataSource.swift */; };
 		71FA9979289C11A900738687 /* SearchTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA9978289C11A900738687 /* SearchTableDelegate.swift */; };
 		71FA997D289C125F00738687 /* SearchVCBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA997C289C125F00738687 /* SearchVCBar.swift */; };
 		71FA997F289C130800738687 /* AddedFoodTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA997E289C130800738687 /* AddedFoodTable.swift */; };
 		71FBAF8B27B2D76C007691C9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FBAF8A27B2D76C007691C9 /* Constants.swift */; };
+		71FBFD1528A3CF01008B6580 /* StoreUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FBFD1428A3CF01008B6580 /* StoreUser.swift */; };
+		71FBFD1728A3DD84008B6580 /* GetUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FBFD1628A3DD84008B6580 /* GetUser.swift */; };
+		71FBFD1B28A68A03008B6580 /* RemoveFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FBFD1A28A68A03008B6580 /* RemoveFood.swift */; };
 		71FE01DC2884FD6300DE4F4F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE01DB2884FD6300DE4F4F /* SearchViewController.swift */; };
 		71FE01DE2891FB8E00DE4F4F /* AddedFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE01DD2891FB8E00DE4F4F /* AddedFoodViewController.swift */; };
 /* End PBXBuildFile section */
@@ -58,19 +60,21 @@
 		71451A0F27B25475002CE911 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		718A7FC927D225CF00D06D3C /* FoodLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLog.swift; sourceTree = "<group>"; };
 		71BFA6C9289C4A58008174F8 /* GetFirebaseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFirebaseData.swift; sourceTree = "<group>"; };
-		71BFA6CB289C540E008174F8 /* StoreFirebaseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFirebaseData.swift; sourceTree = "<group>"; };
+		71BFA6CD289C577D008174F8 /* StoreFoodData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFoodData.swift; sourceTree = "<group>"; };
 		71F3B9E327E8D7CA00544E0F /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
 		71FA9967289BEE1700738687 /* FoodCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCalculation.swift; sourceTree = "<group>"; };
 		71FA996C289C0EF100738687 /* MenuTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableDataSource.swift; sourceTree = "<group>"; };
 		71FA996E289C0F4A00738687 /* MenuTableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableDelegate.swift; sourceTree = "<group>"; };
 		71FA9970289C0FA800738687 /* PassingFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassingFood.swift; sourceTree = "<group>"; };
-		71FA9972289C103600738687 /* FoodTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTableDataSource.swift; sourceTree = "<group>"; };
 		71FA9974289C108E00738687 /* FoodTableAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTableAll.swift; sourceTree = "<group>"; };
 		71FA9976289C113A00738687 /* SearchTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableDataSource.swift; sourceTree = "<group>"; };
 		71FA9978289C11A900738687 /* SearchTableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableDelegate.swift; sourceTree = "<group>"; };
 		71FA997C289C125F00738687 /* SearchVCBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVCBar.swift; sourceTree = "<group>"; };
 		71FA997E289C130800738687 /* AddedFoodTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedFoodTable.swift; sourceTree = "<group>"; };
 		71FBAF8A27B2D76C007691C9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		71FBFD1428A3CF01008B6580 /* StoreUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreUser.swift; sourceTree = "<group>"; };
+		71FBFD1628A3DD84008B6580 /* GetUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUser.swift; sourceTree = "<group>"; };
+		71FBFD1A28A68A03008B6580 /* RemoveFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveFood.swift; sourceTree = "<group>"; };
 		71FE01DB2884FD6300DE4F4F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		71FE01DD2891FB8E00DE4F4F /* AddedFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedFoodViewController.swift; sourceTree = "<group>"; };
 		D01385B5483BF662D184D406 /* Pods-BeFitting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeFitting.release.xcconfig"; path = "Target Support Files/Pods-BeFitting/Pods-BeFitting.release.xcconfig"; sourceTree = "<group>"; };
@@ -165,7 +169,6 @@
 			children = (
 				71FA996C289C0EF100738687 /* MenuTableDataSource.swift */,
 				71FA996E289C0F4A00738687 /* MenuTableDelegate.swift */,
-				71FA9972289C103600738687 /* FoodTableDataSource.swift */,
 				71FA9974289C108E00738687 /* FoodTableAll.swift */,
 				71FA9976289C113A00738687 /* SearchTableDataSource.swift */,
 				71FA9978289C11A900738687 /* SearchTableDelegate.swift */,
@@ -178,7 +181,10 @@
 			isa = PBXGroup;
 			children = (
 				71BFA6C9289C4A58008174F8 /* GetFirebaseData.swift */,
-				71BFA6CB289C540E008174F8 /* StoreFirebaseData.swift */,
+				71BFA6CD289C577D008174F8 /* StoreFoodData.swift */,
+				71FBFD1428A3CF01008B6580 /* StoreUser.swift */,
+				71FBFD1628A3DD84008B6580 /* GetUser.swift */,
+				71FBFD1A28A68A03008B6580 /* RemoveFood.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -319,7 +325,6 @@
 			files = (
 				714519F727B24E93002CE911 /* WelcomeViewController.swift in Sources */,
 				71451A1027B25475002CE911 /* MenuViewController.swift in Sources */,
-				71BFA6CC289C540E008174F8 /* StoreFirebaseData.swift in Sources */,
 				71FA9968289BEE1700738687 /* FoodCalculation.swift in Sources */,
 				71FA996F289C0F4A00738687 /* MenuTableDelegate.swift in Sources */,
 				714519F327B24E93002CE911 /* AppDelegate.swift in Sources */,
@@ -330,6 +335,7 @@
 				71FE01DE2891FB8E00DE4F4F /* AddedFoodViewController.swift in Sources */,
 				71BFA6CA289C4A58008174F8 /* GetFirebaseData.swift in Sources */,
 				71FA997D289C125F00738687 /* SearchVCBar.swift in Sources */,
+				71BFA6CE289C577D008174F8 /* StoreFoodData.swift in Sources */,
 				71FA9971289C0FA800738687 /* PassingFood.swift in Sources */,
 				71451A0E27B25450002CE911 /* LoginViewController.swift in Sources */,
 				71F3B9E427E8D7CA00544E0F /* FoodViewController.swift in Sources */,
@@ -339,7 +345,9 @@
 				71FE01DC2884FD6300DE4F4F /* SearchViewController.swift in Sources */,
 				71FA9979289C11A900738687 /* SearchTableDelegate.swift in Sources */,
 				71451A0C27B25420002CE911 /* RegisterViewController.swift in Sources */,
-				71FA9973289C103600738687 /* FoodTableDataSource.swift in Sources */,
+				71FBFD1528A3CF01008B6580 /* StoreUser.swift in Sources */,
+				71FBFD1B28A68A03008B6580 /* RemoveFood.swift in Sources */,
+				71FBFD1728A3DD84008B6580 /* GetUser.swift in Sources */,
 				71FA997F289C130800738687 /* AddedFoodTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

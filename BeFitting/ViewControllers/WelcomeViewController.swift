@@ -14,10 +14,10 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBAction func toRegisterScreenButton(_ sender: UIButton) {
     
-      
-        
     }
+    
     @IBAction func toLoginScreenButton(_ sender: UIButton) {
+        
         
     }
     

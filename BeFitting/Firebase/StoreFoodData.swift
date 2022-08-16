@@ -1,5 +1,5 @@
 //
-//  StoreFirebaseData.swift
+//  StoreFoodData.swift
 //  BeFitting
 //
 //  Created by Milos Pavlovic on 8/4/22.
@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-struct StoreData {
+struct StoreFoodData {
     let db = Firestore.firestore()
     
     func storeFood(food: FoodLog) {

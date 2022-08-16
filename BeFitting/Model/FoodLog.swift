@@ -17,6 +17,7 @@ struct FoodLog {
     var carbs: String
     var fats: String
     var counter: Int
+    
 
     
     init(name: String, calories: String, measurement: String, quantity: String, protein: String, carbs: String, fats: String, counter: Int) {

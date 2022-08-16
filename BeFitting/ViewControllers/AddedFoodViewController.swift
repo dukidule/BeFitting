@@ -43,8 +43,10 @@ class AddedFoodViewController: UIViewController {
     var foodDelegate: PassingFood!
     var measurements: [String] = [("g"), ("Oz")]
     var food: FoodLog = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)
-    var foodCalculator: FoodCalculation = FoodCalculation()
+    var foodCalculator = FoodCalculation()
     var otherFood: FoodLog = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)
+    var storeUser = StoreUser()
+    
     @IBAction func textFieldDidChange(_ sender: UITextField) {
         let userInput = (Int(quantityTextField.text ?? "Prop'o") ) ?? 0
         otherFood = foodCalculator.calculatefood(food: food, measurement: food.measurement, quantity: userInput)
@@ -58,13 +60,16 @@ class AddedFoodViewController: UIViewController {
     }
     
     
+    
     @IBAction func addFoodButtonTapped(_ sender: UIButton) {
        print("Ovde pucam \(food)")
         print(tableId)
         food = otherFood
         
+        
 //        foodCalculator?.calculatefood(food: food, measurement: food.measurement, quantity:)
         food.quantity = quantityTextField.text ?? ""
+        storeUser.storeUser(food: food, id: tableId)
         print(food)
         
         foodDelegate.passFood(food: food, id: tableId)
