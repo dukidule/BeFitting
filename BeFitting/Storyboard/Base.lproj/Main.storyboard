@@ -1409,7 +1409,6 @@
         <image name="square.and.arrow.up.fill" catalog="system" width="56" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cjt-QQ-uS5"/>
         <segue reference="lCf-py-WNl"/>
     </inferredMetricsTieBreakers>
 </document>

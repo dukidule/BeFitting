@@ -36,7 +36,8 @@ struct StoreUser {
                 "carbs" : food.carbs,
                 "fats" : food.fats,
                 "quantity" : food.quantity,
-                "identifier" : user
+                "identifier" : user,
+                "date" : food.date
             ])
             
             

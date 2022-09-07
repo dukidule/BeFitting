@@ -48,37 +48,14 @@ class MenuViewController: UIViewController {
     @IBAction func changingDate(_ sender: UIStepper) {
         dateSelection = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!.date(byAdding: .day, value: Int(sender.value), to: NSDate() as Date, options: []) as NSDate?
         dateLabel.text = dateSelection.formatted
-        
-        fetchUser.currentDate = dateLabel.text!
-        fetchUser.getUser(id: "breakfastTable")
-        fetchUser.getUser(id: "lunchTable")
-        fetchUser.getUser(id: "dinnerTable")
-        fetchUser.getUser(id: "snacksTable")
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)){
-            self.breakfastFoodLogs = self.fetchUser.breakfast
-            self.lunchFoodLogs = self.fetchUser.lunch
-            self.dinnerFoodLogs = self.fetchUser.dinner
-            self.snacksFoodLogs = self.fetchUser.snacks
-            
-            
-            self.breakfastFoodLogs.append(self.defaultFood)
-            self.lunchFoodLogs.append(self.defaultFood)
-            self.dinnerFoodLogs.append(self.defaultFood)
-            self.snacksFoodLogs.append(self.defaultFood)
-            
-            self.breakfastTableView.reloadData()
-            self.lunchTableView.reloadData()
-            self.dinnerTableView.reloadData()
-            self.snacksTableView.reloadData()
-                    
-        }
-        
+        fetchData()
     }
     
     @IBAction func unwind(_ seg: UIStoryboardSegue) {
         
     }
     var dateSelection: NSDate!
+    var currentDate = ""
     var cellIDForTable = "breakfastTable"
     //FoodLog arrays
     var breakfastFoodLogs: [FoodLog] = [
@@ -103,6 +80,8 @@ class MenuViewController: UIViewController {
         
         dateSelection = NSDate()
         dateLabel.text = dateSelection.formatted
+        
+        fetchData()
         
         breakfastTableView.reloadData()
         lunchTableView.reloadData()
@@ -131,6 +110,8 @@ class MenuViewController: UIViewController {
         menuButton.layer.cornerRadius = menuButton.frame.height * 0.5
         menuButton.layer.masksToBounds = true
         
+
+        
     }
     @IBAction func menuButtonPressed(_ sender: UIButton) {
 //        let selectionVc = storyboard?.instantiateViewController(identifier: K.toSearchVCId) as! SearchViewController
@@ -139,13 +120,13 @@ class MenuViewController: UIViewController {
 //        storeUser.storeUser(food: defaultFood, id: cellIDForTable)
         
         
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
         print("Test" + "\(cellIDForTable)")
-        
+       DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(550)){
+           self.fetchData()
+       }
         
     }
 //    func isBreakfastTable() {
@@ -159,6 +140,38 @@ class MenuViewController: UIViewController {
         super.viewDidAppear(animated)
         print("69 + \(lunchFoodLogs)")
         print("Test" + "\(cellIDForTable)")
+    }
+    
+    func fetchData() {
+        
+        fetchUser.currentDate = dateLabel.text!
+        print("SediDole2 \(fetchUser.currentDate)")
+        fetchUser.getUser(id: "breakfastTable")
+        fetchUser.getUser(id: "lunchTable")
+        fetchUser.getUser(id: "dinnerTable")
+        fetchUser.getUser(id: "snacksTable")
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)){
+            self.breakfastFoodLogs = self.fetchUser.breakfast
+            self.lunchFoodLogs = self.fetchUser.lunch
+            self.dinnerFoodLogs = self.fetchUser.dinner
+            self.snacksFoodLogs = self.fetchUser.snacks
+            
+            print("Degustacija1 \(self.breakfastFoodLogs)")
+            print("degustacija2 \(self.lunchFoodLogs)")
+            
+            
+            self.breakfastFoodLogs.append(self.defaultFood)
+            self.lunchFoodLogs.append(self.defaultFood)
+            self.dinnerFoodLogs.append(self.defaultFood)
+            self.snacksFoodLogs.append(self.defaultFood)
+            
+            self.breakfastTableView.reloadData()
+            self.lunchTableView.reloadData()
+            self.dinnerTableView.reloadData()
+            self.snacksTableView.reloadData()
+            
+            self.currentDate = self.dateLabel.text!
+    }
     }
 }
 

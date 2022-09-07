@@ -46,7 +46,7 @@ class AddedFoodViewController: UIViewController {
     var foodCalculator = FoodCalculation()
     var otherFood: FoodLog = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)
     var storeUser = StoreUser()
-    
+    var removeFood = RemoveFood()
     @IBAction func textFieldDidChange(_ sender: UITextField) {
         let userInput = (Int(quantityTextField.text ?? "Prop'o") ) ?? 0
         otherFood = foodCalculator.calculatefood(food: food, measurement: food.measurement, quantity: userInput)
@@ -65,10 +65,13 @@ class AddedFoodViewController: UIViewController {
        print("Ovde pucam \(food)")
         print(tableId)
         food = otherFood
+        let date = Date()
+        let date2 = "\(date)"
         
         
 //        foodCalculator?.calculatefood(food: food, measurement: food.measurement, quantity:)
         food.quantity = quantityTextField.text ?? ""
+        food.date = date2
         storeUser.storeUser(food: food, id: tableId)
         print(food)
         
@@ -77,6 +80,9 @@ class AddedFoodViewController: UIViewController {
         
     }
     @IBAction func removeFoodButtonTapped(_ sender: UIButton) {
+        let date = Date()
+        let date2 = "\(date)"
+        removeFood.removeFood(date: date2, id: tableId)
         foodDelegate.removeFood(id: tableId)
         performSegue(withIdentifier: "toMenuVc", sender: self)
     }
