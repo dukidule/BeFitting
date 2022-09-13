@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import Foundation
 
 class AddedFoodViewController: UIViewController {
     
@@ -42,19 +43,19 @@ class AddedFoodViewController: UIViewController {
     var tableId = ""
     var foodDelegate: PassingFood!
     var measurements: [String] = [("g"), ("Oz")]
-    var food: FoodLog = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)
+    var food: FoodLog = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0, date: "", dateInSeconds: 0)
     var foodCalculator = FoodCalculation()
-    var otherFood: FoodLog = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)
+    var otherFood: FoodLog = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0, date: "", dateInSeconds: 0)
     var storeUser = StoreUser()
     var removeFood = RemoveFood()
     @IBAction func textFieldDidChange(_ sender: UITextField) {
         let userInput = (Int(quantityTextField.text ?? "Prop'o") ) ?? 0
         otherFood = foodCalculator.calculatefood(food: food, measurement: food.measurement, quantity: userInput)
-        
         caloriesTextField.text = otherFood.calories + "cal"
         proteinTextField.text = otherFood.protein
         fatsTextFIeld.text = otherFood.fats
         carbsTextField.text = otherFood.carbs
+        otherFood.date = food.date
         
         print("5555 \(otherFood), \(userInput)")
     }
@@ -65,14 +66,19 @@ class AddedFoodViewController: UIViewController {
        print("Ovde pucam \(food)")
         print(tableId)
         food = otherFood
-        let date = Date()
-        let date2 = "\(date)"
+        let currentTime = Date().timeIntervalSinceReferenceDate
+        
+        food.dateInSeconds = currentTime
+        print("ni ni ni\(currentTime)")
+//        let date = Date()
+//        let date2 = "\(date)"
         
         
 //        foodCalculator?.calculatefood(food: food, measurement: food.measurement, quantity:)
         food.quantity = quantityTextField.text ?? ""
-        food.date = date2
-        storeUser.storeUser(food: food, id: tableId)
+        print ("salamica damica \(food.date)")
+//        food.date = date2
+        storeUser.storeUser(food: food, id: tableId, currentDate: food.date)
         print(food)
         
         foodDelegate.passFood(food: food, id: tableId)
@@ -80,14 +86,14 @@ class AddedFoodViewController: UIViewController {
         
     }
     @IBAction func removeFoodButtonTapped(_ sender: UIButton) {
-        let date = Date()
-        let date2 = "\(date)"
-        removeFood.removeFood(date: date2, id: tableId)
+        print("dama salama ")
+        removeFood.removeFood(food: food, date: removeFood.currentDate, id: tableId)
         foodDelegate.removeFood(id: tableId)
         performSegue(withIdentifier: "toMenuVc", sender: self)
     }
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+        
     }
     @IBAction func showMeasurementsChoices(_ sender: UIButton) {
         if measurementsSelectionView.isHidden == false {
@@ -116,6 +122,7 @@ class AddedFoodViewController: UIViewController {
         
         quantitySelectionButton.setTitle("g", for: .normal
         )
+        print("salamica damica \(food.date)")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -128,5 +135,7 @@ class AddedFoodViewController: UIViewController {
         }
 
     }
+    
+    
     
 }

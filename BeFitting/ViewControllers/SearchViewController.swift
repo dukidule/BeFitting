@@ -63,17 +63,17 @@ class SearchViewController: UIViewController  {
     
     var passingFoodDelegate: PassingFood!
     var tableId = ""
-    var food: FoodLog = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)
+    var food: FoodLog = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0, date: "", dateInSeconds: 0)
     
     
     
     
-    var foodsHistory: [FoodLog] = [FoodLog(name: "Braon sladoled", calories: "243", measurement: "g", quantity: "200", protein: "123", carbs: "255", fats: "243", counter: 0)]
+    var foodsHistory: [FoodLog] = [FoodLog(name: "Braon sladoled", calories: "243", measurement: "g", quantity: "200", protein: "123", carbs: "255", fats: "243", counter: 0, date: "", dateInSeconds: 0)]
     var searchedFoodsHistory: [FoodLog] = []
     let db = Firestore.firestore()
     var counting = 0
     var myFoods: [FoodLog] = []
-    var selectedFood: FoodLog = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)
+    var selectedFood: FoodLog = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0, date: "", dateInSeconds: 0)
     //    var lettersCounter = 0
     
     override func viewDidLoad() {

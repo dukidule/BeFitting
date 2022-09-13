@@ -52,9 +52,9 @@ class FoodViewController: UIViewController {
     var measurements: [String] = [("g"), ("Oz")]
     var passingFoodDelegate: PassingFood!
     var tableId = ""
-    var food = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)
+    var food = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0, date: "", dateInSeconds: 0)
     var storingFood = StoreFoodData()
-    
+    var foodRemoval = RemoveFood()
     //Button Actions
     @IBAction func saveButtonClicked(_ sender: UIButton) {
         if food.measurement == "" {
@@ -89,7 +89,6 @@ class FoodViewController: UIViewController {
     }
     
     @IBAction func removeButtonClicked(_ sender: UIButton) {
-        //        passingFoodDelegate.removeFood(id: tableId)
         self.dismiss(animated: true, completion: nil)
     }
     

@@ -20,6 +20,7 @@ extension MenuViewController: UITableViewDelegate {
                 selectionVc.passingFoodDelegate = self
                 selectionVc.tableId = cellIDForTable
                 selectionVc.food = breakfastFoodLogs[currentIndex!]
+                selectionVc.selectedFood.date = currentDate
                 present(selectionVc, animated: true, completion: nil)
                 }
                 else if breakfastFoodLogs[indexPath.row].name != "" {
@@ -40,6 +41,7 @@ extension MenuViewController: UITableViewDelegate {
                     selectionVc.passingFoodDelegate = self
                     selectionVc.tableId = cellIDForTable
                     selectionVc.food = breakfastFoodLogs[currentIndex!]
+                    selectionVc.selectedFood.date = currentDate
                     present(selectionVc, animated: true, completion: nil)
                     } else if breakfastFoodLogs[indexPath.row].name != "" {
                         let selectionVc = storyboard?.instantiateViewController(withIdentifier: "addedFoodViewController") as! AddedFoodViewController
@@ -62,6 +64,7 @@ extension MenuViewController: UITableViewDelegate {
                 selectionVc.passingFoodDelegate = self
                 selectionVc.tableId = cellIDForTable
                 selectionVc.food = lunchFoodLogs[currentIndex!]
+                selectionVc.selectedFood.date = currentDate
                 present(selectionVc, animated: true, completion: nil)
                 }
                 else if lunchFoodLogs[indexPath.row].name != "" {
@@ -69,6 +72,7 @@ extension MenuViewController: UITableViewDelegate {
                     selectionVc.foodDelegate = self
                     selectionVc.tableId = cellIDForTable
                     selectionVc.food = lunchFoodLogs[currentIndex!]
+                    selectionVc.removeFood.currentDate = currentDate
                     present(selectionVc, animated: true, completion: nil)
                 }
             } else {
@@ -81,13 +85,14 @@ extension MenuViewController: UITableViewDelegate {
                     selectionVc.passingFoodDelegate = self
                     selectionVc.tableId = cellIDForTable
                     selectionVc.food = lunchFoodLogs[currentIndex!]
-                    
+                    selectionVc.selectedFood.date = currentDate
                     present(selectionVc, animated: true, completion: nil)
                     } else if lunchFoodLogs[indexPath.row].name != "" {
                         let selectionVc = storyboard?.instantiateViewController(withIdentifier: "addedFoodViewController") as! AddedFoodViewController
                         selectionVc.foodDelegate = self
                         selectionVc.tableId = cellIDForTable
                         selectionVc.food = lunchFoodLogs[currentIndex!]
+                        selectionVc.removeFood.currentDate = currentDate
                         present(selectionVc, animated: true, completion: nil)
                     }
                 }
@@ -103,6 +108,7 @@ extension MenuViewController: UITableViewDelegate {
             selectionVc.passingFoodDelegate = self
             selectionVc.tableId = cellIDForTable
             selectionVc.food = dinnerFoodLogs[currentIndex!]
+            selectionVc.selectedFood.date = currentDate
             present(selectionVc, animated: true, completion: nil)
             
             }
@@ -111,6 +117,7 @@ extension MenuViewController: UITableViewDelegate {
                 selectionVc.foodDelegate = self
                 selectionVc.tableId = cellIDForTable
                 selectionVc.food = dinnerFoodLogs[currentIndex!]
+                selectionVc.removeFood.currentDate = currentDate
                 present(selectionVc, animated: true, completion: nil)
             }
         } else {
@@ -123,7 +130,7 @@ extension MenuViewController: UITableViewDelegate {
                 selectionVc.passingFoodDelegate = self
                 selectionVc.tableId = cellIDForTable
                 selectionVc.food = dinnerFoodLogs[currentIndex!]
-                
+                selectionVc.selectedFood.date = currentDate
                 present(selectionVc, animated: true, completion: nil)
                 
                 } else if dinnerFoodLogs[indexPath.row].name != "" {
@@ -131,6 +138,7 @@ extension MenuViewController: UITableViewDelegate {
                     selectionVc.foodDelegate = self
                     selectionVc.tableId = cellIDForTable
                     selectionVc.food = dinnerFoodLogs[currentIndex!]
+                    selectionVc.removeFood.currentDate = currentDate
                     present(selectionVc, animated: true, completion: nil)
                 }
             }
@@ -147,6 +155,7 @@ extension MenuViewController: UITableViewDelegate {
                 selectionVc.passingFoodDelegate = self
                 selectionVc.tableId = cellIDForTable
                 selectionVc.food = snacksFoodLogs[currentIndex!]
+                selectionVc.selectedFood.date = currentDate
                 present(selectionVc, animated: true, completion: nil)
                 }
                 else if snacksFoodLogs[indexPath.row].name != "" {
@@ -154,6 +163,7 @@ extension MenuViewController: UITableViewDelegate {
                     selectionVc.foodDelegate = self
                     selectionVc.tableId = cellIDForTable
                     selectionVc.food = snacksFoodLogs[currentIndex!]
+                    selectionVc.removeFood.currentDate = currentDate
                     present(selectionVc, animated: true, completion: nil)
                 }
             } else {
@@ -166,13 +176,14 @@ extension MenuViewController: UITableViewDelegate {
                     selectionVc.passingFoodDelegate = self
                     selectionVc.tableId = cellIDForTable
                     selectionVc.food = snacksFoodLogs[currentIndex!]
-                    
+                    selectionVc.selectedFood.date = currentDate
                     present(selectionVc, animated: true, completion: nil)
                     } else if snacksFoodLogs[indexPath.row].name != "" {
                         let selectionVc = storyboard?.instantiateViewController(withIdentifier: "addedFoodViewController") as! AddedFoodViewController
                         selectionVc.foodDelegate = self
                         selectionVc.tableId = cellIDForTable
                         selectionVc.food = snacksFoodLogs[currentIndex!]
+                        selectionVc.removeFood.currentDate = currentDate
                         present(selectionVc, animated: true, completion: nil)
                     }
 

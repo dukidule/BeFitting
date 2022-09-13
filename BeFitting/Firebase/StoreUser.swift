@@ -12,16 +12,17 @@ import Firebase
 struct StoreUser {
     let db = Firestore.firestore()
    
-    var currentDate: String {
-        let myTime = Date()
-        let formater = DateFormatter()
-        formater.dateFormat = "dd.MM.yyyy."
-        return formater.string(from: myTime)
-    }
+//    var currentDate: String {
+//        let myTime = Date()
+//        let formater = DateFormatter()
+//        formater.dateFormat = "dd.MM.yyyy."
+//        return formater.string(from: myTime)
+//    }
     
-    mutating func storeUser(food: FoodLog, id: String) {
+    mutating func storeUser(food: FoodLog, id: String, currentDate: String) {
         if (Auth.auth().currentUser?.email != nil) {
             let user = (Auth.auth().currentUser?.email!)!
+            
             
             
             db.collection("users").document(user).setData(["id" : user])
@@ -37,7 +38,8 @@ struct StoreUser {
                 "fats" : food.fats,
                 "quantity" : food.quantity,
                 "identifier" : user,
-                "date" : food.date
+                "date" : food.date,
+                "dateInSeconds" : food.dateInSeconds
             ])
             
             

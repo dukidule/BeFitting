@@ -30,7 +30,7 @@ class GetData {
                                 let quantityFoods = data[K.Fstore.quantity] as? String,
                                 let caloriesFoods = data[K.Fstore.calories] as? String,
                                 let proteinFoods = data[K.Fstore.protein] as? String, let carbsFoods = data[K.Fstore.carbs] as? String, let fatsFoods = data[K.Fstore.fats] as? String {
-                                let newFood = FoodLog(name: nameFoods, calories: caloriesFoods, measurement: measurementFoods, quantity: quantityFoods, protein: proteinFoods, carbs: carbsFoods, fats: fatsFoods, counter: 0)
+                                let newFood = FoodLog(name: nameFoods, calories: caloriesFoods, measurement: measurementFoods, quantity: quantityFoods, protein: proteinFoods, carbs: carbsFoods, fats: fatsFoods, counter: 0, date: "", dateInSeconds: 0)
                                 
                                 self.myFoods.append(newFood)
                             }
@@ -54,7 +54,7 @@ class GetData {
                             let quantityFoods = data[K.Fstore.quantity] as? String,
                             let caloriesFoods = data[K.Fstore.calories] as? String,
                             let proteinFoods = data[K.Fstore.protein] as? String, let carbsFoods = data[K.Fstore.carbs] as? String, let fatsFoods = data[K.Fstore.fats] as? String {
-                            let newFood = FoodLog(name: nameFoods, calories: caloriesFoods, measurement: measurementFoods, quantity: quantityFoods, protein: proteinFoods, carbs: carbsFoods, fats: fatsFoods, counter: 0)
+                            let newFood = FoodLog(name: nameFoods, calories: caloriesFoods, measurement: measurementFoods, quantity: quantityFoods, protein: proteinFoods, carbs: carbsFoods, fats: fatsFoods, counter: 0, date: "", dateInSeconds: 0)
                             
                             self.foodsHistory.append(newFood)
                             

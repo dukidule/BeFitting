@@ -9,7 +9,7 @@
 import Foundation
 
 struct FoodCalculation {
-    var finishedFood: FoodLog = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0)
+    var finishedFood: FoodLog = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0, date: "", dateInSeconds: 0)
     
     
     mutating func calculatefood (food: FoodLog, measurement: String, quantity: Int) -> FoodLog {

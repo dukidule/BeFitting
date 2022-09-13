@@ -34,8 +34,8 @@ class GetUser {
                         let measurementFoods = data["measurement"] as? String,
                         let quantityFoods = data["quantity"] as? String,
                         let caloriesFoods = data["calories"] as? String,
-                        let proteinFoods = data["protein"] as? String, let carbsFoods = data["carbs"] as? String, let fatsFoods = data["fats"] as? String {
-                        let currentFood: FoodLog = FoodLog(name: nameFoods, calories: caloriesFoods, measurement: measurementFoods, quantity: quantityFoods, protein: proteinFoods, carbs: carbsFoods, fats: fatsFoods, counter: 0)
+                        let proteinFoods = data["protein"] as? String, let carbsFoods = data["carbs"] as? String, let fatsFoods = data["fats"] as? String, let currentDate = data["date"] as? String, let dateInSeconds = data["dateInSeconds"] as? Double {
+                        let currentFood: FoodLog = FoodLog(name: nameFoods, calories: caloriesFoods, measurement: measurementFoods, quantity: quantityFoods, protein: proteinFoods, carbs: carbsFoods, fats: fatsFoods, counter: 0, date: currentDate, dateInSeconds: dateInSeconds)
                         print("OvdePucamHehe\(currentFood)")
                         if id == "breakfastTable" {
                             self.breakfast.append(currentFood)

@@ -14,7 +14,7 @@ struct RemoveFood {
     var currentDate = "" 
     var id: String = ""
     
-    func removeFood(date: String, id: String) {
+    func removeFood(food: FoodLog, date: String, id: String) {
         if let currentUser = Auth.auth().currentUser?.email {
             
             db.collection("users/\(currentUser)/date/\(currentDate)/\(id)").getDocuments() { (querySnapshot, error) in
@@ -23,14 +23,21 @@ struct RemoveFood {
                 } else {
                     for document in querySnapshot!.documents {
                         let data = document.data()
-                        if let test = data["date"] as? String {
-                            print(test)
-                        if date == test  {
-                           let identifier = "\(document.documentID)"
-                            print("lalalala \(identifier)")
-                            self.db.collection("users/\(currentUser)/date/\(self.currentDate)/\(id)").document("\(identifier)").delete()
+                        let identifier = "\(document.documentID)"
+                        print("lalalala \(identifier)")
+                        if let test = data["dateInSeconds"] as? Double {
+                            if test == food.dateInSeconds {
+                                self.db.collection("users/\(currentUser)/date/\(self.currentDate)/\(id)").document("\(identifier)").delete()
+                            }
                         }
-                        }
+//                        if let test2 = data["date"] as? String {
+//                            print(test2)
+//                        if date == test2  {
+//                           let identifier = "\(document.documentID)"
+//                            print("lalalala \(identifier)")
+//                            self.db.collection("users/\(currentUser)/date/\(self.currentDate)/\(id)").document("\(identifier)").delete()
+//                        }
+//                        }
                     }
                 }
             }
