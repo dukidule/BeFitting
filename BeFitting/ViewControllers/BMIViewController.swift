@@ -37,6 +37,7 @@ class BMIViewController: UIViewController {
         }
     }
     @IBAction func okButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     

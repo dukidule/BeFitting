@@ -43,7 +43,7 @@ class SearchViewController: UIViewController  {
     @IBAction func allButtonPressed(_ sender: UIButton) {
         grabbingData.getFoods()
         foodsHistory = grabbingData.foodsHistory
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(400)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(550)) {
             self.searchData()
         }
         

@@ -24,6 +24,7 @@
 		71AE7F6628DF21B500FFDA93 /* BMRBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AE7F6528DF21B500FFDA93 /* BMRBrain.swift */; };
 		71AE7F6828DF21D400FFDA93 /* BMIBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AE7F6728DF21D400FFDA93 /* BMIBrain.swift */; };
 		71AE7F6A28DF24CE00FFDA93 /* BMIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AE7F6928DF24CE00FFDA93 /* BMIViewController.swift */; };
+		71AE7F6C28DF4E6200FFDA93 /* BMRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AE7F6B28DF4E6200FFDA93 /* BMRViewController.swift */; };
 		71BFA6CA289C4A58008174F8 /* GetFirebaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BFA6C9289C4A58008174F8 /* GetFirebaseData.swift */; };
 		71BFA6CE289C577D008174F8 /* StoreFoodData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BFA6CD289C577D008174F8 /* StoreFoodData.swift */; };
 		71F3B9E427E8D7CA00544E0F /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F3B9E327E8D7CA00544E0F /* FoodViewController.swift */; };
@@ -65,6 +66,7 @@
 		71AE7F6528DF21B500FFDA93 /* BMRBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMRBrain.swift; sourceTree = "<group>"; };
 		71AE7F6728DF21D400FFDA93 /* BMIBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMIBrain.swift; sourceTree = "<group>"; };
 		71AE7F6928DF24CE00FFDA93 /* BMIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMIViewController.swift; sourceTree = "<group>"; };
+		71AE7F6B28DF4E6200FFDA93 /* BMRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMRViewController.swift; sourceTree = "<group>"; };
 		71BFA6C9289C4A58008174F8 /* GetFirebaseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFirebaseData.swift; sourceTree = "<group>"; };
 		71BFA6CD289C577D008174F8 /* StoreFoodData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFoodData.swift; sourceTree = "<group>"; };
 		71F3B9E327E8D7CA00544E0F /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				71FE01DB2884FD6300DE4F4F /* SearchViewController.swift */,
 				71FE01DD2891FB8E00DE4F4F /* AddedFoodViewController.swift */,
 				71AE7F6928DF24CE00FFDA93 /* BMIViewController.swift */,
+				71AE7F6B28DF4E6200FFDA93 /* BMRViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				71451A0E27B25450002CE911 /* LoginViewController.swift in Sources */,
 				71F3B9E427E8D7CA00544E0F /* FoodViewController.swift in Sources */,
 				71FA9975289C108E00738687 /* FoodTableAll.swift in Sources */,
+				71AE7F6C28DF4E6200FFDA93 /* BMRViewController.swift in Sources */,
 				71AE7F6828DF21D400FFDA93 /* BMIBrain.swift in Sources */,
 				7105D9FC27DBB30B0062497C /* FoodLogCell.swift in Sources */,
 				718A7FCA27D225CF00D06D3C /* FoodLog.swift in Sources */,

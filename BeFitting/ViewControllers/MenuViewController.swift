@@ -35,6 +35,10 @@ class MenuViewController: UIViewController {
     
     //MenuButtonOutlet
     @IBOutlet weak var menuButton: UIButton!
+    //MenuClickedView
+    @IBOutlet weak var menuView: UIView!
+    @IBOutlet weak var toBmiCalcButton: UIButton!
+    @IBOutlet weak var toBmrCalcButton: UIButton!
     
     //ConfirmationPopUp Outlets
     
@@ -79,7 +83,7 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //Date
-        
+        menuView.isHidden = true
         dateSelection = NSDate()
         dateLabel.text = dateSelection.formatted
         
@@ -117,7 +121,11 @@ class MenuViewController: UIViewController {
     }
     @IBAction func menuButtonPressed(_ sender: UIButton) {
 //        performSegue(withIdentifier: "toBmiViewController", sender: self)
-        
+        if menuView.isHidden == true {
+            menuView.isHidden = false
+        } else {
+            menuView.isHidden = true
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)

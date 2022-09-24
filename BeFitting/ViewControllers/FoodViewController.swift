@@ -29,6 +29,7 @@ class FoodViewController: UIViewController {
     @IBOutlet weak var proteinLabel: UILabel!
     @IBOutlet weak var carbsLabel: UILabel!
     @IBOutlet weak var fatsLabel: UILabel!
+    @IBOutlet weak var popUpLabel: UILabel!
     
     //TextFields
     @IBOutlet weak var nameTextField: UITextField!
@@ -69,7 +70,7 @@ class FoodViewController: UIViewController {
             food.fats = fatsTextField.text ?? ""
             storingFood.storeFood(food: food)
             self.dismiss(animated: true, completion: nil)
-        } else {
+        } else if missingParameters() == false {
             contentView.alpha = 0.5
             contentView.isUserInteractionEnabled = false
             popUpView.isHidden = false
@@ -159,25 +160,25 @@ class FoodViewController: UIViewController {
         case 0:
             return true
         case 1:
-            print("Food name field is necessary.")
+            popUpLabel.text = "Food name field is necessary"
             return false
         case 2:
-            print("Food quantity field is necessary.")
+            popUpLabel.text = "Food quantity field is necessary."
             return false
         case 3:
-            print("Food name and quantity fields are necessary.")
+            popUpLabel.text = "Food name and quantity fields are necessary."
             return false
         case 5:
-            print("Calories field is necessary.")
+            popUpLabel.text = "Calories field is necessary."
             return false
         case 6:
-            print("Food name and calories fields are necessary.")
+            popUpLabel.text = "Food name and calories fields are necessary."
             return false
         case 7:
-            print("Food quantity and calories fields are necessary")
+            popUpLabel.text = "Food quantity and calories fields are necessary"
             return false
         case 8:
-            print("Food name, quantity and calories fields are necessary.")
+            popUpLabel.text = "Food name, quantity and calories fields are necessary."
             return false
         default:
             print("You f'd up mate..")
