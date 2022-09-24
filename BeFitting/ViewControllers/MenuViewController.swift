@@ -40,6 +40,8 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var toBmiCalcButton: UIButton!
     @IBOutlet weak var toBmrCalcButton: UIButton!
     
+    @IBOutlet weak var backButton: UIButton!
+    
     //ConfirmationPopUp Outlets
     
     @IBOutlet weak var confirmationPopUp: UIView!
@@ -57,9 +59,11 @@ class MenuViewController: UIViewController {
         print("salama dama \(currentDate)")
     }
     
-    @IBAction func unwind(_ seg: UIStoryboardSegue) {
-        
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
+    
+   
     var dateSelection: NSDate!
     var currentDate = ""
     var cellIDForTable = "breakfastTable"
