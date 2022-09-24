@@ -34,6 +34,8 @@ class BMIViewController: UIViewController {
             let bmiResult = bmi.calculateBMI(weight: weightTextField.text!, height: heightTextField.text!)
             bmiLabel.text = "Your current BMI is: \(bmiResult)"
             
+        } else {
+            bmiLabel.text = "All fields must be filled to generate result."
         }
     }
     @IBAction func okButtonPressed(_ sender: Any) {
