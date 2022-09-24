@@ -116,10 +116,8 @@ class MenuViewController: UIViewController {
         
     }
     @IBAction func menuButtonPressed(_ sender: UIButton) {
-//        let selectionVc = storyboard?.instantiateViewController(identifier: K.toSearchVCId) as! SearchViewController
-//        present(selectionVc, animated: true, completion: nil)
+//        performSegue(withIdentifier: "toBmiViewController", sender: self)
         
-//        storeUser.storeUser(food: defaultFood, id: cellIDForTable)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
