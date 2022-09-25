@@ -46,7 +46,7 @@ class BmrViewController: UIViewController {
             femaleButton.isSelected = true
             maleButton.isSelected = false
         } else {
-            maleButton.isSelected = false
+            femaleButton.isSelected = false
         }
     }
     var sexChoice = ""
