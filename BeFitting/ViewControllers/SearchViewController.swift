@@ -42,8 +42,8 @@ class SearchViewController: UIViewController  {
     
     @IBAction func allButtonPressed(_ sender: UIButton) {
         grabbingData.getFoods()
-        foodsHistory = grabbingData.foodsHistory
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(550)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(400)) {
+            self.foodsHistory = self.grabbingData.foodsHistory
             self.searchData()
         }
         
@@ -65,10 +65,12 @@ class SearchViewController: UIViewController  {
     var tableId = ""
     var food: FoodLog = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0, date: "", dateInSeconds: 0)
     
+    func unwind() {
+        
+    }
     
     
-    
-    var foodsHistory: [FoodLog] = [FoodLog(name: "Braon sladoled", calories: "243", measurement: "g", quantity: "200", protein: "123", carbs: "255", fats: "243", counter: 0, date: "", dateInSeconds: 0)]
+    var foodsHistory: [FoodLog] = []
     var searchedFoodsHistory: [FoodLog] = []
     let db = Firestore.firestore()
     var counting = 0
@@ -79,6 +81,12 @@ class SearchViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         //        getFoods()
+        grabbingData.getMyFoods()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(400)) {
+            self.foodsHistory = self.grabbingData.myFoods
+            self.searchData()
+        }
+        
         searchBar.delegate = self
         historyTableView.delegate = self
         historyTableView.dataSource = self

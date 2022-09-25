@@ -58,7 +58,9 @@ class MenuViewController: UIViewController {
         currentDate = dateLabel.text!
         print("salama dama \(currentDate)")
     }
-    
+    @IBAction func unwind(_ seg: UIStoryboardSegue) {
+        
+    }
     @IBAction func backButtonTapped(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }

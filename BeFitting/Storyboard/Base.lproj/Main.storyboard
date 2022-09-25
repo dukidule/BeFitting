@@ -1680,6 +1680,7 @@
                                                 <connections>
                                                     <action selector="addFoodButtonTapped:" destination="yfp-WW-pNi" eventType="touchUpInside" id="K69-el-9X6"/>
                                                     <action selector="saveButtonClicked:" destination="cX5-DD-2sE" eventType="touchUpInside" id="8VV-gg-l3v"/>
+                                                    <segue destination="sYO-PP-fJH" kind="unwind" identifier="toMenuVc" unwindAction="unwind:" id="BBb-4F-C6O"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VSD-5h-CN0" userLabel="Remove Button">
@@ -1881,7 +1882,6 @@
                         <outlet property="quantitySelectionButton" destination="dHK-t9-RFG" id="mHq-FA-k7r"/>
                         <outlet property="quantityTextField" destination="g94-jp-xGX" id="zmX-N6-SBf"/>
                         <outlet property="removeFoodButton" destination="VSD-5h-CN0" id="NUS-Ap-DEG"/>
-                        <segue destination="sYO-PP-fJH" kind="unwind" identifier="toMenuVc" unwindAction="unwind:" id="waP-Pf-xHF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dqv-aJ-EyF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

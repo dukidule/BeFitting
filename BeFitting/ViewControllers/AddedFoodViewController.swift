@@ -69,19 +69,15 @@ class AddedFoodViewController: UIViewController {
         let currentTime = Date().timeIntervalSinceReferenceDate
         
         food.dateInSeconds = currentTime
-        print("ni ni ni\(currentTime)")
-//        let date = Date()
-//        let date2 = "\(date)"
-        
-        
-//        foodCalculator?.calculatefood(food: food, measurement: food.measurement, quantity:)
+
+
         food.quantity = quantityTextField.text ?? ""
-        print ("salamica damica \(food.date)")
-//        food.date = date2
+        
         storeUser.storeUser(food: food, id: tableId, currentDate: food.date)
-        print(food)
+        
         
         foodDelegate.passFood(food: food, id: tableId)
+        
         performSegue(withIdentifier: "toMenuVc", sender: self)
         
     }
