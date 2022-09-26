@@ -16,6 +16,7 @@ class AddedFoodViewController: UIViewController {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var measurementsSelectionView: UIView!
+    @IBOutlet weak var popUpView: UIView!
     
     // Labels
     @IBOutlet weak var nameLabel: UILabel!
@@ -24,6 +25,7 @@ class AddedFoodViewController: UIViewController {
     @IBOutlet weak var proteinLabel: UILabel!
     @IBOutlet weak var carbsLabel: UILabel!
     @IBOutlet weak var fatsLabel: UILabel!
+    @IBOutlet weak var popUpLabel: UILabel!
     // Text Fields
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var quantityTextField: UITextField!
@@ -36,10 +38,15 @@ class AddedFoodViewController: UIViewController {
     @IBOutlet weak var addFoodButton: UIButton!
     @IBOutlet weak var removeFoodButton: UIButton!
     @IBOutlet weak var cancelFoodButton: UIButton!
-    //UITabeView
+    
+    @IBOutlet weak var okPopUpButton: UIButton!
     @IBOutlet weak var measurementsTableView: UITableView!
+    //UITabeView
     //ButtonActions
-   
+    @IBAction func okButtonPressed(_ sender: UIButton) {
+        popUpView.isHidden = true
+    }
+    
     var tableId = ""
     var foodDelegate: PassingFood!
     var measurements: [String] = [("g"), ("Oz")]
@@ -64,21 +71,20 @@ class AddedFoodViewController: UIViewController {
     
     @IBAction func addFoodButtonTapped(_ sender: UIButton) {
        print("Ovde pucam \(food)")
+        popUpView.isHidden = false
         print(tableId)
+        if quantityTextField.text == "" {
+            popUpView.isHidden = false
+            popUpLabel.text = "Please fill out the quantity field to proceed."
+        } else if quantityTextField.text!.count > 0 {
         food = otherFood
         let currentTime = Date().timeIntervalSinceReferenceDate
-        
         food.dateInSeconds = currentTime
-
-
         food.quantity = quantityTextField.text ?? ""
-        
         storeUser.storeUser(food: food, id: tableId, currentDate: food.date)
-        
-        
         foodDelegate.passFood(food: food, id: tableId)
-        
         performSegue(withIdentifier: "toMenuVc", sender: self)
+        }
         
     }
     @IBAction func removeFoodButtonTapped(_ sender: UIButton) {
@@ -104,8 +110,9 @@ class AddedFoodViewController: UIViewController {
         super.viewDidLoad()
         measurementsTableView.delegate = self
         measurementsTableView.dataSource = self
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         measurementsSelectionView.isHidden = true
+        popUpView.isHidden = true
         if food.measurement == "" {
                    food.measurement = "g"
                }

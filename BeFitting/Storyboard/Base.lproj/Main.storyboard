@@ -152,7 +152,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UiF-Qz-3eN">
-                                <rect key="frame" x="0.0" y="60" width="414" height="758"/>
+                                <rect key="frame" x="0.0" y="60" width="414" height="676"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hz9-zo-0mo" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="847"/>
@@ -449,7 +449,7 @@
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igd-yG-9VS">
-                                <rect key="frame" x="87" y="345" width="240" height="128"/>
+                                <rect key="frame" x="87" y="304" width="240" height="128"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Save food entries?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mh-85-m1u">
                                         <rect key="frame" x="14" y="14" width="210" height="61"/>
@@ -527,7 +527,6 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="oni-eV-LBo" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="p9G-QB-1pS" secondAttribute="trailing" constant="304" id="EaH-Qr-56q"/>
-                            <constraint firstItem="oni-eV-LBo" firstAttribute="bottom" secondItem="p9G-QB-1pS" secondAttribute="bottom" constant="758" id="Ezl-Pp-tNQ"/>
                             <constraint firstItem="iHN-yb-hST" firstAttribute="leading" secondItem="oni-eV-LBo" secondAttribute="leading" constant="10" id="IRq-x8-y1n"/>
                             <constraint firstItem="oni-eV-LBo" firstAttribute="trailing" secondItem="UiF-Qz-3eN" secondAttribute="trailing" id="KI9-VD-ftf"/>
                             <constraint firstItem="p9G-QB-1pS" firstAttribute="top" secondItem="oni-eV-LBo" secondAttribute="top" constant="10" id="PJk-Dr-6tg"/>
@@ -568,8 +567,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="meC-1S-mj3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="7Z8-9p-2qt" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1979.7101449275365" y="97.010869565217405"/>
+            <point key="canvasLocation" x="1978" y="97"/>
         </scene>
         <!--Food View Controller-->
         <scene sceneID="Rw0-6m-LrD">
@@ -1683,7 +1683,6 @@
                                                 <connections>
                                                     <action selector="addFoodButtonTapped:" destination="yfp-WW-pNi" eventType="touchUpInside" id="K69-el-9X6"/>
                                                     <action selector="saveButtonClicked:" destination="cX5-DD-2sE" eventType="touchUpInside" id="8VV-gg-l3v"/>
-                                                    <segue destination="sYO-PP-fJH" kind="unwind" identifier="toMenuVc" unwindAction="unwind:" id="BBb-4F-C6O"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VSD-5h-CN0" userLabel="Remove Button">
@@ -1823,6 +1822,39 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <view hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WVT-be-8Pf" userLabel="PopupView">
+                                <rect key="frame" x="87" y="304" width="240" height="128"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFs-OI-pHK">
+                                        <rect key="frame" x="105" y="90" width="30" height="30"/>
+                                        <state key="normal" title="Ok">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="okButtonPressed:" destination="yfp-WW-pNi" eventType="touchUpInside" id="WCh-LR-z4w"/>
+                                            <action selector="okPopUpButtonTapped:" destination="cX5-DD-2sE" eventType="touchUpInside" id="VbO-sQ-3Zu"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoK-1C-rkf">
+                                        <rect key="frame" x="20.666666666666671" y="13" width="199" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="0.41050406678082191" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="hFs-OI-pHK" secondAttribute="bottom" constant="8" id="9iG-Xi-AvA"/>
+                                    <constraint firstAttribute="width" constant="240" id="Iiu-yd-k3W"/>
+                                    <constraint firstItem="yoK-1C-rkf" firstAttribute="top" secondItem="WVT-be-8Pf" secondAttribute="top" constant="13" id="Och-MJ-v8u"/>
+                                    <constraint firstAttribute="height" constant="128" id="grf-7D-j1q"/>
+                                    <constraint firstAttribute="trailing" secondItem="hFs-OI-pHK" secondAttribute="trailing" constant="105" id="hEP-6A-1CB"/>
+                                    <constraint firstAttribute="trailing" secondItem="yoK-1C-rkf" secondAttribute="trailing" constant="20.5" id="lgp-aw-3hB"/>
+                                    <constraint firstItem="hFs-OI-pHK" firstAttribute="leading" secondItem="WVT-be-8Pf" secondAttribute="leading" constant="105" id="mG1-Pb-xig"/>
+                                    <constraint firstItem="yoK-1C-rkf" firstAttribute="leading" secondItem="WVT-be-8Pf" secondAttribute="leading" constant="20.5" id="rId-Ps-EkX"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="lYm-dm-edq"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.85356822927512688" green="0.69767045201901257" blue="0.50309660239326237" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1833,6 +1865,8 @@
                             <constraint firstItem="ljO-hS-8ga" firstAttribute="leading" secondItem="1RG-zT-v8b" secondAttribute="leading" constant="230" id="MVP-nw-rzA"/>
                             <constraint firstItem="ljO-hS-8ga" firstAttribute="top" secondItem="1RG-zT-v8b" secondAttribute="top" constant="64" id="Smm-r3-0wT"/>
                             <constraint firstItem="1RG-zT-v8b" firstAttribute="trailing" secondItem="ljO-hS-8ga" secondAttribute="trailing" constant="230" id="Zi6-eG-zEl"/>
+                            <constraint firstItem="WVT-be-8Pf" firstAttribute="centerX" secondItem="PR9-BI-vKd" secondAttribute="centerX" id="dy3-QY-9Yv"/>
+                            <constraint firstItem="WVT-be-8Pf" firstAttribute="centerY" secondItem="PR9-BI-vKd" secondAttribute="centerY" id="lFb-vp-Aua"/>
                             <constraint firstItem="1RG-zT-v8b" firstAttribute="bottom" secondItem="ljO-hS-8ga" secondAttribute="bottom" constant="28" id="qb9-Cf-tjT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1RG-zT-v8b"/>
@@ -1879,18 +1913,21 @@
                         <outlet property="measurementsTableView" destination="q3A-YI-arv" id="Zaj-gG-2JL"/>
                         <outlet property="nameLabel" destination="yOZ-Ao-zn6" id="pt2-yt-B9E"/>
                         <outlet property="nameTextField" destination="FW9-bE-cWW" id="lpd-Ua-LIS"/>
+                        <outlet property="okPopUpButton" destination="hFs-OI-pHK" id="bvT-lH-vr3"/>
+                        <outlet property="popUpLabel" destination="yoK-1C-rkf" id="UuL-uv-Xdy"/>
+                        <outlet property="popUpView" destination="WVT-be-8Pf" id="wvr-Hc-Sar"/>
                         <outlet property="proteinLabel" destination="3qn-pg-NO5" id="EaE-Ei-fc4"/>
                         <outlet property="proteinTextField" destination="pZd-B3-jW0" id="1i9-7G-paP"/>
                         <outlet property="quantityLabel" destination="ipO-DB-nDR" id="fHB-0u-gVV"/>
                         <outlet property="quantitySelectionButton" destination="dHK-t9-RFG" id="mHq-FA-k7r"/>
                         <outlet property="quantityTextField" destination="g94-jp-xGX" id="zmX-N6-SBf"/>
                         <outlet property="removeFoodButton" destination="VSD-5h-CN0" id="NUS-Ap-DEG"/>
+                        <segue destination="7Z8-9p-2qt" kind="unwind" identifier="toMenuVc" unwindAction="unwind:" id="9qV-o8-vqt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dqv-aJ-EyF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="sYO-PP-fJH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3070.9239130434785" y="-623.1884057971015"/>
+            <point key="canvasLocation" x="3069.5652173913045" y="-623.64130434782612"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="nYU-Fy-NKQ">
@@ -2021,6 +2058,6 @@
         <image name="Slika 2" width="612" height="612"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ean-va-SuW"/>
+        <segue reference="lCf-py-WNl"/>
     </inferredMetricsTieBreakers>
 </document>
