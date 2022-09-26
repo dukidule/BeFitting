@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginPasswordLabel: UILabel!
     @IBOutlet weak var loginPasswordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    
     @IBAction func login(_ sender: UIButton) {
         if let email = loginEmailTextField.text, let password = loginPasswordTextField.text {
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in

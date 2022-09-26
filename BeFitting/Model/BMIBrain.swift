@@ -14,12 +14,8 @@ struct BMIBrain {
     mutating func calculateBMI(weight: String, height: String) -> String {
         let weight2 = Double(weight)
         let height2 = Double(height)
-        print(weight2)
-        print(height2)
         let bmi = weight2! / ((height2! / 100) * (height2! / 100))
-        print(bmi)
         let formattedBmi = String(format: "%.2f", bmi)
-        print(formattedBmi)
         return formattedBmi
     }
 }

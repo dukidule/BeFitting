@@ -26,8 +26,8 @@ class BMIViewController: UIViewController {
     @IBOutlet weak var calculateButton: UIButton!
     @IBOutlet weak var okButton: UIButton!
     
-    var height: Double?
-    var weight: Double?
+    
+    var bmi = BMIBrain()
     
     @IBAction func calculatePressed(_ sender: UIButton) {
         if heightTextField.text != "" && weightTextField.text != "" {
@@ -43,7 +43,6 @@ class BMIViewController: UIViewController {
     }
     
     
-    var bmi = BMIBrain()
     
     
     override func viewDidLoad() {

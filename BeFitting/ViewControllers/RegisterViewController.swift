@@ -21,6 +21,8 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var registrateButton: UIButton!
+    
+    
     @IBAction func registrateButtonPressed(_ sender: UIButton) {
         if let email = emailTextField.text, let password = passwordTextField.text {
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
@@ -32,6 +34,8 @@ class RegisterViewController: UIViewController {
             }
         }
     }
+    
+    
     @IBAction func enterEmailTextField(_ sender: UITextField) {
         if email != "" {
             email = emailTextField.text!

@@ -38,7 +38,7 @@ class SearchViewController: UIViewController  {
         present(selectionVc, animated: true, completion: nil)
     }
     
-    var grabbingData = GetData()
+    
     
     @IBAction func allButtonPressed(_ sender: UIButton) {
         grabbingData.getFoods()
@@ -69,18 +69,17 @@ class SearchViewController: UIViewController  {
         
     }
     
-    
     var foodsHistory: [FoodLog] = []
     var searchedFoodsHistory: [FoodLog] = []
     let db = Firestore.firestore()
     var counting = 0
     var myFoods: [FoodLog] = []
     var selectedFood: FoodLog = FoodLog(name: "", calories: "", measurement: "", quantity: "", protein: "", carbs: "", fats: "", counter: 0, date: "", dateInSeconds: 0)
-    //    var lettersCounter = 0
+    
+    var grabbingData = GetData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        getFoods()
         grabbingData.getMyFoods()
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(400)) {
             self.foodsHistory = self.grabbingData.myFoods
@@ -91,10 +90,6 @@ class SearchViewController: UIViewController  {
         historyTableView.delegate = self
         historyTableView.dataSource = self
         historyTableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellID)
-        
-        
-        
-        
         
     }
     

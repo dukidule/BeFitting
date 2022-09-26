@@ -152,7 +152,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UiF-Qz-3eN">
-                                <rect key="frame" x="0.0" y="40" width="414" height="696"/>
+                                <rect key="frame" x="0.0" y="60" width="414" height="758"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hz9-zo-0mo" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="847"/>
@@ -436,7 +436,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="0cy-LT-496"/>
                             </scrollView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9G-QB-1pS">
-                                <rect key="frame" x="10" y="10" width="39" height="30"/>
+                                <rect key="frame" x="10" y="10" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.69019607839999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="Fdj-5U-THM"/>
@@ -449,7 +449,7 @@
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igd-yG-9VS">
-                                <rect key="frame" x="87" y="304" width="240" height="128"/>
+                                <rect key="frame" x="87" y="345" width="240" height="128"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Save food entries?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mh-85-m1u">
                                         <rect key="frame" x="14" y="14" width="210" height="61"/>
@@ -476,7 +476,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHN-yb-hST">
-                                <rect key="frame" x="10" y="55" width="150" height="140"/>
+                                <rect key="frame" x="10" y="75" width="150" height="140"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6xq-Jn-x0i">
                                         <rect key="frame" x="0.0" y="8" width="114" height="30"/>
@@ -484,6 +484,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
+                                            <action selector="toBmiButtonPressed:" destination="jWi-DM-7Ub" eventType="touchUpInside" id="rZY-E0-jDe"/>
                                             <segue destination="bhk-iG-eKU" kind="presentation" identifier="toBmiViewController" modalPresentationStyle="fullScreen" id="Wth-ML-kbp"/>
                                         </connections>
                                     </button>
@@ -493,6 +494,7 @@
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
+                                            <action selector="toBmrButtonPressed:" destination="jWi-DM-7Ub" eventType="touchUpInside" id="ARg-9f-aE0"/>
                                             <segue destination="7IE-QK-WK1" kind="presentation" identifier="toBmrViewController" modalPresentationStyle="fullScreen" id="QoK-uX-NpU"/>
                                         </connections>
                                     </button>
@@ -1346,7 +1348,7 @@
                                                                             <constraint firstAttribute="width" constant="251" id="nlF-Ne-JRd"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                                     </textField>
                                                                 </subviews>
                                                                 <constraints>
@@ -1951,7 +1953,7 @@
                                                             <constraint firstAttribute="height" constant="34" id="upZ-BY-0HD"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                         <connections>
                                                             <action selector="enterPasswordTextField:" destination="JXI-Ln-6qg" eventType="editingDidEnd" id="Eij-E8-dqN"/>
                                                         </connections>
@@ -2019,6 +2021,6 @@
         <image name="Slika 2" width="612" height="612"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lCf-py-WNl"/>
+        <segue reference="ean-va-SuW"/>
     </inferredMetricsTieBreakers>
 </document>

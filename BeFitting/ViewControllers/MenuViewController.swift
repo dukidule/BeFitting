@@ -61,9 +61,7 @@ class MenuViewController: UIViewController {
     @IBAction func unwind(_ seg: UIStoryboardSegue) {
         
     }
-    @IBAction func backButtonTapped(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
+    
     
    
     var dateSelection: NSDate!
@@ -125,14 +123,27 @@ class MenuViewController: UIViewController {
 
         
     }
+    // MenuView
     @IBAction func menuButtonPressed(_ sender: UIButton) {
-//        performSegue(withIdentifier: "toBmiViewController", sender: self)
         if menuView.isHidden == true {
             menuView.isHidden = false
         } else {
             menuView.isHidden = true
         }
     }
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+        menuView.isHidden = true
+    }
+    
+    @IBAction func toBmiButtonPressed(_ sender: UIButton) {
+        menuView.isHidden = true
+    }
+    
+    @IBAction func toBmrButtonPressed(_ sender: UIButton) {
+        menuView.isHidden = true
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         print("Test" + "\(cellIDForTable)")
